@@ -21,6 +21,7 @@
             /*{id: 12, name: "Recovery Drop", days: 0, price: 1000, src: "/", quantity: 0}*/
     ]
 
+  // for drag and drop => use:draggable
     let goo = []
 
     let arDays = []
@@ -155,7 +156,7 @@ function calcTumbleCost() {
                 <div>
                     {#each fruits as fruit (fruit.id)}
                     <div class="fruit-container">
-                        <img use:draggable src="{fruit.src}" alt="Fruit Pic">
+                        <img src="{fruit.src}" alt="Fruit Pic">
                         <label for="quantity">{fruit.name}
                             <input bind:value="{fruit.quantity}" type="number" min="0" max="99">
                         </label> 
