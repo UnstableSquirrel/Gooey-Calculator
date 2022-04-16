@@ -131,6 +131,14 @@ function calcTumbleCost() {
 function selectContent (event) {
         event.target.select();
     }
+
+function dofi() {
+  window.location.href = "http://dogira.finance";
+}
+
+function dogira() {
+  window.location.href = "http://dogira.net";
+}
        
 	
 
@@ -215,18 +223,29 @@ function selectContent (event) {
                   <div class="text2">
                     <p>- The tumbling base fee is 300,000 $GOO</p>
                     <p>- You pay an additional 250,000 $GOO per Gooey tumbled to date by both parent Gooeys</p>
-                    <p>- If both Gooeys combined have tumbled more than 7 times, your total tumbling cost increases by 3x</p>
+                    <p>- If both Gooeys combined have tumbled more than 7 times, your total tumbling cost 
+                      increases by 3x</p>
                   </div>
-
             </div>
 
         </div>
-        <!--<div class="3col">
-            <div class="c4">Content Area 4</div>
-            <div class="c5">Content Area 5</div>
-            <div class="c6">Content Area 6</div>
-        </div>-->
     </div>
+
+    <footer>
+      <div class="p-container-f">
+        <p>
+          All information and calculations are taken from the Goobook of the official 
+          Gooey p2e game, developed by Dogira on the Polygon blockchain, and can be viewed
+          <a href="https://dogira.gitbook.io/goobook/"> here.</a>
+        </p>
+      </div>
+      <div class="img-container-f">
+        <div>
+          <img on:click="{dogira}" src="/Dogira.png" alt="Dogira">
+          <label on:click="{dofi}" for="Dogira">Dogira</label>
+        </div>
+      </div>
+    </footer>
 
 </main>
 
@@ -552,50 +571,76 @@ div {
   text-align: left;
 }
 
-
-/*
-.c4 {
-  display: inline-block;
-  float: left;
-  width: 33.33%;
+footer {
+  display: grid;
+  justify-content: center;
+  background-color: #000000;
   text-align: center;
-  padding: 120px 0;
-  background-color: rgb(230, 150, 134);  
+  padding: 25px;
 }
 
-.c5{
-  display: inline-block;
-  float: left;
-  width: 33.33%;
-  text-align: center;
-  padding: 120px 0;
-  background-color: rgb(230, 203, 118);  
+.p-container-f {
+  max-width: 500px;
 }
 
-.c6 {
-  display: inline-block;
-  float: left;
-  width: 33.33%;
-  text-align: center;
-  padding: 120px 0;
-  background-color: rgb(173, 170, 230);  
+footer > div > p {
+  font-size: 12px;
+  font-weight: 400;
+  text-shadow: none;
+  color: rgba(255, 255, 255, 0.777);
 }
-*/
+
+.img-container-f > div {
+  display: grid;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 400;
+  text-shadow: none;
+  color: rgba(255, 255, 255, 0.777);
+}
+
+.img-container-f > div > label:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.img-container-f > div > img {
+  height: 120px;
+  width: 120px;
+  transition: transform 0.5s;
+}
+
+.img-container-f > div > img:hover {
+  transform: rotate(360deg);
+  cursor: pointer;
+}
 
 
-/*
-@media only screen and (max-width: 750px) {
-  .c4 {
-    width: 100%;
+@media (min-width: 100px) and (max-width: 299px) {
+
+  footer {
+    padding: 10px 0px;
   }
-  .c5 {
-    width: 100%;
+
+  .p-container-f {
+    max-width: 150px;
   }
-  .c6 {
-    width: 100%;
+
+  .img-container-f > div > img {
+    height: 70px;
+    width: 70px;
+    transition: transform 0.5s;
   }
 }
-*/
+
+@media (min-width: 300px) and (max-width: 500px) {
+
+    footer {
+      text-align: center;
+      padding: 10px;
+    }
+
+}
 
 @media only screen and (max-width: 660px) {
   .c2 {
