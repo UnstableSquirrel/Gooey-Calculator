@@ -22,6 +22,9 @@
     ]
 
   // for drag and drop => use:draggable
+
+    //let empty = ""
+    
     let goo = []
 
     let arDays = []
@@ -123,6 +126,11 @@ function calcTumbleCost() {
     gooPrice = (300000 + (250000 * gooeyA) + (250000 * gooeyB)).toLocaleString('en-US')
   }
 }
+
+
+function selectContent (event) {
+        event.target.select();
+    }
        
 	
 
@@ -145,7 +153,7 @@ function calcTumbleCost() {
                     </div>
 
                     <div>
-                        <img src="/gooball.png" alt="Gooball">
+                        <img src="/Gooball.png" alt="Gooball">
                     </div>
                 </div>
 
@@ -158,7 +166,7 @@ function calcTumbleCost() {
                     <div class="fruit-container">
                         <img src="{fruit.src}" alt="Fruit Pic">
                         <label for="quantity">{fruit.name}
-                            <input bind:value="{fruit.quantity}" type="number" min="0" max="99">
+                            <input on:focus="{event => selectContent(event)}" bind:value="{fruit.quantity}" type="number" min="0" max="99">
                         </label> 
                     </div>
                     {/each}
@@ -189,13 +197,13 @@ function calcTumbleCost() {
                 <div>
                     <label for="quantity">Gooey A number of tumbles</label>
                     <div>
-                      <input bind:value="{gooeyA}" type="number" min="0" max="99">
+                      <input on:focus="{event => selectContent(event)}" bind:value="{gooeyA}" type="number" min="0" max="99">
                     </div>
                 </div>
                 <div>
                     <label for="quantity">Gooey B number of tumbles</label>
                     <div>
-                      <input bind:value="{gooeyB}" type="number" min="0" max="99">
+                      <input on:focus="{event => selectContent(event)}" bind:value="{gooeyB}" type="number" min="0" max="99">
                     </div>
                 </div>
                 <div class="tumbling-price-container">
