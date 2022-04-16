@@ -234,9 +234,9 @@ function dogira() {
     <footer>
       <div class="p-container-f">
         <p>
-          All information and calculations are taken from the Goobook of the official 
-          Gooey p2e game, developed by Dogira on the Polygon blockchain, and can be viewed
-          <a href="https://dogira.gitbook.io/goobook/"> here.</a>
+          All information and calculations are taken from the official
+          <a href="https://dogira.gitbook.io/goobook/"> Goobook </a> of the 
+          Gooey P2E game, developed by Dogira on the Polygon blockchain.
         </p>
       </div>
       <div class="img-container-f">
@@ -581,6 +581,7 @@ footer {
 
 .p-container-f {
   max-width: 500px;
+  margin-bottom: 25px;
 }
 
 footer > div > p {
@@ -588,6 +589,10 @@ footer > div > p {
   font-weight: 400;
   text-shadow: none;
   color: rgba(255, 255, 255, 0.777);
+}
+
+footer > div > p > a {
+  color: rgba(117, 240, 240, 0.777);
 }
 
 .img-container-f > div {
