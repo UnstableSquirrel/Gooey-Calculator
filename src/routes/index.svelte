@@ -176,17 +176,17 @@ function selectContent (event) {
                 </div>
             </div>
             <div class="text1">
-                <p>- Fruits can be earned in the game or can be purchased from the market.</p>
-                <p>- Fruits increase your Gooey's Food Store, and Nexus.</p>
-                <p>- Rare fruits can also grant a Gooey additional tumbles.</p>
-                <p>- Rare fruits can also grant a Gooey a bonus multiplier to any future tumbles.</p>
+                <p>- Fruits can be earned in the game or can be purchased from the market</p>
+                <p>- Fruits increase your Gooey's Food Store, and Nexus</p>
+                <p>- Rare fruits can grant a Gooey additional tumbles</p>
+                <p>- Rare fruits can also grant a Gooey a bonus multiplier to any future tumbles</p>
                 <p>- Your Gooey's Food Store will deplete at a rate of 0.5 per second (also account 
                   for the Polygon block time)</p>
                 <p>- If Gooey's Food Store is below zero they will lose Nexus at a rapid speed, 
-                  depleting to zero in less than a day.</p> 
-                <p>- Your Gooey's Nexus stat is capped at 10,000, and applies a multiplier to all new tumbles.</p> 
+                  depleting to zero in less than a day</p> 
+                <p>- Your Gooey's Nexus stat is capped at 10,000, and applies a multiplier to all new tumbles</p> 
                 <p>- Low Nexus means weaker Gooey offspring</p>
-                <p>- Your Gooey must have a sufficient Food Store for the length of any quests before embarking.</p>
+                <p>- Your Gooey must have a sufficient Food Store for the length of any quests before embarking</p>
             </div>
 
             <div class="c3">
@@ -213,8 +213,8 @@ function selectContent (event) {
                   <button on:click="{calcTumbleCost}" class="button-36">Calculate</button>
 
                   <div class="text2">
-                    <p>- The tumbling base fee is 300,000 $GOO.</p>
-                    <p>- You pay an additional 250,000 $GOO per Gooey tumbled to date by both parent Gooeys.</p>
+                    <p>- The tumbling base fee is 300,000 $GOO</p>
+                    <p>- You pay an additional 250,000 $GOO per Gooey tumbled to date by both parent Gooeys</p>
                     <p>- If both Gooeys combined have tumbled more than 7 times, your total tumbling cost increases by 3x</p>
                   </div>
 
