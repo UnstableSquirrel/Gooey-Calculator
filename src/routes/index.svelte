@@ -211,6 +211,13 @@ function selectContent (event) {
                   <p><span>{gooPrice}</span> $GOO</p>
                 </div>
                   <button on:click="{calcTumbleCost}" class="button-36">Calculate</button>
+
+                  <div class="text2">
+                    <p>- The tumbling base fee is 300,000 $GOO.</p>
+                    <p>- You pay an additional 250,000 $GOO per Gooey tumbled to date by both parent Gooeys.</p>
+                    <p>- If both Gooeys combined have tumbled more than 7 times, your total tumbling cost increases by 3x</p>
+                  </div>
+
             </div>
 
         </div>
@@ -539,6 +546,11 @@ div {
   justify-content: center;
 }
 
+.text2 {
+  margin-top: 50px !important;
+  padding: 20px;
+  text-align: left;
+}
 
 
 /*
