@@ -174,7 +174,7 @@ function dogira() {
                     <div class="fruit-container">
                         <img src="{fruit.src}" alt="Fruit Pic">
                         <label for="quantity">{fruit.name}
-                            <input on:focus="{event => selectContent(event)}" bind:value="{fruit.quantity}" type="number" min="0" max="99">
+                            <input on:focus="{event => selectContent(event)}" bind:value="{fruit.quantity}" type="number" min="0" max="999">
                         </label> 
                     </div>
                     {/each}
