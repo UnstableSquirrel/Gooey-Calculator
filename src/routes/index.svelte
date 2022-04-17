@@ -7,23 +7,23 @@
     //import type { DragOptions } from '@neodrag/svelte'
 	
 	let fruits = [
-            {id: 1, name: "Apple", hours: 7, days: 0.25, price: 3000, src: "/apple.png", extra_tumbles: 0, quantity: 0},
-            {id: 2, name: "Orange", hours: 10, days: 0.41, price: 4000, src: "/orange.png", extra_tumbles: 0, quantity: 0},
-            {id: 3, name: "Banana", hours: 12, days: 0.5, price: 4800, src: "/nexus.png", extra_tumbles: 0, quantity: 0},
-            {id: 4, name: "Strawberry", hours: 20, days: 0.83, price: 6500, src: "/nexus.png", extra_tumbles: 0, quantity: 0},
-            {id: 5, name: "Cherry", hours: 27, days: 1.12, price: 10000, src: "/nexus.png", extra_tumbles: 0, quantity: 0},
-            {id: 6, name: "Pineapple", hours: 55, days: 2.3, price: 20000, src: "/nexus.png", extra_tumbles: 0, quantity: 0},
-            {id: 7, name: "Coconut", hours: 75, days: 3.12, price: 27000, src: "/nexus.png", extra_tumbles: 0, quantity: 0},
-            {id: 8, name: "Foxtail Fruit", hours: 125, days: 5.2, price: 45000, src: "/nexus.png", extra_tumbles: 0, quantity: 0},
-            {id: 9, name: "Pancake Squash", hours: 155, days: 6.45, price: 56000, src: "/nexus.png", extra_tumbles: 0, quantity: 0},
-            {id: 10, name: "Devil's Pomegranate", hours: 220, days: 9.1, price: 800000, src: "/nexus.png", extra_tumbles: 1, quantity: 0},
-            {id: 11, name: "Moondrop Fruit", hours: 330, days: 13.75, price: 1550000 , src: "/nexus.png", extra_tumbles: 2, quantity: 0},
+            {id: 1, name: "Apple", hours: 7, days: 0.25, price: 3000, src: "/apple.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 2, name: "Orange", hours: 10, days: 0.41, price: 4000, src: "/orange.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 3, name: "Banana", hours: 12, days: 0.50, price: 4800, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 4, name: "Strawberry", hours: 20, days: 0.83, price: 6500, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 5, name: "Cherry", hours: 27, days: 1.12, price: 10000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 6, name: "Pineapple", hours: 55, days: 2.29, price: 20000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 7, name: "Coconut", hours: 75, days: 3.12, price: 27000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 8, name: "Foxtail Fruit", hours: 125, days: 5.20, price: 45000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 9, name: "Pancake Squash", hours: 155, days: 6.45, price: 56000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 10, name: "Devil's Pomegranate", hours: 220, days: 9.16, price: 800000, src: "/nexus.png", extra_tumbles: 1, rank: 0, ratio: 0, quantity: 0},
+            {id: 11, name: "Moondrop Fruit", hours: 330, days: 13.75, price: 1550000 , src: "/nexus.png", extra_tumbles: 2, rank: 0, ratio: 0, quantity: 0},
             /*{id: 12, name: "Recovery Drop", days: 0, price: 1000, src: "/", quantity: 0}*/
     ]
 
-  // for drag and drop => use:draggable
-
-    //let empty = ""
+// for drag and drop => use:draggable
+//
+//////////////////////// Sort Fruits //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     let goo = []
 
@@ -65,6 +65,8 @@
                     total2 += arHours[i]
                 }
                 if (total2 > 0) {
+                    // @ts-ignore
+                    // @ts-ignore
                     hours = total2.toLocaleString('en-US')
                 }
                 else {
@@ -82,6 +84,7 @@
                 }
                 if (total3 > 0) {
                     //let t = total3.toLocaleString('en-US')
+                    // @ts-ignore
                     cost = total3.toLocaleString('en-US')
                     //cost.toLocaleString('en-US')
                 }
@@ -99,6 +102,7 @@
                     total4 += arTumbles[i]
                 }
                 if (total4 > 0) {
+                    // @ts-ignore
                     extraTumbles = total4.toLocaleString('en-US')
                 }
                 else {
@@ -112,34 +116,73 @@
             arCost.forEach(calcCost)
             arTumbles.forEach(calcTumbles)
        }
-       
-let gooeyA = 0
-let gooeyB = 0
 
-let gooPrice = 0
+//////////////////////// Fruit Calculator End //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//////////////////////// Sort Fruits //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function calcTumbleCost() {
-  if (gooeyA + gooeyB > 7) {
-    gooPrice = ((300000 + (250000 * gooeyA) + (250000 * gooeyB)) * 3).toLocaleString('en-US')
-  }
-  if (gooeyA + gooeyB <= 7) {
-    gooPrice = (300000 + (250000 * gooeyA) + (250000 * gooeyB)).toLocaleString('en-US')
-  }
-}
+      let unsortedFruits = fruits.filter(fruit => fruit.quantity >= 0)
+      let sortedFruits = []
 
+      unsortedFruits.forEach((unsortedFruits) => {
+        unsortedFruits.ratio = Math.round(unsortedFruits.price / unsortedFruits.hours)
+      })
 
-function selectContent (event) {
-        event.target.select();
-    }
+      unsortedFruits.sort(function(a, b) {
+        sortedFruits = unsortedFruits
+        return a.ratio - b.ratio
+      })
 
-function dofi() {
-  window.location.href = "http://dogira.finance";
-}
+      for (let [index] of sortedFruits.entries()) {
+        sortedFruits.forEach((sortedFruits) => {
+          sortedFruits.rank = index++ + 1 - 10
+        })
+      }
 
-function dogira() {
-  window.location.href = "http://dogira.net";
-}
-       
+//////////////////////// Sort Fruits End /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+/////////////////// Tumbling Costs ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////         
+      let gooeyA = 0
+      let gooeyB = 0
+
+      let gooPrice = 0
+
+      function calcTumbleCost() {
+        if (gooeyA + gooeyB > 7) {
+          // @ts-ignore
+          gooPrice = ((300000 + (250000 * gooeyA) + (250000 * gooeyB)) * 3).toLocaleString('en-US')
+        }
+        if (gooeyA + gooeyB <= 7) {
+          // @ts-ignore
+          gooPrice = (300000 + (250000 * gooeyA) + (250000 * gooeyB)).toLocaleString('en-US')
+        }
+      }
+
+///////////////////////////////// Tumbling Costs End //////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+/////////////// Select Input /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      function selectContent (event) {
+              event.target.select();
+          }
+
+/////////////// Select Input End /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+////////////// Links /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      function dofi() {
+        window.location.href = "http://dogira.finance";
+      }
+
+      function dogira() {
+        window.location.href = "http://dogira.net";
+      }
+
+////////////// Links End /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
 </script>
@@ -182,6 +225,31 @@ function dogira() {
                       <button on:click="{check}" class="button-36">Calculate</button>
                     </div>
                 </div>
+            </div>
+            <div class="best-deal-container">
+              <div>
+                <h2>Get the best deal</h2>
+              </div>
+              <table>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Fruit</th>
+                    <th>Cost</th>
+                    <th>Hours</th>
+                    <th>Ratio</th>
+                  </tr>
+                <tbody>
+                  {#each sortedFruits as i (i.id)}
+                  <tr>
+                    <td>#{i.rank}</td>
+                    <td>{i.name}</td>
+                    <td>{i.price}</td>
+                    <td>{i.hours}</td>
+                    <td>{i.ratio}</td>
+                  </tr>
+                  {/each}
+                </tbody>
+              </table>
             </div>
             <div class="text1">
                 <p>- Fruits can be earned in the game or can be purchased from the market</p>
@@ -308,6 +376,112 @@ div {
   z-index: 2;
 }
 
+
+
+
+
+.best-deal-container {
+  margin: 50px 0px;
+  display: grid;
+  justify-content: center
+}
+
+.best-deal-container > div {
+  display: flex;
+  justify-content: center
+}
+
+table {
+  display: grid;
+  background: #012B39;
+  border-radius: 25px;
+  border-collapse: collapse;
+  margin: 5px;
+  padding: 10px 10px;
+}
+
+table {
+        display: grid;
+        background: #012b39be;
+        border-radius: 25px;
+        margin: 10px;
+        padding: 10px 10px;
+        width: 600px;
+      }
+
+th {
+  border-bottom: 1px solid #364043;
+  color: #E2B842;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 5px 55px 5px 5px;
+  text-align: center;
+}
+
+tr > th:nth-child(5) {
+  padding: 5px 5px 5px 20px;
+}
+
+tbody > tr > td:nth-child(1) {
+  text-align: center;
+  width: 50px;
+}
+
+tbody > tr > td:nth-child(2) {
+  width: 105px;
+}
+
+tbody > tr > td:nth-child(3) {
+  text-align: center;
+  width: 90px !important;
+}
+
+tbody > tr > td:nth-child(4) {
+  text-align: center;
+  width: 70px !important;
+}
+
+tbody > tr > td:nth-child(5) {
+  text-align: center;
+  border-right: 0px solid #364043;
+}
+
+th {
+  border-bottom: 1px solid #364043;
+  color: #E2B842;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+td {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 400;
+  padding: 5px;
+  border-right: 1px solid #364043;
+}
+
+tr > th:nth-child(5) {
+   width: 150px !important;
+}
+
+tbody {
+  display: table;
+}
+
+tbody tr {
+  transition: background 0.25s ease;
+}
+
+tbody tr:hover {
+  background: #014055;
+}
+
+
+
+
+
 .c1 > div {
   display: flex;
   justify-content: center;
@@ -349,13 +523,45 @@ div {
 
 
  /*----------------------------------------------------*/
+
 @media only screen and (min-width: 838px) and (max-width: 1100px) {
 
     .c2 > div {
         display: grid;
         grid-template-columns: auto auto auto;
     }
+}
 
+@media only screen and (min-width: 568px) and (max-width: 645px) {
+
+    table {
+        max-width: 450px;
+      }
+    
+    tr > th:nth-child(1) {
+      padding: 5px;
+      width: 50px;
+    }
+
+    tr > th:nth-child(2) {
+      padding: 5px 50px 5px 25px;
+      width: 50px;
+    }
+
+    tr > th:nth-child(3) {
+      padding: 5px 15px 5px 5px;
+      width: 100px;
+    }
+
+    tr > th:nth-child(4) {
+      padding: 5px 5px 5px 25px;
+      width: 100px;
+    }
+
+    tr > th:nth-child(5) {
+      padding: 5px 5px 5px 25px;
+      width: 100px;
+    }
 }
 
 @media only screen and (min-width: 568px) and (max-width: 837px) {
@@ -380,6 +586,88 @@ div {
         display: grid;
         grid-template-columns: auto;
     }
+
+    table {
+      max-width: 360px;
+    }
+    
+    tr > th {
+      font-size: 15px;
+    }
+
+    tr td {
+      font-size: 11px;
+    }
+
+    tr > th:nth-child(1) {
+      padding: 5px;
+      width: 5px !important;
+    }
+
+    tr > th:nth-child(2) {
+      padding: 5px 50px 5px 25px;
+      widows: 20px !important;
+    }
+
+    tr > th:nth-child(3) {
+      padding: 5px 15px 5px 5px;
+      width: 100px;
+    }
+
+    tr > th:nth-child(4) {
+      padding: 5px 5px 5px 25px;
+      width: 100px;
+    }
+
+    tr > th:nth-child(5) {
+      padding: 5px 5px 5px 25px;
+      width: 100px;
+    }
+
+    tr > td {
+      width: 50px !important;
+    }
+}
+
+@media only screen and (min-width: 290px) and (max-width: 390px) {
+
+  table {
+      max-width: 280px !important;
+    }
+    
+    tr > th {
+      font-size: 12px;
+    }
+
+    tr td {
+      font-size: 10px;
+    }
+
+    tr > th:nth-child(1) {
+      padding: 5px 10px;
+      width: 50px !important;
+    }
+
+    tr > th:nth-child(2) {
+      padding: 5px 30px 5px 5px;
+      width: 50px !important;
+    }
+
+    tr > th:nth-child(3) {
+      padding: 5px 5px 5px 5px;
+      width: 50px;
+    }
+
+    tr > th:nth-child(4) {
+      padding: 5px 5px 5px 25px;
+      width: 100px;
+    }
+
+    tr > th:nth-child(5) {
+      padding: 5px 5px 5px 5px;
+      width: 100px;
+    }
+
 }
 
 @media only screen and (min-width: 10px) and (max-width: 290px) {
@@ -391,6 +679,18 @@ div {
       display: none;
     }
 
+    .c2 {
+      width: 250px !important;
+    }
+
+    .button-container {
+      width: 240px !important;
+    }
+
+    .fruit-container {
+      width: 0px !important;
+    }
+
     .c3 {
       margin: 0px;
     }
@@ -400,8 +700,48 @@ div {
     }
 
     .c3 > div > img {
-      width: 200px !important;
+      width: 210px !important;
       height: 120px !important;
+    }
+
+    table {
+      max-width: 200px;
+    }
+    tr > th {
+      font-size: 10px;
+    }
+
+    tr td {
+      font-size: 10px;
+    }
+
+    tr > th:nth-child(1) {
+      padding: 5px 10px;
+      width: 50px !important;
+    }
+
+    tr > th:nth-child(2) {
+      padding: 5px 10px 5px 5px;
+      width: 50px !important;
+    }
+
+    tr > th:nth-child(3) {
+      padding: 5px 5px 5px 5px;
+      width: 50px;
+    }
+
+    tr > th:nth-child(4) {
+      padding: 5px 5px 5px 25px;
+      width: 100px;
+    }
+
+    tr > th:nth-child(5) {
+      padding: 5px 5px 5px 5px;
+      width: 100px;
+    }
+
+    tr > td {
+      width: 25px !important;
     }
 
 }
