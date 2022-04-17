@@ -160,6 +160,27 @@
         }
       }
 
+      let previousGooA = gooeyA
+      let previousGooB = gooeyB
+
+      function validator1(node, value) {
+        return {
+          update(value) {
+            gooeyA = value === null || gooeyA < node.min ? previousGooA : parseInt(value)
+            previousGooA = gooeyA
+          }
+        }
+      }
+
+      function validator2(node, value) {
+        return {
+          update(value) {
+            gooeyB = value === null || gooeyB < node.min ? previousGooB : parseInt(value)
+            previousGooB = gooeyB
+          }
+        }
+      }
+
 ///////////////////////////////// Tumbling Costs End //////////////////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -188,11 +209,30 @@
 ////////////// Refresh /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function refresh() {
-  fruits.map(item => {
-    item.quantity = 0
-    console.log(fruits)
+  fruits.forEach((fruits) => {
+    fruits.quantity = 0
   })
+  cost = 0
+  days = 0
+  hours = 0
+  extraTumbles = 0
 }
+
+let n = fruits
+let previousN = n
+
+function validator0(node, value) {
+        return {
+          update(value) {
+            n.forEach((n) => {
+              n.quantity = value === null || gooeyA < node.min ? previousGooA : parseInt(value)
+            })
+            previousN = n
+          }
+        }
+}
+
+
 
 ////////////// Refresh End /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -234,8 +274,8 @@ function refresh() {
                     </div>
                     {/each}
                     <div class="button-container">
-                      <button on:click="{check}" class="button-36">Calculate</button>
-                      <button on:input="{refresh}" on:click="{refresh}" class="button">Refresh</button>
+                      <button on:click="{check}" use:validator0={n} class="button-36">Calculate</button>
+                      <button on:click={refresh} class="button">Refresh</button>
                     </div>
                 </div>
             </div>
@@ -286,13 +326,13 @@ function refresh() {
                 <div>
                     <label for="quantity">Gooey A number of tumbles</label>
                     <div>
-                      <input on:focus="{event => selectContent(event)}" bind:value="{gooeyA}" type="number" min="0" max="99">
+                      <input on:focus="{event => selectContent(event)}" use:validator1={gooeyA} bind:value="{gooeyA}" type="number" min="0" max="99">
                     </div>
                 </div>
                 <div>
                     <label for="quantity">Gooey B number of tumbles</label>
                     <div>
-                      <input on:focus="{event => selectContent(event)}" bind:value="{gooeyB}" type="number" min="0" max="99">
+                      <input on:focus="{event => selectContent(event)}" use:validator2={gooeyB} bind:value="{gooeyB}" type="number" min="0" max="99">
                     </div>
                 </div>
                 <div class="tumbling-price-container">
