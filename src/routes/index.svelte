@@ -183,6 +183,18 @@
       }
 
 ////////////// Links End /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//
+////////////// Refresh /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function refresh() {
+  fruits.map(item => {
+    item.quantity = 0
+    console.log(fruits)
+  })
+}
+
+////////////// Refresh End /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
 </script>
@@ -223,6 +235,7 @@
                     {/each}
                     <div class="button-container">
                       <button on:click="{check}" class="button-36">Calculate</button>
+                      <button on:input="{refresh}" on:click="{refresh}" class="button">Refresh</button>
                     </div>
                 </div>
             </div>
@@ -792,6 +805,9 @@ tbody tr:hover {
     border-radius: 4px;
 }
 
+.button-container {
+  display: grid !important;
+}
 
 
 
@@ -837,6 +853,53 @@ tbody tr:hover {
 
 @media (min-width: 768px) {
   .button-36 {
+    padding: 0 2.6rem;
+  }
+}
+
+
+
+
+
+.button:nth-child(1) {
+  padding: 10px 35px ;
+}
+
+.button {
+  background-image: linear-gradient(92.88deg, #b5455d 9.16%, #cc435a 43.89%, #d73f3f 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  height: 4rem;
+  padding: 10px;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 10px 40px;
+}
+
+.button:hover {
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+
+.button:active {
+  box-shadow: rgba(131, 122, 196, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+  transform: scale(0.97);
+}
+
+@media (min-width: 768px) {
+  .button {
     padding: 0 2.6rem;
   }
 }
