@@ -15,7 +15,7 @@
             {id: 6, name: "Pineapple", hours: 55, days: 2.29, price: 20000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
             {id: 7, name: "Coconut", hours: 75, days: 3.12, price: 27000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
             {id: 8, name: "Foxtail Fruit", hours: 125, days: 5.20, price: 45000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 9, name: "Pancake Squash", hours: 155, days: 6.45, price: 56000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
+            {id: 9, name: "Pancake Squash", hours: 155, days: 6.45, price: 56000, src: "/pancake.jpg", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
             {id: 10, name: "Devil's Pomegranate", hours: 220, days: 9.16, price: 800000, src: "/nexus.png", extra_tumbles: 1, rank: 0, ratio: 0, quantity: 0},
             {id: 11, name: "Moondrop Fruit", hours: 330, days: 13.75, price: 1550000 , src: "/nexus.png", extra_tumbles: 2, rank: 0, ratio: 0, quantity: 0},
             /*{id: 12, name: "Recovery Drop", days: 0, price: 1000, src: "/", quantity: 0}*/
