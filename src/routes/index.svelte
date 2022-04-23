@@ -7,17 +7,171 @@
     //import type { DragOptions } from '@neodrag/svelte'
 	
 	let fruits = [
-            {id: 1, name: "Apple", hours: 7, days: 0.25, price: 3000, src: "/apple.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 2, name: "Orange", hours: 10, days: 0.41, price: 4000, src: "/orange.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 3, name: "Banana", hours: 12, days: 0.50, price: 4800, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 4, name: "Strawberry", hours: 20, days: 0.83, price: 6500, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 5, name: "Cherry", hours: 27, days: 1.12, price: 10000, src: "/nexus.png", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 6, name: "Pineapple", hours: 55, days: 2.29, price: 20000, src: "/pineapple.jpg", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 7, name: "Coconut", hours: 75, days: 3.12, price: 27000, src: "/coconut.jpg", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 8, name: "Foxtail Fruit", hours: 125, days: 5.20, price: 45000, src: "/foxtail.jpg", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 9, name: "Pancake Squash", hours: 155, days: 6.45, price: 56000, src: "/pancake.jpg", extra_tumbles: 0, rank: 0, ratio: 0, quantity: 0},
-            {id: 10, name: "Devil's Pomegranate", hours: 220, days: 9.16, price: 800000, src: "/devil.jpg", extra_tumbles: 1, rank: 0, ratio: 0, quantity: 0},
-            {id: 11, name: "Moondrop Fruit", hours: 330, days: 13.75, price: 1550000 , src: "/moondrop.jpg", extra_tumbles: 2, rank: 0, ratio: 0, quantity: 0},
+            {
+              id: 1, 
+              name: "Apple",
+              hours: 7, 
+              days: 0.25, 
+              price: 3000, 
+              src: "/apple.png",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 0,  
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 2, 
+              name: "Orange", 
+              hours: 10, 
+              days: 0.41, 
+              price: 4000, 
+              src: "/orange.png",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 0,  
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 3, 
+              name: "Banana", 
+              hours: 12,
+              days: 0.50, 
+              price: 4800, 
+              src: "/nexus.png",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 0,  
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 4, 
+              name: "Strawberry", 
+              hours: 20, 
+              days: 0.83, 
+              price: 6500, 
+              src: "/nexus.png",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 0,  
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 5, 
+              name: "Cherry", 
+              hours: 27, 
+              days: 1.12, 
+              price: 10000, 
+              src: "/nexus.png",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 0,  
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 6, 
+              name: "Pineapple", 
+              hours: 55, 
+              days: 2.29, 
+              price: 20000, 
+              src: "/pineapple.jpg",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 2,  
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 7, 
+              name: "Coconut", 
+              hours: 75, 
+              days: 3.12, 
+              price: 27000, 
+              src: "/coconut.jpg",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 2,  
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 8, 
+              name: "Foxtail Fruit", 
+              hours: 125, 
+              days: 5.20, 
+              price: 45000, 
+              src: "/foxtail.jpg",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 3,  
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 9, 
+              name: "Pancake Squash", 
+              hours: 155, 
+              days: 6.45, 
+              price: 56000, 
+              src: "/pancake.jpg",
+              nexus_bonus: 0, 
+              tumble_stat_bonus: 3, 
+              extra_tumbles: 0, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 10, 
+              name: "Devil's Pomegranate", 
+              hours: 220, 
+              days: 9.16, 
+              price: 800000, 
+              src: "/devil.jpg",
+              nexus_bonus: 1, 
+              tumble_stat_bonus: 4, 
+              extra_tumbles: 1, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
+            {
+              id: 11, 
+              name: "Moondrop Fruit", 
+              hours: 330, 
+              days: 13.75, 
+              price: 1550000 , 
+              src: "/moondrop.jpg",
+              nexus_bonus: 3, 
+              tumble_stat_bonus: 6,
+              extra_tumbles: 2, 
+              rank: 0, 
+              ratio: 0, 
+              quantity: 0
+            },
+
             /*{id: 12, name: "Recovery Drop", days: 0, price: 1000, src: "/", quantity: 0}*/
     ]
 
@@ -30,11 +184,15 @@
     let arDays = []
     let arHours = []
     let arCost = []
+    let arNexus = []
+    let arStats = []
     let arTumbles = []
 
     let cost = 0
     let days = 0
     let hours = 0
+    let nexusBonus = 0
+    let bonusStats = 0
     let extraTumbles = 0
 
        function check() {
@@ -111,9 +269,45 @@
                 //console.log("Total Extra Tumbles: " + extraTumbles)
             }
 
+            arNexus = fruits.filter(fruit => fruit.quantity >= 1)
+            function calcNexus(x,i) {
+                arNexus[i] =  x.quantity * x.nexus_bonus
+                let total5 = 0
+                for (let i in arNexus) {
+                    total5 += arNexus[i]
+                }
+                if (total5 > 0) {
+                    // @ts-ignore
+                    nexusBonus = total5.toLocaleString('en-US')
+                }
+                else {
+                    nexusBonus = 0
+                }
+                //console.log("Total Extra Tumbles: " + extraTumbles)
+            }
+
+            arStats = fruits.filter(fruit => fruit.quantity >= 1)
+            function calcStats(x,i) {
+                arStats[i] =  x.quantity * x.tumble_stat_bonus
+                let total6 = 0
+                for (let i in arStats) {
+                    total6 += arStats[i]
+                }
+                if (total6 > 0) {
+                    // @ts-ignore
+                    bonusStats = total6.toLocaleString('en-US')
+                }
+                else {
+                    bonusStats = 0
+                }
+                //console.log("Total Extra Tumbles: " + extraTumbles)
+            }
+
             arDays.forEach(calcDays)
             arHours.forEach(calcHours)
             arCost.forEach(calcCost)
+            arNexus.forEach(calcNexus)
+            arStats.forEach(calcStats)
             arTumbles.forEach(calcTumbles)
        }
 
@@ -215,6 +409,8 @@ function refresh() {
   cost = 0
   days = 0
   hours = 0
+  nexusBonus = 0
+  bonusStats = 0
   extraTumbles = 0
 }
 
@@ -251,6 +447,8 @@ function validator0(node, value) {
                     <div class="results">
                         <p>Fruit store in days: <span>{days}</span></p>
                         <p>Fruit store in hours: <span>{hours}</span></p>
+                        <p>Nexus Bonus: <span>{nexusBonus}</span></p>
+                        <p>Tumble Stat Bonus: <span>{bonusStats}</span>%</p>
                         <p>Extra tumbles: <span>{extraTumbles}</span></p>
                         <p>Total cost: <span>{cost}</span> $GOO</p>
                     </div>
@@ -267,10 +465,18 @@ function validator0(node, value) {
                 <div>
                     {#each fruits as fruit (fruit.id)}
                     <div class="fruit-container">
-                        <img src="{fruit.src}" alt="Fruit Pic">
                         <label for="quantity">{fruit.name}
                             <input on:focus="{event => selectContent(event)}" bind:value="{fruit.quantity}" type="number" min="0" max="999">
+                            <div class="bonus-container">
+                              <p>Nexus Bonus: <span>{fruit.nexus_bonus}</span></p>
+                              <p>Tumble Stat Bonus: <span>{fruit.tumble_stat_bonus}</span>%</p>
+                              <p>Extra Tumbles: <span>{fruit.extra_tumbles}</span></p>
+                              <p>Price: <span>{fruit.price.toLocaleString('en-US')}</span>$GOO</p>
+                            </div>
                         </label> 
+                        <div class="img-container">
+                          <img src="{fruit.src}" alt="Fruit Pic">
+                        </div>
                     </div>
                     {/each}
                     <div class="button-container">
@@ -563,6 +769,39 @@ tbody tr:hover {
     grid-template-columns: auto auto auto auto;
 }
 
+.bonus-container {
+  text-align: left;
+}
+
+.bonus-container > p {
+  font-size: 12px;
+  font-weight: 200;
+  color: rgba(86, 86, 86, 0.777);
+}
+
+.bonus-container > p > span {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgb(0, 0, 0)
+}
+
+.img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+}
+
+.img-container > img {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  background: #ffc4661a;
+  margin: 5px;
+  border-radius: 55px;
+}
+
 .text1 {
     padding: 20px;
 }
@@ -577,7 +816,7 @@ tbody tr:hover {
 
  /*----------------------------------------------------*/
 
-@media only screen and (min-width: 838px) and (max-width: 1100px) {
+@media only screen and (min-width: 961px) and (max-width: 1333px) {
 
     .c2 > div {
         display: grid;
@@ -617,7 +856,7 @@ tbody tr:hover {
     }
 }
 
-@media only screen and (min-width: 568px) and (max-width: 837px) {
+@media only screen and (min-width: 650px) and (max-width: 960px) {
 
     .c2 > div {
         display: grid;
@@ -626,7 +865,7 @@ tbody tr:hover {
 
 }
 
-@media only screen and (min-width: 210px) and (max-width: 567px) {
+@media only screen and (min-width: 210px) and (max-width: 649px) {
 
     .c1 > div > div > img {
       width: 100px;
@@ -736,6 +975,20 @@ tbody tr:hover {
       width: 250px !important;
     }
 
+    .img-container {
+      width: 200px;
+      display: flex;
+      justify-content: right; 
+    }
+
+    .img-container > img {
+      display: flex;
+      width: 50px;
+      height: 50px;
+      justify-content: center;
+      align-items: center;
+    }
+
     .button-container {
       width: 240px !important;
     }
@@ -807,21 +1060,10 @@ tbody tr:hover {
 .fruit-container {
     display: flex;
     justify-content: left;
-    align-items: left;
+    align-items: center;
     background: #ffc4661a;
     grid-template-columns: auto ;
     margin: 20px 50px 20px 50px;
-    border-radius: 35px;
-}
-
-.fruit-container > img {
-    display: flex;
-    width: 50px;
-    height: 50px;
-    justify-content: center;
-    align-items: center;
-    background: #ffc4661a;
-    margin: 5px;
     border-radius: 35px;
 } 
 
@@ -837,7 +1079,7 @@ tbody tr:hover {
     display: flex;
     justify-content: ceter;
     text-align: center;
-    width: 50px;
+    width: 70px;
     height: 15px;
     padding: 5px;
     font-size: 20px;
