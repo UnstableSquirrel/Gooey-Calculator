@@ -1170,12 +1170,12 @@ tbody tr:hover {
 }
 
 .button:hover {
-  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  box-shadow: #d73f3f80 0 1px 30px;
   transition-duration: .1s;
 }
 
 .button:active {
-  box-shadow: rgba(131, 122, 196, 0.5) 0 1px 30px;
+  box-shadow: #ff707080 0 1px 30px;
   transition-duration: .1s;
   transform: scale(0.97);
 }
