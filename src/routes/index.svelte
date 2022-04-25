@@ -185,7 +185,6 @@
     let arHours = []
     let arCost = []
     let arNexus = []
-    let arStats = []
     let arTumbles = []
 
     let cost = 0
@@ -194,6 +193,7 @@
     let nexusBonus = 0
     let bonusStats = 0
     let extraTumbles = 0
+
 
        function check() {
 
@@ -286,28 +286,29 @@
                 //console.log("Total Extra Tumbles: " + extraTumbles)
             }
 
-            arStats = fruits.filter(fruit => fruit.quantity >= 1)
-            function calcStats(x,i) {
-                arStats[i] =  x.quantity * x.tumble_stat_bonus
-                let total6 = 0
-                for (let i in arStats) {
-                    total6 += arStats[i]
-                }
-                if (total6 > 0) {
-                    // @ts-ignore
-                    bonusStats = total6.toLocaleString('en-US')
-                }
-                else {
-                    bonusStats = 0
-                }
-                //console.log("Total Extra Tumbles: " + extraTumbles)
+
+            let unsortedStats = fruits.filter(fruit => fruit.quantity >= 1)
+            let sortedStats = []
+
+            if (sortedStats.length <= 1) {
+              sortedStats = fruits.filter(fruit => fruit.quantity >= 1)
             }
+
+            unsortedStats.sort(function sortStats(a, b) {
+                sortedStats = unsortedStats
+                return b.tumble_stat_bonus-a.tumble_stat_bonus 
+            })
+
+            bonusStats = sortedStats[0].tumble_stat_bonus
+
+            //console.log(unsortedStats)
+
+
 
             arDays.forEach(calcDays)
             arHours.forEach(calcHours)
             arCost.forEach(calcCost)
             arNexus.forEach(calcNexus)
-            arStats.forEach(calcStats)
             arTumbles.forEach(calcTumbles)
        }
 
