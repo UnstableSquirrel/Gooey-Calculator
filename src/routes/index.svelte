@@ -1,10 +1,8 @@
 
 <script>
 
-	//import {flip} from 'svelte/animate'
-
-    import { draggable } from '@neodrag/svelte'
-    //import type { DragOptions } from '@neodrag/svelte'
+// @ts-ignore
+import {store} from './stores/store'
 	
 	let fruits = [
             {
@@ -162,7 +160,7 @@
               name: "Moondrop Fruit", 
               hours: 330, 
               days: 13.75, 
-              price: 1550000 , 
+              price: 1550000, 
               src: "/moondrop.jpg",
               nexus_bonus: 3, 
               tumble_stat_bonus: 6,
@@ -175,9 +173,9 @@
             /*{id: 12, name: "Recovery Drop", days: 0, price: 1000, src: "/", quantity: 0}*/
     ]
 
-// for drag and drop => use:draggable
 //
-//////////////////////// Sort Fruits //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//////////////////////// Fruit Calculator//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     let goo = []
 
@@ -303,8 +301,6 @@
 
             //console.log(unsortedStats)
 
-
-
             arDays.forEach(calcDays)
             arHours.forEach(calcHours)
             arCost.forEach(calcCost)
@@ -312,7 +308,7 @@
             arTumbles.forEach(calcTumbles)
        }
 
-//////////////////////// Fruit Calculator End //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////// Fruit Calculator End ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //
 //////////////////////// Sort Fruits //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -338,7 +334,7 @@
 //////////////////////// Sort Fruits End /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //
-/////////////////// Tumbling Costs ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////         
+/////////////////// ////////////// Tumbling Costs /////////////////////////////////////////////////////////////////////////////////////////////////       
       let gooeyA = 0
       let gooeyB = 0
 
@@ -429,10 +425,261 @@ function validator0(node, value) {
         }
 }
 
-
-
 ////////////// Refresh End /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+//
+////////////// Add Gooey /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let gooeyNumber = 0
+let nexus = 1000
+let generation = 0
+let tumbleBonus = 0
+
+let health = 100
+let attack = 100
+let defense = 100
+let speed = 100
+
+export let addedGooeys = []
+
+store.subscribe(data => {
+    addedGooeys = data
+  })
+
+function addGooey() {
+
+  let totalStrength = health + attack + defense + speed
+
+  let add = 
+    {
+    Number : gooeyNumber,
+    Nexus : nexus, 
+    Gen : generation,
+    Tumble_Bonus : tumbleBonus,
+    Health : health, 
+    Attack : attack,
+    Defense : defense,
+    Speed : speed,
+    Strength : totalStrength
+  }
+
+  addedGooeys.push(add)
+  addedGooeys = addedGooeys
+
+  gooeyNumber = 0
+  nexus = 1000
+  tumbleBonus = 0
+
+  health = 100
+  attack = 100
+  defense = 100
+  speed = 100
+  totalStrength = 0
+
+  store.update(data => {
+      return data = addedGooeys
+    })
+}
+
+$: validateHDS = function validateInput1() {
+    if(health < 100 || health > 600){
+      health = 100
+    }
+    if(defense < 100 || defense > 600){
+      defense = 100
+    }
+    if(speed < 100 || speed > 600){
+      speed = 100
+    }
+   }
+
+$: validateATT = function validateInput2() {
+    if(attack < 100 || attack > 400){
+      attack = 100
+    }
+   }
+
+$: validateNEX = function validateInput3() {
+    if(nexus < 0 || nexus > 10000){
+      nexus = 1000
+    }
+   }
+
+$: validateTSB = function validateInput4() {
+    if(tumbleBonus < 0 || tumbleBonus > 6){
+      tumbleBonus = 0
+    }
+   }
+
+$: validateGEN = function validateInput5() {
+    if(generation < 0 || generation > 6){
+      generation = 0
+    }
+   }
+
+////////////// Delete Gooey /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let nrToDelete = 0
+let disabledText
+
+$: if (addedGooeys.length == 0) {
+    disabledText = "disabled"
+    }
+  else {
+    disabledText = ""
+  }
+
+  function deleteGooey() {
+    if (addedGooeys.length > 0) {
+      let checkAdded = addedGooeys.filter(a => a.Number !== nrToDelete)
+      addedGooeys = checkAdded
+    }
+    store.update(data => {
+        return data = addedGooeys
+      })
+  }
+
+////////////// Delete Gooey End /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+////////////// Modals /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let shown = false
+
+function show() {
+    shown = true
+}
+
+function hide() {
+    shown = false
+}
+
+let shown2 = false
+
+function show2() {
+    shown2 = true
+}
+
+function hide2() {
+    shown2 = false
+}
+
+////////////// Modals End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+////////////// Calculate Tumbling Stats /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let gooeyANumber
+let gooeyBNumber
+
+let gooeysMinStrength
+let gooeysMaxStrength
+
+let gooeyANexus
+let gooeyBNexus
+
+let gooeyAGen
+let gooeyBGen
+let gooeyATotalGen
+let gooeyBTotalGen
+
+let gooeyAFoodBonus
+let gooeyBFoodBonus
+
+let minStats = 0
+let maxStats = 0
+let randomStats = 0
+
+let min = 0
+let max = 0
+
+function calculateTumbleStats() {
+
+  //Get Object Stats of Gooey A
+  let arA = addedGooeys.filter(a => a.Number == gooeyANumber)
+  //Get Object Stats of Gooey B
+  let arB = addedGooeys.filter(a => a.Number == gooeyBNumber)
+
+  //Calc Gen Atk bonus of Gooey A && B
+  gooeyAGen = ((arA[0].Gen / 100) + 0.00) * arA[0].Attack
+  gooeyBGen = ((arB[0].Gen / 100) + 0.00) * arB[0].Attack
+
+  //Convert Gen bonuses to whole Number
+  gooeyAGen = Math.floor(gooeyAGen)
+  gooeyBGen = Math.floor(gooeyBGen)
+
+  //Add Gen bonuses to total Strength
+  arA[0].Strength += gooeyAGen
+  arB[0].Strength += gooeyBGen
+
+  //Merge array of Gooey A && B into an object array
+  let arC = [...arA, ...arB]
+
+  //Sort the merged object array by descending and ascending Strength and get the first value from both for max/min 
+  let desC = [...arC]
+  let asC = [...arC]
+
+  //Ascending Sort
+  asC.sort(function(a, b) {
+        return a.Strength - b.Strength
+  })
+
+  gooeysMinStrength = asC[0].Strength
+
+
+  //Descending Sort
+  desC.sort(function(a, b) {
+        return b.Strength - a.Strength
+  })
+
+  gooeysMaxStrength = desC[0].Strength
+
+  //Get Nexus value of both Gooeys
+  gooeyANexus = arA[0].Nexus
+  gooeyBNexus = arB[0].Nexus
+
+  //Get food bonus from both gooeys as decimal number
+  gooeyAFoodBonus = (arA[0].Tumble_Bonus / 100) + 0.00
+  gooeyBFoodBonus = (arB[0].Tumble_Bonus / 100) + 0.00
+
+  //Calc total Nexus value, food bonus and min/max mutation 
+  let totalNexus = gooeyANexus + gooeyBNexus
+  let totalFoodBonus = gooeyAFoodBonus + gooeyBFoodBonus
+  let minimumMutation = 0.97
+  let maximumMutation = 1.05 + (totalNexus / 4000) + totalFoodBonus
+
+  //Calc min/max stats in decimal number
+  minStats = 0.00 + (minimumMutation * gooeysMinStrength)
+  maxStats = 0.00 + (maximumMutation * gooeysMaxStrength)
+
+  //Convert decimal value of min/max to whole numbers
+  min = Math.floor(minStats)
+  max = Math.floor(maxStats)
+
+  //Get random value => ranging from min mutation value to max mutation value
+  function randomInt(mi, ma) { 
+    return Math.floor(Math.random() * (ma - mi + 1) + mi)
+  }
+  
+  randomStats = randomInt(min, max)
+
+  console.log(gooeyATotalGen)
+  console.log(gooeyBTotalGen)
+  console.log(arA)
+  console.log(arB)
+  //console.log(1.59 * gooeysMaxStrength)
+}
+
+////////////// Calculate Tumbling Stats End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+///////////// Store and Load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let addedGooeysString = JSON.stringify(addedGooeys)
+
+function saveToLocal() {
+
+}
+///////////// Store and Load End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//export const gooeys = writable('Gooeys', addedGooeys)
+
 
 </script>
 
@@ -559,6 +806,176 @@ function validator0(node, value) {
         </div>
     </div>
 
+    <div class="gooey-section">
+
+      <h1>Save and Calculate your Stats</h1>
+
+      <div class="my-gooeys">
+
+        <h2>My Gooeys</h2>
+
+        <div class="table-container">
+          <table class="gooey-table">
+            <thead>
+              <tr>
+                <th>Gooey #</th>
+
+                <th>Nexus</th>
+                <th>Generaion</th>
+                <th>Tumble Bonus</th>
+
+                <th>Health</th>
+                <th>Attack</th>
+                <th>Defense</th>
+                <th>Speed</th>
+
+                <th>Total Strength</th>
+              </tr>
+            </thead>
+            <tbody id="gooey-table-body">
+
+          <!--{#if addedGooeys.length >= 0}-->
+            {#each $store as ai, index (index)}
+              <tr>
+                <td>{ai.Number}</td>
+                <td>{ai.Nexus}</td>
+                <td>{ai.Gen}</td>
+                <td>{ai.Tumble_Bonus}</td>
+                <td>{ai.Health}</td>
+                <td>{ai.Attack}</td>
+                <td>{ai.Defense}</td>
+                <td>{ai.Speed}</td>
+                <td>{ai.Strength}</td>
+              </tr>
+            {/each}
+          <!--{/if}-->
+
+            <!-- {#each addedGooeys as added (added.id)}
+                <tr>
+                  <td>{added.Number}</td>
+                  <td>{added.Nexus}</td>
+                  <td>{added.Tumble_Bonus}</td>
+                  <td>{added.Health}</td>
+                  <td>{added.Attack}</td>
+                  <td>{added.Defense}</td>
+                  <td>{added.Speed}</td>
+                  <td>{added.Strength}</td>
+                </tr>
+              {/each} -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="add-gooey-button-container">
+        <button id="add-gooey" on:click="{() => show()}">+</button>
+      </div>
+      {#if shown}
+        <div class="modal-container">
+            <div class="modal">
+                <div class="close-container">
+                    <button class="close" on:click="{() => hide()}">X</button>
+                </div>
+                <h2>Add Your Gooey</h2>
+
+                <div>
+
+                  <div class="modal-input-container">
+                    <div>
+                      <label for="GooeyNumber">Gooey <br> Number: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" name="number" bind:value="{gooeyNumber}">
+                    </div>
+                    <div>
+                      <label for="Nexus"><br> Nexus: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateNEX}" name="nexus" bind:value="{nexus}">
+                    </div>
+                    <div>
+                      <label for="Gen"> <br> Generation: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateGEN}" name="tumble-stat-bonus" bind:value="{generation}">
+                    </div>
+                    <div>
+                      <label for="TumbleBonus">Tumble <br> Stat Bonus: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateTSB}" name="tumble-stat-bonus" bind:value="{tumbleBonus}">
+                    </div>
+                    <div>
+                      <label for="Health">Health: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateHDS}" name="health" bind:value="{health}">
+                    </div>
+                    <div>
+                      <label for="Attack">Attack: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateATT}" name="attack" bind:value="{attack}">
+                    </div>
+                    <div>
+                      <label for="Defense">Defense: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateHDS}" name="defense" bind:value="{defense}">
+                    </div>
+                    <div>
+                      <label for="Speed">Speed: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateHDS}" name="speed" bind:value="{speed}">
+                    </div>
+                  </div>
+
+                </div>
+                <button class="confirm" on:click="{() => addGooey()}" on:click="{() => hide()}">Add this Gooey</button>
+            </div>
+        </div>
+      {/if}
+
+
+    <div class="delete-gooey-button-container">
+      <button id="delete-gooey" class="{disabledText}" on:click="{() => show2()}">-</button>
+    </div>
+    {#if shown2}
+        <div class="modal-container2">
+            <div class="modal2">
+                <div class="close-container">
+                    <button class="close" on:click="{() => hide2()}">X</button>
+                </div>
+                <h2>Add the Number of the Gooey you want to delete</h2>
+                <div>
+                  <div class="modal-input-container">
+                    <div class="to-delete-container">
+                      <label for="GooeyNumber">Gooey Number: </label>
+                      <input type="number" on:focus="{event => selectContent(event)}" name="number" bind:value="{nrToDelete}">
+                      <button class="confirm-delete" on:click="{() => deleteGooey()}" on:click="{() => hide2()}">Delete this Gooey</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    {/if}
+    <div class="save-gooey-button-container">
+      <button id="save" on:click="{() => saveToLocal()}">Save</button>
+    </div>
+        <div class="calc-stats-container">
+          <h2>Get your possible stats</h2>
+          <div>
+              <label for="quantity">Number of Gooey A: </label>
+              <div>
+                <input on:focus="{event => selectContent(event)}" bind:value="{gooeyANumber}" type="number">
+              </div>
+          </div>
+          <div>
+              <label for="quantity">Number of Gooey B: </label>
+              <div>
+                <input on:focus="{event => selectContent(event)}" bind:value="{gooeyBNumber}" type="number">
+              </div>
+          </div>
+          <div class="calculated-stats-container">
+            <label for="calc-stats">Your Possible Offspring Traits: </label>
+            <p>Min Offspring Strength: <br><span>{min}</span></p>
+            <p>Max Offspring Strength: <br><span>{max}</span></p>
+            <p>Random Offspring Strength: <br><span>{randomStats}</span></p>
+          </div>
+            <button on:click="{calculateTumbleStats}" class="button-36">Calculate</button>
+
+            <div class="text2">
+              <p>- Max Offspring Strength (HP, ATK, DEF, SPD) is based off all the stats of both parent Gooeys</p>
+              <p>- This includes Nexus points, fruit bonuses, generation of newly tumbled Gooey, and a random mutation multiplier</p>
+            </div>
+        </div>
+    </div>
+
     <footer>
       <div class="p-container-f">
         <p>
@@ -615,6 +1032,12 @@ div {
   padding: 0;
 }
 
+.disabled {
+  border: 2px solid rgba(153, 153, 153, 0.5) !important;
+  background-color: rgba(204, 204, 204, 0.5) !important;
+  color: #666666 !important;
+  pointer-events: none;
+}
 
 
 
@@ -667,7 +1090,7 @@ table {
         margin: 10px;
         padding: 10px 10px;
         width: 600px;
-      }
+}
 
 th {
   border-bottom: 1px solid #364043;
@@ -1341,5 +1764,554 @@ footer > div > p > a {
     width: 100%;
   }
 }
+
+.gooey-section {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0px 0px 100px 0px;
+  background-color: rgba(85, 67, 203, 0.05);
+  margin: 20px 0px !important;
+  border-radius: 0px;
+}
+
+.gooey-section > h1 {
+  padding: 20px 10px;
+}
+
+
+/*------------------ Gooey Table ---------------------------------------------------------*/
+.table-container {
+  display:  flex;
+  justify-content: center;
+}
+
+.gooey-table {
+  background-color: #b00000;
+  background-color: #d8ffff;
+  width: fit-content;
+}
+
+.gooey-table > tbody > tr:hover {
+  background: #800000;
+  background-color: #9ebbbb79;
+  border-radius: 25%;
+}
+
+.gooey-table > thead > tr > th {
+  width: 50px !important;
+  font-size: 17px !important;
+  text-align: center !important;
+  padding: 10px !important;
+}
+
+.gooey-table > tbody > tr > td {
+  width: 50px !important;
+  font-size: 15px !important;
+  padding: 10px !important;
+}
+
+.gooey-table > tbody > tr > td:nth-child(1) {
+  color: #ae34b4;
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.5);
+}
+
+.gooey-table > tbody > tr > td:nth-child(n+2):nth-child(-n+4) {
+  color: #9e92f3;
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.5);
+}
+
+.gooey-table > tbody > tr > td:nth-child(n+5):nth-child(-n+8) {
+  color: #67afa8;
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.5);
+}
+
+.gooey-table > tbody > tr > td:nth-child(9) {
+  color: #000000;
+  text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.5);
+}
+
+.gooey-table > tbody > tr > td:nth-child(n+1):nth-child(-n+8) {
+  border-right: 1px solid black;
+}
+
+.gooey-table > tbody > tr > td:nth-child(9) {
+  border-right: none;
+}
+
+@media (min-width: 390px) and (max-width: 649px) {
+  
+  .table-container {
+    margin: 10px !important;
+  }
+
+  .gooey-table {
+    margin: 0px;
+    width: 340px;
+    max-width: 1000px !important;
+  }
+
+  .gooey-table > thead > tr > th {
+    width: 20px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+    padding: 2.5px !important;
+  }
+
+  .gooey-table > tbody > tr > td {
+    width: 20px !important;
+    font-size: 12px !important;
+    padding: 2.5px !important;
+  }
+}
+
+@media (min-width: 291px) and (max-width: 389px) {
+
+  .table-container {
+    margin: 0px !important;
+  }
+
+  .gooey-table {
+    width: 280px !important;
+    margin: 0px;
+  }
+
+  .gooey-table > thead > tr > th {
+    width: 10px !important;
+    font-size: 8px !important;
+    text-align: center !important;
+    padding: 4px !important;
+  }
+
+  .gooey-table > tbody > tr > td {
+    width: 10px !important;
+    font-size: 8px !important;
+    padding: 2.5px !important;
+  }
+}
+
+@media (min-width: 91px) and (max-width: 290px) {
+
+  .table-container {
+    margin: 0px !important;
+  }
+
+  .gooey-table {
+    width: 250px !important;
+    margin: 0px;
+    max-width: 1000px !important;
+  }
+
+  .gooey-table > thead > tr > th {
+    width: 5px !important;
+    font-size: 8px !important;
+    text-align: center !important;
+    padding: 2px !important;
+  }
+
+  .gooey-table > tbody > tr > td {
+    width: 5px !important;
+    font-size: 8px !important;
+    padding: 5px !important;
+  }
+}
+
+
+/*------------------ Gooey Table End -----------------------------------------------------*/
+
+.add-gooey-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 5px 0px 5px;
+}
+
+.delete-gooey-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px 5px;
+}
+
+#add-gooey {
+  background-color: rgb(95, 230, 100);
+  border-radius: 15px;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 40px;
+  color: white;
+  border: 2px solid white;
+}
+
+#delete-gooey {
+  background-color: rgb(220, 77, 77);
+  border-radius: 15px;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 50px;
+  color: white;
+  border: 2px solid white;
+  line-height: 0px;
+}
+
+#add-gooey:hover {
+  background-color: rgb(95, 255, 135);
+  transition: background-color ease-in 0.2s;
+}
+
+#delete-gooey:hover {
+  background-color: rgb(252, 105, 105);
+  transition: background-color ease-in 0.2s;
+}
+
+#add-gooey::after {
+  font-size: 40px;
+  color: white;
+  content: "";
+}
+
+#add-gooey:hover::after {
+  font-size: 40px;
+  color: white;
+  content: "";
+  transition: content ease-in-out 1s;
+}
+
+#add-gooey:active {
+  transform: scale(0.98);
+  box-shadow: 5px 5px 15px #889de8;
+}
+
+.to-delete-container {
+  display: grid;
+  text-align: center;
+  justify-items: center;
+}
+
+.confirm {
+  background: linear-gradient(to bottom right, rgb(71, 239, 107), rgb(131, 248, 209));
+  border: 0;
+  border-radius: 12px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin: 20px 0px 0px 0px;
+  text-shadow: 2px 2px 15px rgb(77, 77, 77);
+}
+
+.confirm:not([disabled]):active {
+  transform: scale(0.98);
+}
+
+.confirm:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(71, 239, 107, 0.5), .125rem .125rem 1rem rgba(131, 248, 209, 0.5);
+}
+
+.confirm-delete {
+  background: linear-gradient(to bottom right, rgb(239, 71, 101), rgb(255, 143, 143));
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin: 40px 0px 0px 0px;
+  text-shadow: 2px 2px 15px rgb(77, 77, 77);
+}
+
+.confirm-delete:not([disabled]):active {
+  transform: scale(0.98);
+}
+
+.confirm-delete:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 102, 0.5), .125rem .125rem 1rem rgba(255, 143, 143, 0.5);
+}
+
+
+
+
+
+
+/*--------------------------- Modals ---------------------------------------------------*/
+
+.modal-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.37);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #c7a6ed83;
+}
+
+.modal-container2 {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.37);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px #c7a6ed83;
+}
+    
+.modal {
+    background-color: #6c0f84;
+    margin: 5% 15% 15% 15%;
+    width: 90vw;
+    height: 80vh;
+    border-radius: 25px;
+    box-shadow: 1px 1px 15px black;
+}
+
+.modal2 {
+    background-color: #6c0f84;
+    margin: 5% 15% 15% 15%;
+    width: 90vw;
+    height: 80vh;
+    border-radius: 25px;
+    box-shadow: 1px 1px 15px black;
+    display: grid;
+    justify-items: center;
+}
+
+.modal2 > .close-container  {
+    justify-self: right;
+}
+
+.modal > h2 {
+  margin: -40px 0px 40px 0px;
+}
+
+.modal > div:nth-child(3) {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-input-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 15px;
+  max-width: 300px;
+  font-size: 17px;
+}
+
+.modal-input-container > div {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.modal-input-container > div > input {
+  width: 70px;
+  height: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  margin: 5px 0px 20px 0px;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.close-container {
+    display: flex;
+    justify-content: right;
+    padding: 10px;
+}
+
+.close {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(200, 0, 0);
+    border-radius: 25px;
+    border: 2px solid rgb(255, 255, 255);
+    color: white;
+    font-size: 24px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.close:hover {
+    background-color: rgb(240, 0, 0);
+}
+
+.modal2 > h2 {
+    margin: -50px 0px 0px 0px !important;
+    height: 25px;
+  }
+
+@media (min-width: 91px) and (max-width: 455px) {
+
+  .modal2 {
+    display: grid;
+    justify-items: center;
+  }
+
+  .modal2 > h2 {
+    margin: -120px 0px 40px 0px !important;
+    font-size: 20px !important;
+    height: 20px;
+    font-weight: 500;
+  }
+
+  .modal2 > div >  {
+    margin: -50px 0px 40px 0px !important;
+    font-size: 20px !important;
+    height: 20px;
+  }
+
+  .modal2 > .close-container  {
+    justify-self: right;
+  }
+
+  .to-delete-container {
+    margin: -250px 0px 0px 0px;
+  }
+
+  .gooey-section > .modal-container > div > h2 {
+    margin: 10px 0px 40px 0px !important;
+    font-size: 20px !important;
+    font-weight: 500;
+  }
+
+  .modal-input-container > div {
+    display: grid;
+    grid-template-columns: auto;
+    text-align: center;
+    align-content: center;
+    justify-content: center !important;
+  }
+
+  .modal-input-container > div > label {
+    display: grid;
+    font-size: 15px;
+  }
+
+  .modal-input-container > div > input {
+    width: 40px;
+    height: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    margin: 5px 0px 10px 0px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+/*--------------------------- Modals End ---------------------------------------------------*/
+
+
+.calc-stats-container {
+  margin: 50px 0px 0px 0px;
+}
+
+.calculated-stats-container {
+  margin-top: 55px !important;
+}
+
+.calc-stats-container > .calculated-stats-container > p:nth-child(2) {
+  margin: 50px 0px 0px 0px !important;
+}
+
+.calc-stats-container > div > div > input {
+  margin: 10px 0px 10px 0px;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 20px;
+  width: 90px;
+  height: 0px;
+  border-radius: 25px;
+}
+
+.calc-stats-container > h2 {
+  margin: 25px 0px 75px 0px;
+}
+
+.calc-stats-container > div {
+  margin: 20px 0px;
+}
+
+
+.calc-stats-container > button {
+  background-image: linear-gradient(92.88deg, #fcab65 9.16%, #ef9b71 43.89%, #f4ac4e 64.72%);
+  text-shadow: rgb(0 0 0 / 25%) 0 3px 8px;
+  font-size: 22px;
+  min-width: 170px;
+}
+
+.calc-stats-container > button:hover {
+  box-shadow: #fc9921d2 0 1px 30px;
+  transition-duration: .1s;
+}
+
+.calc-stats-container > button:active {
+  box-shadow: #e98f40ca 0 1px 30px;
+  transition-duration: .1s;
+  transform: scale(0.97);
+}
+
+@media (min-width: 768px) {
+  .calc-stats-container > button {
+    padding: 0 2.6rem;
+  }
+}
+
+.save-gooey-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 5px 0px 5px;
+}
+
+#save {
+  background-color: rgb(190, 95, 230);
+  border-radius: 15px;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 700;
+  color: white;
+  border: 2px solid white;
+}
+
+#save:hover {
+  background-color: rgb(210, 125, 245);
+  transition: background-color ease-in 0.2s;
+}
+
+#save:active {
+  transform: scale(0.98);
+  box-shadow: 5px 5px 15px #889de8;
+}
+
 
 </style>
