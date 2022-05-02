@@ -566,8 +566,22 @@ function hide2() {
 //
 ////////////// Calculate Tumbling Stats /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let gooeyANumber
-let gooeyBNumber
+let gooeyANumber = 0
+let gooeyBNumber = 0
+
+$: validateGooeyNumberA = function validateInput6() {
+  let arCheck = addedGooeys.filter(a => a.Number == gooeyANumber)
+    if(arCheck.length == 0) {
+      gooeyANumber = 0
+    }
+   }
+
+$: validateGooeyNumberB = function validateInput7() {
+  let arCheck = addedGooeys.filter(b => b.Number == gooeyBNumber)
+    if(arCheck.length == 0) {
+      gooeyBNumber = 0
+    }
+   }
 
 let gooeysMinStrength
 let gooeysMaxStrength
@@ -575,10 +589,7 @@ let gooeysMaxStrength
 let gooeyANexus
 let gooeyBNexus
 
-let gooeyAGen
-let gooeyBGen
-let gooeyATotalGen
-let gooeyBTotalGen
+let gooeysMinGen
 
 let gooeyAFoodBonus
 let gooeyBFoodBonus
@@ -590,27 +601,50 @@ let randomStats = 0
 let min = 0
 let max = 0
 
+let arA
+let arB
+
+
 function calculateTumbleStats() {
 
+  //Check the input value
+  let arCheck = addedGooeys.filter(a => a.Number == gooeyANumber)
+
+  if (gooeyANumber == gooeyBNumber) {
+    return alert("Gooeys can't tumble themselves, Goomer!")
+  }
+
+  if (arCheck.length == 0) {
+    return alert("At least one Gooey is not in the list")
+  }
+
   //Get Object Stats of Gooey A
-  let arA = addedGooeys.filter(a => a.Number == gooeyANumber)
+  arA = addedGooeys.filter(a => a.Number == gooeyANumber)
   //Get Object Stats of Gooey B
-  let arB = addedGooeys.filter(a => a.Number == gooeyBNumber)
-
-  //Calc Gen Atk bonus of Gooey A && B
-  gooeyAGen = ((arA[0].Gen / 100) + 0.00) * arA[0].Attack
-  gooeyBGen = ((arB[0].Gen / 100) + 0.00) * arB[0].Attack
-
-  //Convert Gen bonuses to whole Number
-  gooeyAGen = Math.floor(gooeyAGen)
-  gooeyBGen = Math.floor(gooeyBGen)
-
-  //Add Gen bonuses to total Strength
-  arA[0].Strength += gooeyAGen
-  arB[0].Strength += gooeyBGen
+  arB = addedGooeys.filter(a => a.Number == gooeyBNumber)
 
   //Merge array of Gooey A && B into an object array
   let arC = [...arA, ...arB]
+
+  //Object to capture the lowest gen Gooey
+  let ascGen = [...arC]
+
+  //Ascending Sort
+    ascGen.sort(function(a, b) {
+        return a.Gen - b.Gen
+  })
+
+  gooeysMinGen = ascGen[0].Gen
+
+  //Calc Gen Atk bonus of the lowest gen Gooey 
+  gooeysMinGen = ascGen[0].Gen + 1
+
+  //Add Gen bonuse to Atk
+  let a = [...arA]
+  let b = [...arB]
+  let atk1 = (a[0].Attack / 100) * gooeysMinGen
+  let atk2 = (b[0].Attack / 100) * gooeysMinGen
+
 
   //Sort the merged object array by descending and ascending Strength and get the first value from both for max/min 
   let desC = [...arC]
@@ -622,6 +656,7 @@ function calculateTumbleStats() {
   })
 
   gooeysMinStrength = asC[0].Strength
+  gooeysMinStrength += atk1 + atk2
 
 
   //Descending Sort
@@ -630,6 +665,7 @@ function calculateTumbleStats() {
   })
 
   gooeysMaxStrength = desC[0].Strength
+  gooeysMaxStrength += atk1 + atk2
 
   //Get Nexus value of both Gooeys
   gooeyANexus = arA[0].Nexus
@@ -660,28 +696,19 @@ function calculateTumbleStats() {
   
   randomStats = randomInt(min, max)
 
-  console.log(gooeyATotalGen)
-  console.log(gooeyBTotalGen)
-  console.log(arA)
-  console.log(arB)
-  //console.log(1.59 * gooeysMaxStrength)
 }
 
 ////////////// Calculate Tumbling Stats End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-///////////// Store and Load ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-let addedGooeysString = JSON.stringify(addedGooeys)
-
-function saveToLocal() {
-
-}
-///////////// Store and Load End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//export const gooeys = writable('Gooeys', addedGooeys)
-
 
 </script>
+
+
+
+
+
+
+
+
 
 <main>
 
@@ -944,21 +971,18 @@ function saveToLocal() {
             </div>
         </div>
     {/if}
-    <div class="save-gooey-button-container">
-      <button id="save" on:click="{() => saveToLocal()}">Save</button>
-    </div>
         <div class="calc-stats-container">
           <h2>Get your possible stats</h2>
           <div>
               <label for="quantity">Number of Gooey A: </label>
               <div>
-                <input on:focus="{event => selectContent(event)}" bind:value="{gooeyANumber}" type="number">
+                <input on:focus="{event => selectContent(event)}" on:blur="{validateGooeyNumberA}" bind:value="{gooeyANumber}" type="number">
               </div>
           </div>
           <div>
               <label for="quantity">Number of Gooey B: </label>
               <div>
-                <input on:focus="{event => selectContent(event)}" bind:value="{gooeyBNumber}" type="number">
+                <input on:focus="{event => selectContent(event)}" on:blur="{validateGooeyNumberB}" bind:value="{gooeyBNumber}" type="number">
               </div>
           </div>
           <div class="calculated-stats-container">
@@ -993,6 +1017,15 @@ function saveToLocal() {
     </footer>
 
 </main>
+
+
+
+
+
+
+
+
+
 
 <style>
     
@@ -2290,28 +2323,5 @@ footer > div > p > a {
   justify-content: center;
   margin: 40px 5px 0px 5px;
 }
-
-#save {
-  background-color: rgb(190, 95, 230);
-  border-radius: 15px;
-  width: 150px;
-  height: 50px;
-  cursor: pointer;
-  font-size: 25px;
-  font-weight: 700;
-  color: white;
-  border: 2px solid white;
-}
-
-#save:hover {
-  background-color: rgb(210, 125, 245);
-  transition: background-color ease-in 0.2s;
-}
-
-#save:active {
-  transform: scale(0.98);
-  box-shadow: 5px 5px 15px #889de8;
-}
-
 
 </style>
