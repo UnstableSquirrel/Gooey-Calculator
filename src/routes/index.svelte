@@ -2,7 +2,7 @@
 <script>
 
 // @ts-ignore
-import {store} from './stores/store'
+import {store} from './stores/usage.js'
 	
 	let fruits = [
             {
