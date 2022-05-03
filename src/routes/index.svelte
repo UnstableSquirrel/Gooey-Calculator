@@ -702,12 +702,22 @@ function calculateTumbleStats() {
 //
 ////////////// Copy To Clipboard End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function copy() {
+/*function copy() {
   navigator.clipboard.writeText(wallet)
   alert("Address Copied")
-}
+}*/
 
 let wallet = "0xf9f7F84aBA889c65f97528E43967684F85C50Ba8"
+
+function copy() {
+   const elem = document.createElement('textarea');
+   elem.value = wallet;
+   document.body.appendChild(elem);
+   elem.select();
+   document.execCommand('copy');
+   document.body.removeChild(elem);
+   alert("Address Copied")
+}
 
 ////////////// Copy To Clipboard End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
