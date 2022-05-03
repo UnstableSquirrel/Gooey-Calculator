@@ -1088,7 +1088,7 @@ let wallet = "0xf9f7F84aBA889c65f97528E43967684F85C50Ba8"
 
     <div class="donation-section">
       <div>
-        <p>This is my donation wallet, if you want to help maintain this site</p>
+        <p>Donation Wallet: </p>
 
         <div>
           <span on:click="{copy}" class="HeaderInfo_addressText__2x_sD">{wallet}</span>
