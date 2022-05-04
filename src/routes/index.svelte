@@ -566,10 +566,11 @@ function hide2() {
 //
 ////////////// Calculate Tumbling Stats /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-let gooeyANumber = 0
-let gooeyBNumber = 0
+let gooeyANumber 
 
-$: validateGooeyNumberA = function validateInput6() {
+let gooeyBNumber
+
+/*$: validateGooeyNumberA = function validateInput6() {
   let arCheck = addedGooeys.filter(a => a.Number == gooeyANumber)
     if(arCheck.length == 0) {
       gooeyANumber = 0
@@ -581,7 +582,7 @@ $: validateGooeyNumberB = function validateInput7() {
     if(arCheck.length == 0) {
       gooeyBNumber = 0
     }
-   }
+   }*/
 
 let gooeysMinStrength
 let gooeysMaxStrength
@@ -607,15 +608,9 @@ let arB
 
 function calculateTumbleStats() {
 
-  //Check the input value
-  let arCheck = addedGooeys.filter(a => a.Number == gooeyANumber)
-
+  //Check the input value for doubles
   if (gooeyANumber == gooeyBNumber) {
     return alert("Gooeys can't tumble themselves, Goomer!")
-  }
-
-  if (arCheck.length == 0) {
-    return alert("At least one Gooey is not in the list")
   }
 
   //Get Object Stats of Gooey A
@@ -689,12 +684,66 @@ function calculateTumbleStats() {
   min = Math.floor(minStats)
   max = Math.floor(maxStats)
 
+
+  //Random decimal number
+  let randomBonus = (Math.random() * (maximumMutation - minimumMutation) + minimumMutation).toFixed(2)
+
+  let sortAtk = [...arC]
+  let sortHp = [...arC]
+  let sortDef = [...arC]
+  let sortSpd = [...arC]
+
+  //Ascending Sort Atk
+  sortAtk.sort(function(a, b) {
+      return a.Attack - b.Attack
+  })
+  let minAtk = sortAtk[0].Attack
+  let maxAtk = sortAtk[1].Attack
+
+
+  //Ascending Sort Hp
+  sortHp.sort(function(a, b) {
+      return a.Health - b.Health
+  })
+  let minHp = sortHp[0].Health
+  let maxHp = sortHp[1].Health
+
+
+  //Ascending Sort Def
+  sortDef.sort(function(a, b) {
+      return a.Defense - b.Defense
+  })
+  let minDef = sortDef[0].Defense
+  let maxDef = sortDef[1].Defense
+
+
+  //Ascending Sort Spd
+  sortSpd.sort(function(a, b) {
+      return a.Speed - b.Speed
+  })
+  let minSpd = sortSpd[0].Speed
+  let maxSpd = sortSpd[1].Speed
+
+  //Calc all the random numbers from the min/max ranges of each trait and add the Gen bonus to the
+  let randomAtkWithoutBonus = (Math.random() * (maxAtk - minAtk) + minAtk)
+  let randomAtk = randomAtkWithoutBonus + (randomAtkWithoutBonus / 100 * gooeysMinGen)
+  let randomHp = (Math.random() * (maxHp - minHp) + minHp)
+  let randomDef = (Math.random() * (maxDef - minDef) + minDef)
+  let randomSpd = (Math.random() * (maxSpd - minSpd) + minSpd)
+
+  //Calc the total random stats
+  // @ts-ignore
+  randomStats = Math.floor((randomAtk + randomHp + randomDef + randomSpd) * randomBonus)
+
   //Get random value => ranging from min mutation value to max mutation value
-  function randomInt(mi, ma) { 
+  /*function randomInt(mi, ma) { 
     return Math.floor(Math.random() * (ma - mi + 1) + mi)
   }
   
-  randomStats = randomInt(min, max)
+  randomStats = randomInt(min, max)*/
+
+  console.log(gooeyANumber)
+  console.log(gooeyBNumber)
 
 }
 
@@ -702,20 +751,20 @@ function calculateTumbleStats() {
 //
 ////////////// Copy To Clipboard End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+let wallet = "0xf9f7F84aBA889c65f97528E43967684F85C50Ba8"
+
 /*function copy() {
   navigator.clipboard.writeText(wallet)
   alert("Address Copied")
 }*/
 
-let wallet = "0xf9f7F84aBA889c65f97528E43967684F85C50Ba8"
-
 function copy() {
-   const elem = document.createElement('textarea');
-   elem.value = wallet;
-   document.body.appendChild(elem);
-   elem.select();
-   document.execCommand('copy');
-   document.body.removeChild(elem);
+   const elem = document.createElement('textarea')
+   elem.value = wallet
+   document.body.appendChild(elem)
+   elem.select()
+   document.execCommand('copy')
+   document.body.removeChild(elem)
    alert("Address Copied")
 }
 
@@ -1062,14 +1111,28 @@ function copy() {
           <div>
               <label for="quantity">Number of Gooey A: </label>
               <div>
-                <input on:focus="{event => selectContent(event)}" on:blur="{validateGooeyNumberA}" bind:value="{gooeyANumber}" type="number">
+                <select bind:value="{gooeyANumber}">
+                  {#each addedGooeys as ai, index (index)}
+                  <option value={ai.Number}>{ai.Number}</option>
+                  {/each}
+                </select>
               </div>
+              <!--<div>
+                <input on:focus="{event => selectContent(event)}" on:blur="{validateGooeyNumberA}" bind:value="{gooeyANumber}" type="number">
+              </div>-->
           </div>
           <div>
               <label for="quantity">Number of Gooey B: </label>
               <div>
-                <input on:focus="{event => selectContent(event)}" on:blur="{validateGooeyNumberB}" bind:value="{gooeyBNumber}" type="number">
+                <select bind:value="{gooeyBNumber}">
+                  {#each addedGooeys as ai, index (index)}
+                  <option value={ai.Number}>{ai.Number}</option>
+                  {/each}
+                </select>
               </div>
+              <!--<div>
+                <input on:focus="{event => selectContent(event)}" on:blur="{validateGooeyNumberB}" bind:value="{gooeyBNumber}" type="number">
+              </div>-->
           </div>
 
           <div class="calculated-stats-container">
@@ -2415,7 +2478,7 @@ footer > div > p > a {
   margin: 50px 0px 0px 0px !important;
 }
 
-.calc-stats-container > div > div > input {
+/*.calc-stats-container > div > div > input {
   margin: 10px 0px 10px 0px;
   font-size: 22px;
   font-weight: 500;
@@ -2423,7 +2486,7 @@ footer > div > p > a {
   width: 90px;
   height: 0px;
   border-radius: 25px;
-}
+}*/
 
 .calc-stats-container > h2 {
   margin: 25px 0px 75px 0px;
@@ -2553,5 +2616,21 @@ footer > div > p > a {
 
 
 /*----------- Donation Area End --------------------------------------------------------------*/
+
+
+select {
+    margin-top: 10px;
+    background: #20d492;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+select > option{
+	color: #000;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+ 
 
 </style>
