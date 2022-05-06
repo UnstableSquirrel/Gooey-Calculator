@@ -3,6 +3,7 @@
 
 // @ts-ignore
 import {store} from "./stores/usage.js";
+import Menu from "./comps/menu.svelte";
 
 	let fruits = [
             {
@@ -41,7 +42,7 @@ import {store} from "./stores/usage.js";
               hours: 12,
               days: 0.50, 
               price: 4800, 
-              src: "/nexus.png",
+              src: "/banana.jpg",
               nexus_bonus: 0, 
               tumble_stat_bonus: 0,  
               extra_tumbles: 0, 
@@ -56,7 +57,7 @@ import {store} from "./stores/usage.js";
               hours: 20, 
               days: 0.83, 
               price: 6500, 
-              src: "/nexus.png",
+              src: "/strawberry.jpg",
               nexus_bonus: 0, 
               tumble_stat_bonus: 0,  
               extra_tumbles: 0, 
@@ -71,7 +72,7 @@ import {store} from "./stores/usage.js";
               hours: 27, 
               days: 1.12, 
               price: 10000, 
-              src: "/nexus.png",
+              src: "/cherry.jpg",
               nexus_bonus: 0, 
               tumble_stat_bonus: 0,  
               extra_tumbles: 0, 
@@ -677,8 +678,8 @@ function calculateTumbleStats() {
   let maximumMutation = 1.05 + (totalNexus / 4000) + totalFoodBonus
 
   //Calc min/max stats in decimal number
-  minStats = 0.00 + (minimumMutation * gooeysMinStrength)
-  maxStats = 0.00 + (maximumMutation * gooeysMaxStrength)
+  minStats = (minimumMutation * gooeysMinStrength)
+  maxStats = (maximumMutation * gooeysMaxStrength)
 
   //Convert decimal value of min/max to whole numbers
   min = Math.floor(minStats)
@@ -742,8 +743,30 @@ function calculateTumbleStats() {
   
   randomStats = randomInt(min, max)*/
 
-  console.log(gooeyANumber)
-  console.log(gooeyBNumber)
+/*  console.log("randomATK without bonus: " + randomAtkWithoutBonus)
+  console.log("randomATK: " + randomAtk)
+  console.log("randomHP: " + randomHp)
+  console.log("randomDEF: " + randomDef)
+  console.log("randomSPD: " + randomSpd)
+  console.log("randomBonus: " + randomBonus)
+
+  console.log("TotalFoodBonus: " + totalFoodBonus)
+  console.log("TotalNexus: " + totalNexus)
+
+  console.log("MinStaT: " + gooeysMinStrength)
+  console.log("MaxStaT: " + gooeysMaxStrength)
+*/
+  if (min > 9999) {
+      min = 9999
+  } 
+
+  if (max > 9999) {
+      max = 9999
+  }    
+
+  if (randomStats > 9999) {
+    randomStats = 9999
+  } 
 
 }
 
@@ -781,6 +804,8 @@ function copy() {
 
 
 <main>
+
+  <Menu />
 
     <h1>Goo Calculator</h1>
 
@@ -850,7 +875,7 @@ function copy() {
 
 
 
-            <div class="best-deal-container">
+            <div id="Best-Deals" class="best-deal-container">
               <div>
                 <h2>Get the best deal</h2>
               </div>
@@ -898,7 +923,7 @@ function copy() {
 
 
 
-            <div class="c3">
+            <div id="Tumbling-Costs" class="c3">
                 <h1>Calculate your tumbling cost</h1>
                 <div>
                     <img src="/goo2.png" alt="Gooeys">
@@ -941,7 +966,7 @@ function copy() {
 
 
 
-    <div class="gooey-section">
+    <div id="My-Gooeys" class="gooey-section">
 
       <h1>Save and Calculate your Stats</h1>
 
@@ -1106,7 +1131,7 @@ function copy() {
 
 
 
-        <div class="calc-stats-container">
+        <div id="Stats-Calculator" class="calc-stats-container">
           <h2>Get your possible stats</h2>
           <div>
               <label for="quantity">Number of Gooey A: </label>
