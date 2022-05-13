@@ -1042,8 +1042,8 @@ let Quests =
                 <p>- Your Gooey's Food Store will deplete at a rate of 0.5 per second (also account 
                   for the Polygon block time)</p>
                 <p>- If Gooey's Food Store is below zero they will lose Nexus at a rapid speed, 
-                  depleting to zero in less than a day</p> 
-                <p>- Your Gooey's Nexus stat is capped at 10,000, and applies a multiplier to all new tumbles</p> 
+                  depleting to 1000 in less than a day</p> 
+                <p>- Your Gooey's Nexus stat is capped at 2,500, and applies a multiplier to all new tumbles</p> 
                 <p>- Low Nexus means weaker Gooey offspring</p>
                 <p>- Your Gooey must have a sufficient Food Store for the length of any quests before embarking</p>
             </div>
