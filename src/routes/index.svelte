@@ -1149,7 +1149,7 @@ let Quests =
                 <th>Gooey #</th>
 
                 <th>Nexus</th>
-                <th>Generaion</th>
+                <th>Generation</th>
                 <th>Tumble Bonus</th>
 
                 <th>Health</th>
