@@ -1051,7 +1051,7 @@ let Quests =
 
 
 
-            <div class="questing-rewards-container">
+            <div id="Questing-Rewards" class="questing-rewards-container">
             
               <div>
                 <div>

@@ -36,6 +36,7 @@
       <div>
          <a href="#My-Gooeys">My Gooeys</a>
          <a href="#Best-Deals">Best Deals</a>
+         <a href="#Questing-Rewards">Questing Rewards</a>
          <a href="#Tumbling-Costs">Tumbling Costs</a>
          <a href="#Stats-Calculator">Stats Calculator</a>
       </div>
@@ -58,14 +59,14 @@ main {
     font-size: 0px;
   }
   to {
-    height: 170px;
+    height: 200px;
     font-size: 20px;
   }
 }
 
 @keyframes slide-out {
   from {
-   height: 170px;
+   height: 200px;
    font-size: 20px;
   }
   to {
@@ -102,7 +103,7 @@ a:hover {
 }
 
 .open {
-   height: 170px;
+   height: 200px;
    font-size : 20px;
    animation: slide-in 0.2s linear;
 }
