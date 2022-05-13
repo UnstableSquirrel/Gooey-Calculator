@@ -4,6 +4,23 @@
 // @ts-ignore
 import {store} from "./stores/usage.js";
 import Menu from "./comps/menu.svelte";
+import { onMount } from "svelte";
+import axios from "axios";
+
+const endpoint = "https://api.dexscreener.com/latest/dex/tokens/0x6F3Cc27E17a0f2e52D8e7693FF0d892Cea1854bF"
+
+let posts 
+
+$: onMount(async function () {
+  try {
+    const response = await axios.get(endpoint)
+    console.log(response.data)
+    posts = response.data.pairs[0].priceUsd
+    console.log(posts)
+  } catch (error) {
+    console.error(error)
+  }
+})
 
 	let fruits = [
             {
@@ -834,6 +851,69 @@ function copy() {
 //   gooeyBNumber = 0
 // }
 
+
+////////// Quests ///////////////////////////////////////////////////////////////////////////////////////////////
+
+let Quests = 
+[
+  {
+    Quest: "Common Quest",
+    Hours: 10,
+    Goo1: 7650, 
+    Goo2: 9072,
+    Fruit1: 0,
+    Fruit2: 1, 
+  },
+
+  {
+    Quest: "Uncommon Quest",
+    Hours: 18,
+    Goo1: 19008, 
+    Goo2: 22464,
+    Fruit1: 0,
+    Fruit2: 2, 
+  },
+
+  {
+    Quest: "Rare Quest",
+    Hours: 36,
+    Goo1: 51744, 
+    Goo2: 65856,
+    Fruit1: 1,
+    Fruit2: 2, 
+  },
+
+  {
+    Quest: "Epic Quest",
+    Hours: 60,
+    Goo1: 114048, 
+    Goo2: 142560,
+    Fruit1: 1,
+    Fruit2: 3, 
+  },
+
+  {
+    Quest: "Legendary Quest",
+    Hours: 72,
+    Goo1: 141120, 
+    Goo2: 211680,
+    Fruit1: 2,
+    Fruit2: 4, 
+  },
+
+  {
+    Quest: "Mythical Quest",
+    Hours: 120,
+    Goo1: 328692, 
+    Goo2: 455112,
+    Fruit1: 4,
+    Fruit2: 8, 
+  }
+]
+
+
+////////// Quests ///////////////////////////////////////////////////////////////////////////////////////////////
+
 </script>
 
 
@@ -847,6 +927,13 @@ function copy() {
 <main>
 
   <Menu />
+
+    <div style="display:flex; justify-content:center">
+      <p style="text-align:center">GOO Price: 
+        <br>
+        <span>${posts}</span>
+      </p>
+    </div>
 
     <h1>Goo Calculator</h1>
 
@@ -954,6 +1041,46 @@ function copy() {
                 <p>- Low Nexus means weaker Gooey offspring</p>
                 <p>- Your Gooey must have a sufficient Food Store for the length of any quests before embarking</p>
             </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="questing-rewards-container">
+            
+              <div>
+                <div>
+                  <h1>Questing Rewards</h1>
+                </div>
+              </div>
+
+              <div>
+                {#each Quests as quest}
+                <div class="quest">
+                  <h4>{quest.Quest} ({quest.Hours}h)</h4>
+                  <p>$GOO Reward:
+                    <br>
+                    <span>{quest.Goo1} - {quest.Goo2}</span>
+                  </p>
+                  <p>Fruit Reward:
+                    <br>
+                    <span>{quest.Fruit1} - {quest.Fruit2}</span>
+                  </p>
+                  <p>Earn each quest:
+                    <br>
+                    <span>${(quest.Goo1 * posts).toFixed(2)} - ${(quest.Goo2 * posts).toFixed(2)}</span>
+                  </p>
+                </div>
+                {/each}
+              </div>
+
+            </div>
+
 
 
 
@@ -2679,6 +2806,110 @@ footer > div > p > a {
     font-size: 8px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+/*----------- Questing Rewards ----------------------------------------------------------------*/
+
+.questing-rewards-container {
+  display: grid;
+  justify-items: center;
+  margin: 50px 0px 100px 0px;
+}
+
+.questing-rewards-container > div {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 15px;
+  padding: 0px 10px;
+}
+
+@media (min-width: 500px) and (max-width: 720px) {
+  .questing-rewards-container > div {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (min-width: 10px) and (max-width: 499px) {
+  .questing-rewards-container > div {
+    grid-template-columns: auto;
+  }
+}
+
+.quest {
+  border-radius: 10%;
+  padding: 5px 20px;
+  box-shadow: 1px 1px 10px rgb(163, 163, 163);
+}
+
+.quest:nth-child(1) {
+  background-color: hsl(0deg 0% 44%);
+}
+
+.quest:nth-child(2) {
+  background-color: hsl(90deg 30% 41%);
+}
+
+.quest:nth-child(3) {
+  background-color: hsl(218deg 28% 44%);
+}
+
+.quest:nth-child(4) {
+  background-color: hsl(266deg 28% 44%);
+}
+
+.quest:nth-child(5) {
+  background-color: hsl(30deg 45% 48%);
+}
+
+.quest:nth-child(6) {
+  background-color: hsl(2deg 44% 48%);
+}
+
+.quest > h4 {
+  font-size: 25px;
+  margin: 10px 0px 20px 0px;
+  color: rgb(225, 200, 255);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.quest > p {
+  margin: 10px 0px;
+  font-size: 18px;
+  color: rgb(225, 200, 255);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.quest > p:nth-child(4) {
+  margin: 20px 0px;
+}
+
+.quest > p > span {
+  text-shadow: none;
+}
+
+.quest > p > span {
+  display: flex;
+  justify-content: center;
+}
+
+
+/*----------- Questing Rewards End ----------------------------------------------------------------*/
+
+
+
+
+
+
+
+
 
 
 /*----------- Donation Area End --------------------------------------------------------------*/
