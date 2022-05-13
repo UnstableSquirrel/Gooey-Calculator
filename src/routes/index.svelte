@@ -859,6 +859,7 @@ let Quests =
   {
     Quest: "Common Quest",
     Hours: 10,
+    Difficulty: 1800,
     Goo1: 7650, 
     Goo2: 9072,
     Fruit1: 0,
@@ -868,6 +869,7 @@ let Quests =
   {
     Quest: "Uncommon Quest",
     Hours: 18,
+    Difficulty: 2400,
     Goo1: 19008, 
     Goo2: 22464,
     Fruit1: 0,
@@ -877,6 +879,7 @@ let Quests =
   {
     Quest: "Rare Quest",
     Hours: 36,
+    Difficulty: 2800,
     Goo1: 51744, 
     Goo2: 65856,
     Fruit1: 1,
@@ -886,6 +889,7 @@ let Quests =
   {
     Quest: "Epic Quest",
     Hours: 60,
+    Difficulty: 3300,
     Goo1: 114048, 
     Goo2: 142560,
     Fruit1: 1,
@@ -895,6 +899,7 @@ let Quests =
   {
     Quest: "Legendary Quest",
     Hours: 72,
+    Difficulty: 3600,
     Goo1: 141120, 
     Goo2: 211680,
     Fruit1: 2,
@@ -904,6 +909,7 @@ let Quests =
   {
     Quest: "Mythical Quest",
     Hours: 120,
+    Difficulty: 4300,
     Goo1: 328692, 
     Goo2: 455112,
     Fruit1: 4,
@@ -1063,6 +1069,10 @@ let Quests =
                 {#each Quests as quest}
                 <div class="quest">
                   <h4>{quest.Quest} ({quest.Hours}h)</h4>
+                  <p>Difficulty:
+                    <br>
+                    <span>{quest.Difficulty}</span>
+                  </p>
                   <p>$GOO Reward:
                     <br>
                     <span>{quest.Goo1} - {quest.Goo2}</span>
@@ -2887,7 +2897,7 @@ footer > div > p > a {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
-.quest > p:nth-child(4) {
+.quest > p:nth-child(5) {
   margin: 20px 0px;
 }
 
