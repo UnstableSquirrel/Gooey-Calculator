@@ -148,7 +148,7 @@ $: onMount(async function () {
               name: "Pancake Squash", 
               hours: 155, 
               days: 6.45, 
-              price: 540000, 
+              price: 54000, 
               src: "/pancake.jpg",
               nexus_bonus: 5, 
               tumble_stat_bonus: 3, 
