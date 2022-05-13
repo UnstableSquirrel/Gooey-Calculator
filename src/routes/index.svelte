@@ -11,7 +11,7 @@ import Menu from "./comps/menu.svelte";
               name: "Apple",
               hours: 7, 
               days: 0.25, 
-              price: 3000, 
+              price: 13860, 
               src: "/apple.png",
               nexus_bonus: 0, 
               tumble_stat_bonus: 0,  
@@ -26,7 +26,7 @@ import Menu from "./comps/menu.svelte";
               name: "Orange", 
               hours: 10, 
               days: 0.41, 
-              price: 4000, 
+              price: 18720, 
               src: "/orange.png",
               nexus_bonus: 0, 
               tumble_stat_bonus: 0,  
@@ -41,7 +41,7 @@ import Menu from "./comps/menu.svelte";
               name: "Banana", 
               hours: 12,
               days: 0.50, 
-              price: 4800, 
+              price: 22950, 
               src: "/banana.jpg",
               nexus_bonus: 0, 
               tumble_stat_bonus: 0,  
@@ -56,7 +56,7 @@ import Menu from "./comps/menu.svelte";
               name: "Strawberry", 
               hours: 20, 
               days: 0.83, 
-              price: 6500, 
+              price: 36000, 
               src: "/strawberry.jpg",
               nexus_bonus: 0, 
               tumble_stat_bonus: 0,  
@@ -71,7 +71,7 @@ import Menu from "./comps/menu.svelte";
               name: "Cherry", 
               hours: 27, 
               days: 1.12, 
-              price: 10000, 
+              price: 49000, 
               src: "/cherry.jpg",
               nexus_bonus: 0, 
               tumble_stat_bonus: 0,  
@@ -86,9 +86,9 @@ import Menu from "./comps/menu.svelte";
               name: "Pineapple", 
               hours: 55, 
               days: 2.29, 
-              price: 20000, 
+              price: 99000, 
               src: "/pineapple.jpg",
-              nexus_bonus: 0, 
+              nexus_bonus: 1, 
               tumble_stat_bonus: 2,  
               extra_tumbles: 0, 
               rank: 0, 
@@ -101,9 +101,9 @@ import Menu from "./comps/menu.svelte";
               name: "Coconut", 
               hours: 75, 
               days: 3.12, 
-              price: 27000, 
+              price: 135000, 
               src: "/coconut.jpg",
-              nexus_bonus: 0, 
+              nexus_bonus: 2, 
               tumble_stat_bonus: 2,  
               extra_tumbles: 0, 
               rank: 0, 
@@ -116,9 +116,9 @@ import Menu from "./comps/menu.svelte";
               name: "Foxtail Fruit", 
               hours: 125, 
               days: 5.20, 
-              price: 45000, 
+              price: 225000, 
               src: "/foxtail.jpg",
-              nexus_bonus: 0, 
+              nexus_bonus: 4, 
               tumble_stat_bonus: 3,  
               extra_tumbles: 0, 
               rank: 0, 
@@ -131,9 +131,9 @@ import Menu from "./comps/menu.svelte";
               name: "Pancake Squash", 
               hours: 155, 
               days: 6.45, 
-              price: 56000, 
+              price: 280000, 
               src: "/pancake.jpg",
-              nexus_bonus: 0, 
+              nexus_bonus: 5, 
               tumble_stat_bonus: 3, 
               extra_tumbles: 0, 
               rank: 0, 
@@ -146,9 +146,9 @@ import Menu from "./comps/menu.svelte";
               name: "Devil's Pomegranate", 
               hours: 220, 
               days: 9.16, 
-              price: 800000, 
+              price: 400000, 
               src: "/devil.jpg",
-              nexus_bonus: 1, 
+              nexus_bonus: 50, 
               tumble_stat_bonus: 4, 
               extra_tumbles: 1, 
               rank: 0, 
@@ -161,9 +161,9 @@ import Menu from "./comps/menu.svelte";
               name: "Moondrop Fruit", 
               hours: 330, 
               days: 13.75, 
-              price: 1550000, 
+              price: 600000, 
               src: "/moondrop.jpg",
-              nexus_bonus: 3, 
+              nexus_bonus: 100, 
               tumble_stat_bonus: 6,
               extra_tumbles: 2, 
               rank: 0, 
@@ -482,38 +482,44 @@ function addGooey() {
 }
 
 $: validateHDS = function validateInput1() {
-    if(health < 100 || health > 600){
+    if(health < 100 || health > 600) {
       health = 100
     }
     if(defense < 100 || defense > 600){
       defense = 100
     }
-    if(speed < 100 || speed > 600){
+    if(speed < 100 || speed > 600) {
       speed = 100
     }
    }
 
 $: validateATT = function validateInput2() {
-    if(attack < 100 || attack > 400){
+    if(attack < 100 || attack > 400) {
       attack = 100
     }
    }
 
 $: validateNEX = function validateInput3() {
-    if(nexus < 0 || nexus > 10000){
+    if(nexus < 1000 || nexus > 2500) {
       nexus = 1000
     }
    }
 
 $: validateTSB = function validateInput4() {
-    if(tumbleBonus < 0 || tumbleBonus > 6){
+    if(tumbleBonus < 0 || tumbleBonus > 6) {
       tumbleBonus = 0
     }
    }
 
 $: validateGEN = function validateInput5() {
-    if(generation < 0 || generation > 6){
+    if(generation < 0 || generation > 6) {
       generation = 0
+    }
+   }
+
+   $: validateNUMBER = function validateInput6() {
+    if(gooeyNumber < 0) {
+      gooeyNumber = 0
     }
    }
 
@@ -635,11 +641,36 @@ function calculateTumbleStats() {
   //Calc Gen Atk bonus of the lowest gen Gooey 
   gooeysMinGen = ascGen[0].Gen + 1
 
-  //Add Gen bonuse to Atk
+
+  //Add Gen bonuses to Atk, Def, Hp, Spd
+
+  //Atk
   let a = [...arA]
   let b = [...arB]
-  let atk1 = (a[0].Attack / 100) * gooeysMinGen
-  let atk2 = (b[0].Attack / 100) * gooeysMinGen
+  let atk1 = ((a[0].Attack / 100) * 2) * gooeysMinGen 
+  let atk2 = ((b[0].Attack / 100) * 2) * gooeysMinGen
+  //
+
+  //Def
+  let c = [...arA]
+  let d = [...arB]
+  let def1 = (c[0].Defense / 100) * gooeysMinGen
+  let def2 = (d[0].Defense / 100) * gooeysMinGen
+  //
+
+  //Hp
+  let e = [...arA]
+  let f = [...arB]
+  let hp1 = (e[0].Health / 100) * gooeysMinGen
+  let hp2 = (f[0].Health / 100) * gooeysMinGen
+  //
+
+  //Spd
+  let g = [...arA]
+  let h = [...arB]
+  let spd1 = (g[0].Speed / 100) * gooeysMinGen
+  let spd2 = (h[0].Speed / 100) * gooeysMinGen
+  //
 
 
   //Sort the merged object array by descending and ascending Strength and get the first value from both for max/min 
@@ -652,7 +683,7 @@ function calculateTumbleStats() {
   })
 
   gooeysMinStrength = asC[0].Strength
-  gooeysMinStrength += atk1 + atk2
+  gooeysMinStrength += atk1 + atk2 + def1 + def2 + hp1 + hp2 + spd1 + spd2
 
 
   //Descending Sort
@@ -661,7 +692,7 @@ function calculateTumbleStats() {
   })
 
   gooeysMaxStrength = desC[0].Strength
-  gooeysMaxStrength += atk1 + atk2
+  gooeysMaxStrength += atk1 + atk2 + def1 + def2 + hp1 + hp2 + spd1 + spd2
 
   //Get Nexus value of both Gooeys
   gooeyANexus = arA[0].Nexus
@@ -756,16 +787,21 @@ function calculateTumbleStats() {
   console.log("MinStaT: " + gooeysMinStrength)
   console.log("MaxStaT: " + gooeysMaxStrength)
 */
-  if (min > 9999) {
-      min = 9999
+
+// console.log(gooeysMinStrength)
+// console.log(gooeysMaxStrength)
+// console.log(maximumMutation)
+
+  if (min > 99999) {
+      min = 99999
   } 
 
-  if (max > 9999) {
-      max = 9999
+  if (max > 99999) {
+      max = 99999
   }    
 
-  if (randomStats > 9999) {
-    randomStats = 9999
+  if (randomStats > 99999) {
+    randomStats = 99999
   } 
 
 }
@@ -792,6 +828,11 @@ function copy() {
 }
 
 ////////////// Copy To Clipboard End ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// if (addedGooeys.length == 0) {
+//   gooeyANumber = 0
+//   gooeyBNumber = 0
+// }
 
 </script>
 
@@ -892,7 +933,7 @@ function copy() {
                   <tr>
                     <td>#{i.rank}</td>
                     <td>{i.name}</td>
-                    <td>{i.price}</td>
+                    <td>{i.price.toLocaleString('en-US')}</td>
                     <td>{i.hours}</td>
                     <td>{i.ratio}</td>
                   </tr>
@@ -1052,7 +1093,7 @@ function copy() {
                   <div class="modal-input-container">
                     <div>
                       <label for="GooeyNumber">Gooey <br> Number: </label>
-                      <input type="number" on:focus="{event => selectContent(event)}" name="number" bind:value="{gooeyNumber}">
+                      <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateNUMBER}" name="number" bind:value="{gooeyNumber}">
                     </div>
                     <div>
                       <label for="Nexus"><br> Nexus: </label>
