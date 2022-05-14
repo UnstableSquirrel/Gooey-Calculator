@@ -1,5 +1,7 @@
 <script>
    
+   import "../global.css";
+
    let open = false
 
       if (open == false) {
@@ -34,11 +36,12 @@
 
    <div class="slide-container" class:open >
       <div>
-         <a href="#My-Gooeys">My Gooeys</a>
-         <a href="#Best-Deals">Best Deals</a>
-         <a href="#Questing-Rewards">Questing Rewards</a>
-         <a href="#Tumbling-Costs">Tumbling Costs</a>
-         <a href="#Stats-Calculator">Stats Calculator</a>
+         <a href="/gooeys">All Gooeys</a>
+         <a href="../#My-Gooeys">My Gooeys</a>
+         <a href="../#Best-Deals">Best Deals</a>
+         <a href="../#Questing-Rewards">Questing Rewards</a>
+         <a href="../#Tumbling-Costs">Tumbling Costs</a>
+         <a href="../#Stats-Calculator">Stats Calculator</a>
       </div>
    </div>
 
@@ -59,14 +62,14 @@ main {
     font-size: 0px;
   }
   to {
-    height: 200px;
+    height: 250px;
     font-size: 20px;
   }
 }
 
 @keyframes slide-out {
   from {
-   height: 200px;
+   height: 250px;
    font-size: 20px;
   }
   to {
@@ -103,7 +106,7 @@ a:hover {
 }
 
 .open {
-   height: 200px;
+   height: 250px;
    font-size : 20px;
    animation: slide-in 0.2s linear;
 }
