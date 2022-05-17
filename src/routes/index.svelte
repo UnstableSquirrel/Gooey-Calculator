@@ -91,7 +91,7 @@ $: onMount(async function () {
               price: 10000, 
               src: "/cherry.jpg",
               nexus_bonus: 0, 
-              tumble_stat_bonus: 0,  
+              tumble_stat_bonus: 1,  
               extra_tumbles: 0, 
               rank: 0, 
               ratio: 0, 
@@ -136,7 +136,7 @@ $: onMount(async function () {
               price: 45000, 
               src: "/foxtail.jpg",
               nexus_bonus: 4, 
-              tumble_stat_bonus: 3,  
+              tumble_stat_bonus: 5,  
               extra_tumbles: 0, 
               rank: 0, 
               ratio: 0, 
@@ -151,7 +151,7 @@ $: onMount(async function () {
               price: 54000, 
               src: "/pancake.jpg",
               nexus_bonus: 5, 
-              tumble_stat_bonus: 3, 
+              tumble_stat_bonus: 10, 
               extra_tumbles: 0, 
               rank: 0, 
               ratio: 0, 
@@ -166,7 +166,7 @@ $: onMount(async function () {
               price: 800000, 
               src: "/devil.jpg",
               nexus_bonus: 50, 
-              tumble_stat_bonus: 4, 
+              tumble_stat_bonus: 18, 
               extra_tumbles: 1, 
               rank: 0, 
               ratio: 0, 
@@ -181,7 +181,7 @@ $: onMount(async function () {
               price: 1550000, 
               src: "/moondrop.jpg",
               nexus_bonus: 100, 
-              tumble_stat_bonus: 6,
+              tumble_stat_bonus: 20,
               extra_tumbles: 2, 
               rank: 0, 
               ratio: 0, 
@@ -510,7 +510,7 @@ $: validateNEX = function validateInput3() {
    }
 
 $: validateTSB = function validateInput4() {
-    if(tumbleBonus < 0 || tumbleBonus > 6) {
+    if(tumbleBonus < 0 || tumbleBonus > 20) {
       tumbleBonus = 0
     }
    }
@@ -855,7 +855,7 @@ let Quests =
   {
     Quest: "Epic Quest",
     Hours: 60,
-    Difficulty: 3300,
+    Difficulty: 3600,
     Goo1: 114048, 
     Goo2: 142560,
     Fruit1: 1,
@@ -865,7 +865,7 @@ let Quests =
   {
     Quest: "Legendary Quest",
     Hours: 72,
-    Difficulty: 3600,
+    Difficulty: 4300,
     Goo1: 141120, 
     Goo2: 211680,
     Fruit1: 2,
@@ -875,7 +875,7 @@ let Quests =
   {
     Quest: "Mythical Quest",
     Hours: 120,
-    Difficulty: 4300,
+    Difficulty: 5000,
     Goo1: 328692, 
     Goo2: 455112,
     Fruit1: 4,

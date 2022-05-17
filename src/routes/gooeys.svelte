@@ -1,8 +1,19 @@
 <script>
 
-import "./global.css"; 
-import Menu from "./comps/menu.svelte";
-import Footer from "./comps/footer.svelte";
+import "./global.css"
+import Menu from "./comps/menu.svelte"
+import Footer from "./comps/footer.svelte"
+// import { connected, web3, selectedAccount, chainId, chainData } from 'svelte-web3'
+// import { defaultEvmStores } from 'svelte-web3'
+
+// defaultEvmStores.setProvider('http://localhost:8545')
+
+// let abi = "[{\"anonymous\": false,\"inputs\": [{\"indexed\": true,\"internalType\": \"address\",\"name\": \"owner\",\"type\": \"address\"},{\"indexed\": true,\"internalType\": \"address\",\"name\": \"spender\",\"type\": \"address\"},{\"indexed\": false,\"internalType\": \"uint256\",\"name\": \"value\",\"type\": \"uint256\"}],\"name\": \"Approval\",\"type\": \"event\"},{\"anonymous\": false,\"inputs\": [{\"indexed\": false,\"internalType\": \"address\",\"name\": \"_addr\",\"type\": \"address\"},{\"indexed\": false,\"i…outputs\": [{\"internalType\": \"address\",\"name\": \"\",\"type\": \"address\"}],\"stateMutability\": \"view\",\"type\": \"function\"},{\"inputs\": [],\"name\": \"TWO_MONTHS_BLOCKS\",\"outputs\": [{\"internalType\": \"uint256\",\"name\": \"\",\"type\": \"uint256\"}],\"stateMutability\": \"view\",\"type\": \"function\"},{\"inputs\": [],\"name\": \"walletSupplyLimitsEnabled\",\"outputs\": [{\"internalType\": \"bool\",\"name\": \"\",\"type\": \"bool\"}],\"stateMutability\": \"view\",\"type\": \"function\"}]"
+// let address = "0x6F3Cc27E17a0f2e52D8e7693FF0d892Cea1854bF"
+
+// let web3 = new web3.setProvider("ws://localhost:8546")
+// let contract = new web3.eth.Contract(abi, address)
+
 
 
  let Gooeys = [
@@ -1153,6 +1164,7 @@ function reset() {
     number = ""
 }
 
+
 //console.log(unsortedGooeys)
 
 
@@ -1161,6 +1173,16 @@ function reset() {
 <main>
 
     <Menu/>
+
+    <!-- {#if !$connected}
+
+      <p>My application is not yet connected</p>
+
+    {:else}
+
+      <p>Connected to chain with id {$chainId}</p>
+
+    {/if} -->
 
     <h1 style="text-align:center">All Gooeys in one place</h1>
 
