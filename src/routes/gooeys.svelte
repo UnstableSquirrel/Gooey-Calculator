@@ -1190,28 +1190,28 @@ function reset() {
     <div class="sort-container">
         <div class="button-container">
             <div class="button">
-                <button  on:click="{sortByHighestGooeyNumber}" type="button"># ↑</button>
-                <button on:click="{sortByLowestGooeyNumber}" type="button"># ↓</button>
+                <button style="font-family: Bangers;" on:click="{sortByHighestGooeyNumber}" type="button"># ↑</button>
+                <button style="font-family: Bangers;" on:click="{sortByLowestGooeyNumber}" type="button"># ↓</button>
             </div>
             <div class="button">
-                <button on:click="{sortByHighestHP}" type="button">HP ↑</button>
-                <button on:click="{sortByLowestHP}" type="button">HP ↓</button>
+                <button style="font-family: Bangers;" on:click="{sortByHighestHP}" type="button">HP ↑</button>
+                <button style="font-family: Bangers;" on:click="{sortByLowestHP}" type="button">HP ↓</button>
             </div>
             <div class="button">
-                <button on:click="{sortByHighestATK}" type="button">ATK ↑</button>
-                <button on:click="{sortByLowestATK}" type="button">ATK ↓</button>
+                <button style="font-family: Bangers;" on:click="{sortByHighestATK}" type="button">ATK ↑</button>
+                <button style="font-family: Bangers;" on:click="{sortByLowestATK}" type="button">ATK ↓</button>
             </div>
             <div class="button">
-                <button on:click="{sortByHighestDEF}" type="button">DEF ↑</button>
-                <button on:click="{sortByLowestDEF}" type="button">DEF ↓</button>
+                <button style="font-family: Bangers;" on:click="{sortByHighestDEF}" type="button">DEF ↑</button>
+                <button style="font-family: Bangers;" on:click="{sortByLowestDEF}" type="button">DEF ↓</button>
             </div>
             <div class="button">
-                <button on:click="{sortByHighestSPD}" type="button">SPD ↑</button>
-                <button on:click="{sortByLowestSPD}" type="button">SPD ↓</button>
+                <button style="font-family: Bangers;" on:click="{sortByHighestSPD}" type="button">SPD ↑</button>
+                <button style="font-family: Bangers;" on:click="{sortByLowestSPD}" type="button">SPD ↓</button>
             </div>
             <div class="button">
-                <button on:click="{sortByHighestStrength}" type="button">STG ↑</button>
-                <button on:click="{sortByLowestStrength}" type="button">STG ↓</button>
+                <button style="font-family: Bangers;" on:click="{sortByHighestStrength}" type="button">STG ↑</button>
+                <button style="font-family: Bangers;" on:click="{sortByLowestStrength}" type="button">STG ↓</button>
             </div>
         </div>
     </div>
@@ -1220,8 +1220,8 @@ function reset() {
     <div style="display:grid; justify-items:center; align-content:center">
         <input style="margin-bottom:10px;" type="number" name="gooey" id="Gooey" bind:value="{number}" on:blur="{validateNR}">
         <div style="display:grid; margin-bottom:10px;">
-            <button class="confirm" on:click="{filterByNumber}" type="button">Confirm</button>
-            <button class="reset" on:click="{reset}" type="button">Reset</button>
+            <button style="font-family: Bangers;" class="confirm" on:click="{filterByNumber}" type="button">Confirm</button>
+            <button style="font-family: Bangers;" class="reset" on:click="{reset}" type="button">Reset</button>
         </div>
     </div>
 
