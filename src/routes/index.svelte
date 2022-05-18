@@ -2,6 +2,8 @@
 
 // @ts-ignore
 import {store} from "./stores/usage.js";
+// @ts-ignore
+import { amount } from "./stores/singleStore.js";
 import Menu from "./comps/menu.svelte";
 import Footer from "./comps/footer.svelte";
 import { onMount } from "svelte";
@@ -449,6 +451,7 @@ export let addedGooeys = []
 store.subscribe(data => {
     addedGooeys = data
   })
+  
 
 function addGooey() {
 
@@ -885,7 +888,29 @@ let Quests =
 
 
 ////////// Quests End ///////////////////////////////////////////////////////////////////////////////////////////////
+//
+////////// GOO Amount ///////////////////////////////////////////////////////////////////////////////////////////////////
 
+let gooAmount = 0
+// gooAmount = amount
+let setAmount = false
+
+function setGooAmount() {
+  setAmount = true
+}
+
+function exit() {
+  setAmount = false
+}
+
+$: validateAMOUNT = function validateInput7() {
+    if($amount < 0 || $amount > 2000000000) {
+      $amount = 0
+    }
+   }
+
+
+////////// GOO Amount End ///////////////////////////////////////////////////////////////////////////////////////////////
 </script>
 
 
@@ -906,8 +931,46 @@ let Quests =
         <span>${posts}</span>
       </p>
     </div>
+    <div style="display:grid; justify-items:center">
+      <p style="text-align:center">Your GOO amount:
+        <br>
+        <span>{($amount / 1).toLocaleString('en-US')}</span>
+      </p>
 
-    <h1>Goo Calculator</h1>
+      {#if setAmount == true}
+      <div style="display:flex; justify-content:center; z-index:3;" class="modal-container">
+          <div style="display:grid;" class="modal">
+
+              <div style="display:flex; justify-content:right" class="close-container">
+                  <button class="close" on:click="{() => exit()}">X</button>
+              </div>
+              <h2 style="display:flex; justify-content:center; margin: 0px; text-align:center;">Set your GOO amount</h2>
+
+              <div>
+
+                <div class="modal-input-container">
+                  <div>
+                    <label style="display:flex; justify-content:center; text-align:center; margin:0px !important; padding:0px !important; font-size:25px;" for="Amount">Amount: </label>
+                    <input style="width: 120px;" type="number" on:focus="{event => selectContent(event)}" on:blur="{validateAMOUNT}" name="number" bind:value="{$amount}">
+                  </div>
+                </div>
+
+              </div>
+              <div style="display:flex; justify-content:center;">
+                <button style="display:flex; justify-content:center; width: 150px; height:45px;" class="confirm" on:click="{() => exit()}">Set new amount</button>
+              </div>
+          </div>
+      </div>
+      {/if}
+
+      <button class="amount-button" on:click="{() => setGooAmount()}">Set Amount</button>
+      <p style="text-align:center">Amount in $:
+        <br>
+        <span>${($amount * posts).toLocaleString('en-US')}</span>
+      </p>
+    </div>
+
+    <h1>Gooey Companion</h1>
 
 
 
@@ -1397,6 +1460,28 @@ div {
   z-index: 2;
 }
 
+.amount-button {
+  background-color: rgba(63, 219, 115, 0.719);
+  border-radius: 10px;
+  height: 25px;
+  width: 100px;
+  font-size: 17px;
+  font-family: Bangers;
+  font-weight: 400;
+}
+
+.amount-button:hover {
+  background-color: rgba(116, 253, 162, 0.719);
+  cursor: pointer;
+}
+
+.amount-button:active {
+  background-color: rgba(116, 253, 162, 0.719);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transform: scale(0.98)
+}
+
 
 
 
@@ -1725,6 +1810,10 @@ tbody tr:hover {
 }
 
 @media only screen and (min-width: 10px) and (max-width: 290px) {
+
+    h1 {
+      font-size: 40px;
+    }
 
     .c1 > div > div > img {
       width: 100px;

@@ -1292,6 +1292,14 @@ button {
     border: 1px solid black;
 }
 
+.sort-container > div > div:nth-child(6) > button:nth-child(1) {
+    margin: 0px 0px 2.5px 0px;
+}
+
+.sort-container > div > div:nth-child(6) > button:nth-child(2) {
+    margin: 0px 0px 2.5px 0px;
+}
+
 button:hover {
     background-color: rgb(153, 255, 233);
     cursor: pointer;
@@ -1340,6 +1348,10 @@ button:active {
     transform: scale(0.99);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.11);
     cursor: pointer;
+}
+
+.table-container {
+  margin-bottom: 100px;
 }
 
 table {
@@ -1582,6 +1594,14 @@ tbody tr:hover {
     font-size: 8px !important;
     padding: 5px !important;
   }
+}
+
+@media only screen and (min-width: 10px) and (max-width: 290px) {
+
+  h1 {
+    font-size: 40px;
+  }
+  
 }
 
 
