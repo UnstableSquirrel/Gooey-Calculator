@@ -16,7 +16,7 @@ import Footer from "./comps/footer.svelte"
 
 
 
- let Gooeys = [
+export let Gooeys = [
 {"GooeyID":0,"HP":487,"DEF":455,"SPD":395,"ATK":249,"STRENGTH":1586},
 {"GooeyID":1,"HP":390,"DEF":101,"SPD":533,"ATK":128,"STRENGTH":1152},
 {"GooeyID":2,"HP":156,"DEF":102,"SPD":255,"ATK":224,"STRENGTH":737},
