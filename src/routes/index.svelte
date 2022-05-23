@@ -16,9 +16,9 @@ let posts
 $: onMount(async function () {
   try {
     const response = await axios.get(endpoint)
-    console.log(response.data)
+    // console.log(response.data)
     posts = response.data.pairs[0].priceUsd
-    console.log(posts)
+    // console.log(posts)
   } catch (error) {
     console.error(error)
   }
@@ -598,8 +598,8 @@ $: validateGooeyNumberB = function validateInput7() {
     }
    }*/
 
-let gooeysMinStrength
-let gooeysMaxStrength
+// let gooeysMinStrength
+// let gooeysMaxStrength
 
 let gooeyANexus
 let gooeyBNexus
@@ -634,6 +634,8 @@ function calculateTumbleStats() {
 
   //Merge array of Gooey A && B into an object array
   let arC = [...arA, ...arB]
+
+////////////////////////////////////////////////////////////////////////////////////////
 
   //Object to capture the lowest gen Gooey
   let ascGen = [...arC]
@@ -686,55 +688,6 @@ function calculateTumbleStats() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-  //Add Min Gen bonuses to Atk, Def, Hp, Spd
-
-  //Min Atk Bonus
-  let minAtkBonus = ((minAtk / 100) * 2) * gooeysMinGen 
-  //
-
-  //Min Hp Bonus
-  let minHpBonus = (minDef / 100) * gooeysMinGen
-  //
-
-  //Min Def Bonus
-  let minDefBonus = (minHp / 100) * gooeysMinGen
-  //
-
-  //Min Spd Bonus
-  let minSpdBonus = (minSpd / 100) * gooeysMinGen
-  //
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-//
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-  //Add Max Gen bonuses to Atk, Def, Hp, Spd
-
-  //Max Atk Bonus
-  let maxAtkBonus = ((maxAtk / 100) * 2) * gooeysMinGen 
-  //
-
-  //Max Hp Bonus
-  let maxHpBonus = (maxDef / 100) * gooeysMinGen
-  //
-
-  //Max Def Bonus
-  let maxDefBonus = (maxHp / 100) * gooeysMinGen
-  //
-
-  //Max Spd Bonus
-  let maxSpdBonus = (maxSpd / 100) * gooeysMinGen
-  //
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-// console.log(gooeysMinGen)
-
-gooeysMinStrength = minAtk + minAtkBonus + minHp + minHpBonus + minDef + minDefBonus + minSpd + minSpdBonus
-gooeysMaxStrength = maxAtk + maxAtkBonus + maxHp + maxHpBonus + maxDef + maxDefBonus + maxSpd + maxSpdBonus
-
-// console.log(gooeysMinStrength)
-// console.log(gooeysMaxStrength)
-
   //Get Nexus value of both Gooeys
   gooeyANexus = arA[0].Nexus
   gooeyBNexus = arB[0].Nexus
@@ -749,53 +702,207 @@ gooeysMaxStrength = maxAtk + maxAtkBonus + maxHp + maxHpBonus + maxDef + maxDefB
   let minimumMutation = 0.97
   let maximumMutation = 1.05 + (totalNexus / 4000) + totalFoodBonus
 
-  //Calc min/max stats in decimal number
-  minStats = (minimumMutation * gooeysMinStrength)
-  maxStats = (maximumMutation * gooeysMaxStrength)
+  //Multiply all mutations with 100
+  minimumMutation = minimumMutation * 100
+  maximumMutation = maximumMutation * 100
 
-  //Convert decimal value of min/max to whole numbers
-  min = Math.floor(minStats)
-  max = Math.floor(maxStats)
+  //Calc min/max stats in decimal numbers
+  let minNewHp = (minimumMutation * minHp)
+  let minNewAtk = (minimumMutation * minAtk)
+  let minNewDef = (minimumMutation * minDef)
+  let minNewSpd = (minimumMutation * minSpd)
+
+  let maxNewHp = (maximumMutation * maxHp)
+  let maxNewAtk = (maximumMutation * maxAtk)
+  let maxNewDef = (maximumMutation * maxDef)
+  let maxNewSpd = (maximumMutation * maxSpd)
+
+  //Divide all new stats with 100
+  minNewHp = minNewHp / 100
+  minNewAtk = minNewAtk / 100
+  minNewDef = minNewDef / 100
+  minNewSpd = minNewSpd / 100
+
+  maxNewHp = maxNewHp / 100
+  maxNewAtk = maxNewAtk / 100
+  maxNewDef = maxNewDef / 100
+  maxNewSpd = maxNewSpd / 100
+
+  //Convert min/max stats into whole numbers
+  minNewHp = Math.floor(minNewHp)
+  minNewAtk = Math.floor(minNewAtk)
+  minNewDef = Math.floor(minNewDef)
+  minNewSpd = Math.floor(minNewSpd)
+
+  maxNewHp = Math.floor(maxNewHp)
+  maxNewAtk = Math.floor(maxNewAtk)
+  maxNewDef = Math.floor(maxNewDef)
+  maxNewSpd = Math.floor(maxNewSpd)
+  
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+  //Calculate min gen bonuses of Atk, Def, Hp, Spd
+
+  //Min Hp Bonus
+  let minHpBonus = (minNewHp / 100) * gooeysMinGen
+  //
+
+  //Min Atk Bonus
+  let minAtkBonus = ((minNewAtk / 100) * 2) * gooeysMinGen 
+  //
+
+  //Min Def Bonus
+  let minDefBonus = (minNewDef / 100) * gooeysMinGen
+  //
+
+  //Min Spd Bonus
+  let minSpdBonus = (minNewSpd / 100) * gooeysMinGen
+  //
+  
+  //Convert decimal values of min gen bonuses to whole numbers
+  minHpBonus = Math.floor(minHpBonus)
+  minAtkBonus = Math.floor(minAtkBonus)
+  minDefBonus = Math.floor(minDefBonus)
+  minSpdBonus = Math.floor(minSpdBonus)
+  
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+  //Calculate max gen bonuses of Atk, Def, Hp, Spd
+
+  //Max Hp Bonus
+  let maxHpBonus = (maxNewHp / 100) * gooeysMinGen
+  //
+
+  //Max Atk Bonus
+  let maxAtkBonus = ((maxNewAtk / 100) * 2) * gooeysMinGen 
+  //
+
+  //Max Def Bonus
+  let maxDefBonus = (maxNewDef / 100) * gooeysMinGen
+  //
+
+  //Max Spd Bonus
+  let maxSpdBonus = (maxNewSpd / 100) * gooeysMinGen
+  //
+  
+  //Convert decimal values of max gen bonuses to whole numbers
+  maxHpBonus = Math.floor(maxHpBonus)
+  maxAtkBonus = Math.floor(maxAtkBonus)
+  maxDefBonus = Math.floor(maxDefBonus)
+  maxSpdBonus = Math.floor(maxSpdBonus)
+  
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+  //Multiply all stats with bonuses of min/max stats in whole numbers
+
+  minNewHp = minNewHp + minHpBonus
+  minNewAtk = minNewAtk + minAtkBonus
+  minNewDef = minNewDef + minDefBonus
+  minNewSpd = minNewSpd + minSpdBonus
+  
+  /*
+  minNewHp = Math.floor(minNewHp)
+  minNewAtk = Math.floor(minNewAtk)
+  minNewDef = Math.floor(minNewDef)
+  minNewSpd = Math.floor(minNewSpd)
+  */
+
+  maxNewHp = maxNewHp + maxHpBonus
+  maxNewAtk = maxNewAtk + maxAtkBonus
+  maxNewDef = maxNewDef + maxDefBonus
+  minNewSpd = minNewSpd + maxSpdBonus
+  
+  /*
+  maxNewHp = Math.floor(maxNewHp)
+  maxNewAtk = Math.floor(maxNewAtk)
+  maxNewDef = Math.floor(maxNewDef)
+  maxNewSpd = Math.floor(maxNewSpd)
+  */
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+  //minStats = (minNewHp + minHpBonus + minNewAtk + minAtkBonus + minNewDef + minDefBonus + minNewSpd + minSpdBonus)
+  //maxStats = (maxNewHp + maxHpBonus + maxNewAtk + maxAtkBonus + maxNewDef + maxDefBonus + maxNewSpd + maxSpdBonus)
+  minStats = (minNewHp + minNewAtk + minNewDef + minNewSpd)
+  maxStats = (maxNewHp + maxNewAtk + maxNewDef + maxNewSpd)
+  // console.log("minNewHp: " + minNewHp)
+  // console.log("maxNewHp: " + maxNewHp)
+
+  min = minStats
+  max = maxStats
+  // min = Math.floor(minStats)
+  // max = Math.floor(maxStats)
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
 //Calculate the random stats
 
 
-//Random decimal number
-let randomBonus = (Math.random() * (maximumMutation - minimumMutation) + minimumMutation).toFixed(2)
+// //Divide all mutations with 100
+// minimumMutation = minimumMutation / 100
+// maximumMutation = maximumMutation / 100
 
-  //Calc all the random numbers from the min/max ranges of each trait and add the Gen bonus to the
+
+//Random decimal mutation bonus number
+let randomBonus = (Math.random() * (maximumMutation - minimumMutation) + minimumMutation)
+randomBonus = Math.floor(randomBonus)
+//console.log(randomBonus)
+
+  //Calc all the random numbers from the min/max ranges of each trait 
   let randomAtk = (Math.random() * (maxAtk - minAtk) + minAtk)
-  //let randomAtk = randomAtkWithoutBonus + (randomAtkWithoutBonus / 100 * gooeysMinGen)
   let randomHp = (Math.random() * (maxHp - minHp) + minHp)
-  let randomDef = (Math.random() * (maxDef - minDef) + minDef)
+  let randomDef = (Math.random() * (maxDef - minDef) + minDef) 
   let randomSpd = (Math.random() * (maxSpd - minSpd) + minSpd)
 
+  //Calculate the random total stats
+  randomAtk = randomAtk * randomBonus 
+  randomAtk = randomAtk / 100
+  randomAtk = Math.floor(randomAtk)
 
-  //Add Min Gen bonuses to Atk, Def, Hp, Spd
+  randomHp = randomHp * randomBonus
+  randomHp = randomHp / 100
+  randomHp = Math.floor(randomHp)
+  
+  randomDef = randomDef * randomBonus
+  randomDef = randomDef/ 100
+  randomDef = Math.floor(randomDef)
+
+  randomSpd = randomSpd * randomBonus
+  randomSpd = randomSpd / 100
+  randomSpd = Math.floor(randomSpd) 
+
+
+//Calculate Gen bonuses for Atk, Def, Hp, Spd and convert them to whole numbers
 
   //Random Atk Bonus
-  let randomAtkBonus = ((randomAtk / 100) * 2) * gooeysMinGen 
+  let randomAtkBonus = ((randomAtk / 100) * 2) * gooeysMinGen
+  randomAtkBonus = Math.floor(randomAtkBonus) 
   //
 
   //Random Hp Bonus
   let randomHpBonus = (randomHp / 100) * gooeysMinGen
+  randomHpBonus = Math.floor(randomHpBonus)
   //
 
   //Random Def Bonus
   let randomDefBonus = (randomDef / 100) * gooeysMinGen
+  randomDefBonus = Math.floor(randomDefBonus)
   //
 
   //Random Spd Bonus
   let randomSpdBonus = (randomSpd / 100) * gooeysMinGen
+  randomSpdBonus = Math.floor(randomSpdBonus)
   //
 
-
   // @ts-ignore
-  randomStats = Math.floor((randomAtk + randomAtkBonus + randomHp + randomHpBonus + randomDef + randomDefBonus + randomSpd + randomSpdBonus) * randomBonus)
+  randomStats = randomAtk + randomAtkBonus + randomHp + randomHpBonus + randomDef + randomDefBonus + randomSpd + randomSpdBonus
+
+ // console.log(randomAtk, randomAtkBonus, randomHp, randomHpBonus, randomDef, randomDefBonus, randomSpd, randomSpdBonus)
 
  // console.log(gooeysMinStrength)
  // console.log(gooeysMaxStrength)
