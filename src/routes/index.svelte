@@ -1032,6 +1032,8 @@ $: onMount(async function () {
   }
 })
 
+// let posts = 0.10
+
 	let fruits = [
             {
               id: 1, 
@@ -2229,19 +2231,19 @@ $: validateAMOUNT = function validateInput7() {
                   <h4>{quest.Quest} ({quest.Hours}h)</h4>
                   <p>Difficulty:
                     <br>
-                    <span>{quest.Difficulty}</span>
+                    <span style="color: white; text-shadow: 1px 1px 1px black; margin-top: 5px;">{quest.Difficulty.toLocaleString('en-US')}</span>
                   </p>
                   <p>$GOO Reward:
                     <br>
-                    <span>{quest.Goo1} - {quest.Goo2}</span>
+                    <span style="color: white; text-shadow: 1px 1px 1px black; margin-top: 5px;">{quest.Goo1.toLocaleString('en-US')} - {quest.Goo2.toLocaleString('en-US')}</span>
                   </p>
                   <p>Fruit Reward:
                     <br>
-                    <span>{quest.Fruit1} - {quest.Fruit2}</span>
+                    <span style="color: white; text-shadow: 1px 1px 1px black; margin-top: 5px;">{quest.Fruit1.toLocaleString('en-US')} - {quest.Fruit2.toLocaleString('en-US')}</span>
                   </p>
                   <p>Earn each quest:
                     <br>
-                    <span>${(quest.Goo1 * posts).toFixed(2)} - ${(quest.Goo2 * posts).toFixed(2)}</span>
+                    <span style="color: white; text-shadow: 1px 1px 1px black; margin-top: 5px;">${(quest.Goo1 * posts).toFixed(2)} - ${(quest.Goo2 * posts).toFixed(2)}</span>
                   </p>
                 </div>
                 {/each}
