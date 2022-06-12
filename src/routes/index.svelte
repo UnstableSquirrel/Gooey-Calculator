@@ -2041,6 +2041,35 @@ $: validateAMOUNT = function validateInput7() {
    }
 
 ////////// GOO Amount End ///////////////////////////////////////////////////////////////////////////////////////////////
+//
+////////// Halivng Countdown ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+let countdownDays
+let countdownHours
+let countdownMinutes
+let countdownSeconds
+
+// Date of the next halvening
+let countDownDate = new Date("Jun 19, 2022 11:44:53").getTime()
+
+// Update the count down every 1 second
+let x = setInterval(function() {
+
+  // Get today's date and time
+  let now = new Date().getTime()
+
+  // Find the distance between now and the count down date
+  let distance = countDownDate - now
+
+  // Time calculations for days, hours, minutes and seconds
+  countdownDays = Math.floor(distance / (1000 * 60 * 60 * 24))
+  countdownHours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  countdownMinutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+  countdownSeconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+}, 1000)
+
+////////// Halving Countdown End ///////////////////////////////////////////////////////////////////////////////////////////////
 
 </script>
 
@@ -2247,6 +2276,29 @@ $: validateAMOUNT = function validateInput7() {
                   </p>
                 </div>
                 {/each}
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div style="display:grid; justify-content:center; text-align:center; margin-bottom:100px;">
+
+              <h1>Time until the next halving</h1>
+
+              <div style="display:flex; justify-content:center; grid-gap:15px;">
+                <p><span>Days</span><br>{countdownDays}</p>
+                <p><span>Hours</span><br>{countdownHours}</p>
+                <p><span>Minutes</span><br>{countdownMinutes}</p>
+                <p><span>Seconds</span><br>{countdownSeconds}</p>
               </div>
 
             </div>
