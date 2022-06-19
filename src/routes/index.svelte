@@ -1961,7 +1961,7 @@ let Quests =
     Hours: 10,
     Difficulty: 1800,
     Goo1: 3825, 
-    Goo2: 4.536,
+    Goo2: 4536,
     Fruit1: 0,
     Fruit2: 1, 
   },
