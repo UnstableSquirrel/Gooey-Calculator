@@ -2050,7 +2050,7 @@ let countdownMinutes
 let countdownSeconds
 
 // Date of the next halvening
-let countDownDate = new Date("Jun 19, 2022 11:44:53").getTime()
+let countDownDate = new Date("Jun 19, 2022 18:34:10").getTime()
 
 // Update the count down every 1 second
 let x = setInterval(function() {
