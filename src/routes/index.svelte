@@ -1960,8 +1960,8 @@ let Quests =
     Quest: "Common Quest",
     Hours: 10,
     Difficulty: 1800,
-    Goo1: 7650, 
-    Goo2: 9072,
+    Goo1: 3825, 
+    Goo2: 4.536,
     Fruit1: 0,
     Fruit2: 1, 
   },
@@ -1970,8 +1970,8 @@ let Quests =
     Quest: "Uncommon Quest",
     Hours: 18,
     Difficulty: 2400,
-    Goo1: 19008, 
-    Goo2: 22464,
+    Goo1: 9504, 
+    Goo2: 11232,
     Fruit1: 0,
     Fruit2: 2, 
   },
@@ -1980,8 +1980,8 @@ let Quests =
     Quest: "Rare Quest",
     Hours: 36,
     Difficulty: 2800,
-    Goo1: 51744, 
-    Goo2: 65856,
+    Goo1: 25872, 
+    Goo2: 32928,
     Fruit1: 1,
     Fruit2: 2, 
   },
@@ -1990,8 +1990,8 @@ let Quests =
     Quest: "Epic Quest",
     Hours: 60,
     Difficulty: 3600,
-    Goo1: 114048, 
-    Goo2: 142560,
+    Goo1: 57024, 
+    Goo2: 71280,
     Fruit1: 1,
     Fruit2: 3, 
   },
@@ -2000,8 +2000,8 @@ let Quests =
     Quest: "Legendary Quest",
     Hours: 72,
     Difficulty: 4300,
-    Goo1: 141120, 
-    Goo2: 211680,
+    Goo1: 70560, 
+    Goo2: 105840,
     Fruit1: 2,
     Fruit2: 4, 
   },
@@ -2010,8 +2010,8 @@ let Quests =
     Quest: "Mythical Quest",
     Hours: 120,
     Difficulty: 5000,
-    Goo1: 328692, 
-    Goo2: 455112,
+    Goo1: 164346, 
+    Goo2: 227556,
     Fruit1: 4,
     Fruit2: 8, 
   }
@@ -2050,7 +2050,7 @@ let countdownMinutes
 let countdownSeconds
 
 // Date of the next halvening
-let countDownDate = new Date("Jun 19, 2022 18:34:10").getTime()
+let countDownDate = new Date("Aug 18, 2022 18:34:10").getTime()
 
 // Update the count down every 1 second
 let x = setInterval(function() {
