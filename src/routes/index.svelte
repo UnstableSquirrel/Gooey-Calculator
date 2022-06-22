@@ -1959,8 +1959,8 @@ let Quests =
   {
     Quest: "Common Quest",
     Hours: 10,
-    Difficulty: 1800,
-    Goo1: 3825, 
+    Difficulty: 1500,
+    Goo1: 3780, 
     Goo2: 4536,
     Fruit1: 0,
     Fruit2: 1, 
@@ -1969,7 +1969,7 @@ let Quests =
   {
     Quest: "Uncommon Quest",
     Hours: 18,
-    Difficulty: 2400,
+    Difficulty: 2300,
     Goo1: 9504, 
     Goo2: 11232,
     Fruit1: 0,
@@ -2050,7 +2050,7 @@ let countdownMinutes
 let countdownSeconds
 
 // Date of the next halvening
-let countDownDate = new Date("Aug 18, 2022 18:34:10").getTime()
+let countDownDate = new Date("Aug 18, 2022 00:04:42").getTime()
 
 // Update the count down every 1 second
 let x = setInterval(function() {
