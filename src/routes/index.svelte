@@ -1705,19 +1705,19 @@ function addGooey() {
 }
 
 $: validateHDS = function validateInput1() {
-    if(health < 100 || health > 600) {
+    if(health < 100 || health > 10000) {
       health = 100
     }
-    if(defense < 100 || defense > 600){
+    if(defense < 100 || defense > 10000){
       defense = 100
     }
-    if(speed < 100 || speed > 600) {
+    if(speed < 100 || speed > 10000) {
       speed = 100
     }
    }
 
 $: validateATT = function validateInput2() {
-    if(attack < 100 || attack > 400) {
+    if(attack < 100 || attack > 10000) {
       attack = 100
     }
    }
