@@ -1631,40 +1631,52 @@ function addGooey() {
 
   let add
  
-  if (gooeyNumber <= 999) {
+  // if (gooeyNumber <= 999) {
 
-  add = 
-    {
-    Number : gooeyNumber,
-    Nexus : nexus, 
-    Gen : generation,
-    Tumble_Bonus : tumbleBonus,
-    Health : selectedGooey[0].HP, 
-    Attack : selectedGooey[0].ATK,
-    Defense : selectedGooey[0].DEF,
-    Speed : selectedGooey[0].SPD,
-    Strength : selectedGooey[0].Total
-    }
+  // add = 
+  //   {
+  //   Number : gooeyNumber,
+  //   Nexus : nexus, 
+  //   Gen : generation,
+  //   Tumble_Bonus : tumbleBonus,
+  //   Health : selectedGooey[0].HP, 
+  //   Attack : selectedGooey[0].ATK,
+  //   Defense : selectedGooey[0].DEF,
+  //   Speed : selectedGooey[0].SPD,
+  //   Strength : selectedGooey[0].Total
+  //   }
     
-  }
+  // }
 
-  if (gooeyNumber > 999) {
+  // if (gooeyNumber > 999) {
 
-  add = 
-    {
-    Number : gooeyNumber,
-    Nexus : nexus, 
-    Gen : 1,
-    Tumble_Bonus : tumbleBonus,
-    Health : selectedGooey[0].HP, 
-    Attack : selectedGooey[0].ATK,
-    Defense : selectedGooey[0].DEF,
-    Speed : selectedGooey[0].SPD,
-    Strength : selectedGooey[0].Total
-    }
+  // add = 
+  //   {
+  //   Number : gooeyNumber,
+  //   Nexus : nexus, 
+  //   Gen : 1,
+  //   Tumble_Bonus : tumbleBonus,
+  //   Health : selectedGooey[0].HP, 
+  //   Attack : selectedGooey[0].ATK,
+  //   Defense : selectedGooey[0].DEF,
+  //   Speed : selectedGooey[0].SPD,
+  //   Strength : selectedGooey[0].Total
+  //   }
 
-  }
+  // }
   
+    add = 
+      {
+      Number : gooeyNumber,
+      Nexus : nexus, 
+      Gen : generation,
+      Tumble_Bonus : tumbleBonus,
+      Health : health, 
+      Attack : attack,
+      Defense : defense,
+      Speed : speed,
+      Strength : health + attack + defense + speed
+      }
 
   let checkDoubles = addedGooeys.filter(gooey => gooey.Number == gooeyNumber)
   console.log(checkDoubles)
@@ -2631,15 +2643,15 @@ let x = setInterval(function() {
                       <label for="Nexus"><br> Nexus: </label>
                       <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateNEX}" name="nexus" bind:value="{nexus}">
                     </div>
-                    <!-- <div>
+                    <div>
                       <label for="Gen"> <br> Generation: </label>
                       <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateGEN}" name="tumble-stat-bonus" bind:value="{generation}">
-                    </div> -->
+                    </div>
                     <div>
                       <label for="TumbleBonus">Tumble <br> Stat Bonus: </label>
                       <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateTSB}" name="tumble-stat-bonus" bind:value="{tumbleBonus}">
                     </div>
-                    <!-- <div>
+                    <div>
                       <label for="Health">Health: </label>
                       <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateHDS}" name="health" bind:value="{health}">
                     </div>
@@ -2654,7 +2666,7 @@ let x = setInterval(function() {
                     <div>
                       <label for="Speed">Speed: </label>
                       <input type="number" on:focus="{event => selectContent(event)}" on:blur="{validateHDS}" name="speed" bind:value="{speed}">
-                    </div> -->
+                    </div>
                   </div>
 
                 </div>
