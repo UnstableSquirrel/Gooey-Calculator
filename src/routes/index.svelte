@@ -1530,13 +1530,13 @@ $: onMount(async function() {
       let gooPrice = 0
 
       function calcTumbleCost() {
-        if (gooeyA + gooeyB > 7) {
+        if (gooeyA + gooeyB <= 8) {
           // @ts-ignore
-          gooPrice = ((300000 + (250000 * gooeyA) + (250000 * gooeyB)) * 3).toLocaleString('en-US')
+          gooPrice = (300000).toLocaleString('en-US')
         }
-        if (gooeyA + gooeyB <= 7) {
+        if (gooeyA + gooeyB > 8) { 
           // @ts-ignore
-          gooPrice = (300000 + (250000 * gooeyA) + (250000 * gooeyB)).toLocaleString('en-US')
+          gooPrice = (600000).toLocaleString('en-US')
         }
       }
 
