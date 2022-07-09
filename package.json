@@ -22,7 +22,8 @@
   "type": "module",
   "dependencies": {
     "@neodrag/svelte": "^1.1.4",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
+    "query-string": "^7.1.1",
     "svelte-drag": "^3.1.0",
     "svelte-local-storage-store": "^0.2.6",
     "svelte-web3": "^3.4.1",

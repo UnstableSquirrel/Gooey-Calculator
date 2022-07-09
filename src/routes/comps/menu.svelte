@@ -36,7 +36,7 @@
 
    <div class="slide-container" class:open >
       <div>
-         <a href="/gooeys">All Gooeys</a>
+         <a href="/gooity-sniper">Gooity Sniper</a>
          <a href="../#My-Gooeys">My Gooeys</a>
          <a href="../#Best-Deals">Best Deals</a>
          <a href="../#Questing-Rewards">Questing Rewards</a>
