@@ -35,7 +35,7 @@ const scrollHandle = () => {
 
 <svelte:window on:scroll={scrollHandle} bind:scrollY={y}/>
 
-<div class="back_to_start" on:click={goStart} class:hidden>🡹</div>
+<div class="back_to_start" on:click={goStart} class:hidden>Back Up</div>
 
 <style>
 
@@ -48,9 +48,10 @@ const scrollHandle = () => {
         user-select: none;
         bottom: 20px;
         color: yellow;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         background-color: rgb(180, 112, 236);
         padding: 5px;
-        font-weight: 700;
+        font-weight: 500;
         border-radius: 5px;
         border: 2px solid white;
         cursor: pointer;
