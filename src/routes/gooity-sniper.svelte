@@ -10,6 +10,7 @@
     import qs1 from 'query-string';
     import { gooeyData } from './data.js'
     // import Gooeys from "./gooeys.svelte";
+    import ScrollToTop from './comps/scroll.svelte'
 
     
     
@@ -1252,6 +1253,12 @@
             </div>
         </div>
 
+        <div class="search-traits-container" >
+            <div>
+
+            </div>
+        </div>
+
 
           {#if shown}
             <div class="modal-container">
@@ -1310,14 +1317,16 @@
                                     <p>Occurences: <br><span>{Gooeys.filter(g => g.GooeyId === currentId)[0].AccessoryTotal} <br>({Gooeys.filter(g => g.GooeyId === currentId)[0].AccessoryPercentage}%)</span></p>
                                     <p>Foreground: <br><span>{Gooeys.filter(g => g.GooeyId === currentId)[0].Foreground}</span></p>
                                     <p>Occurences: <br><span>{Gooeys.filter(g => g.GooeyId === currentId)[0].ForegroundTotal} <br>({Gooeys.filter(g => g.GooeyId === currentId)[0].ForegroundPercentage}%)</span></p>
+                                    <p>Parent 1: <br><span>{(Gooeys.filter(g => g.GooeyId === currentId)[0].Parent1) == -1 ? "none" : "#" + (Gooeys.filter(g => g.GooeyId === currentId)[0].Parent1)}</span></p>
+                                    <p>Parent 2: <br><span>{(Gooeys.filter(g => g.GooeyId === currentId)[0].Parent2) == -1 ? "none" : "#" + (Gooeys.filter(g => g.GooeyId === currentId)[0].Parent2)}</span></p>
                                 </div>
                             </div>
-                            <div class="parent-container">
-                                <!-- <p>Parent 1: <br><span>{parent1 == -1 ? "none" : "#" + parent1}</span></p>
-                                <p>Parent 2: <br><span>{parent2 == -1 ? "none" : "#" + parent2}</span></p> -->
+                            <!-- <div class="parent-container">
+                                <p>Parent 1: <br><span>{parent1 == -1 ? "none" : "#" + parent1}</span></p>
+                                <p>Parent 2: <br><span>{parent2 == -1 ? "none" : "#" + parent2}</span></p>
                                 <p>Parent 1: <br><span>{(Gooeys.filter(g => g.GooeyId === currentId)[0].Parent1) == -1 ? "none" : "#" + (Gooeys.filter(g => g.GooeyId === currentId)[0].Parent1)}</span></p>
                                 <p>Parent 2: <br><span>{(Gooeys.filter(g => g.GooeyId === currentId)[0].Parent2) == -1 ? "none" : "#" + (Gooeys.filter(g => g.GooeyId === currentId)[0].Parent2)}</span></p>
-                            </div>
+                            </div> -->
                         </div>    
                     </div>
 
@@ -1394,6 +1403,8 @@
             </div>
             {/each}
         </div>
+
+        <ScrollToTop />
 
         <div class="load-more"> 
             <button on:click="{loadMore}">Load More...</button>
@@ -1707,16 +1718,75 @@
         .info-container {
             grid-template-columns: auto auto auto;
         }  
+
+        .modal {
+            height: 85vh !important;
+        }
     }
 
-    @media only screen and (min-width: 481px) and (max-width: 699px) {
+    @media only screen and (min-width: 450px) and (max-width: 699px) {
+
+        .modal {
+            margin: 10% 15% 15% 15% !important;
+            width: 90vw !important;
+            height: 85vh;
+        }
         
         .info-container {
-            grid-template-columns: auto auto;
+            grid-template-columns: auto auto !important;
         }  
     }
 
-    @media only screen and (min-width: 281px) and (max-width: 480px) {
+    @media only screen and (min-width: 500px) and (max-width: 590px) { 
+
+        .modal {
+            height: 85vh !important;
+        }
+    }
+
+    @media only screen and (min-width: 456) and (max-width: 499px) { 
+
+        .modal {
+            height: 55vh !important;
+        }
+    }
+
+    @media only screen and (min-width: 350px) and (max-width: 455px) {
+
+        .modal {
+            margin: 25% 15% 15% 15% !important;
+            width: 90vw !important;
+            height: 75vh !important;
+        }
+        
+        .info-container {
+            grid-template-columns: auto !important;
+        }  
+
+        .button-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 15px 0px;
+        }
+
+        .button-container2 {
+            display: grid;
+            grid-template-columns: auto;
+            grid-gap: 15px 10px;
+        }
+
+        .trait-container > div > p {
+            border: none !important;
+        }
+    }
+
+    @media only screen and (min-width: 281px) and (max-width: 349px) {
+
+        .modal {
+            margin: 25% 10% 15% 10% !important;
+            width: auto !important;
+            height: 65vh !important;
+        }
 
         .button-container {
             display: grid;
@@ -1734,13 +1804,7 @@
             font-weight: 700;
         }
         
-        .info-container {
-            grid-template-columns: auto auto;
-            grid-gap: 5px 0px !important;
-            padding: 0px !important;
-        } 
-        
-        .Gooey {
+        /* .Gooey {
             margin: 0px 2.5px !important;
         }
 
@@ -1766,7 +1830,7 @@
             font-size: 12.5px !important;
             font-weight: 700 !important;
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
-        }
+        } */
 
         .stats-container > p {
             font-size: 12px !important;
@@ -1784,11 +1848,6 @@
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
         }
 
-        .parent-container > p {
-            font-size: 12px !important;
-            font-weight: 500 !important;
-        }
-
         .trait-container > div > p {
             font-size: 12px !important;
             font-weight: 500 !important;
@@ -1803,9 +1862,24 @@
             font-size: 15px !important;
             font-weight: 700 !important;
         }
+
+        .trait-container > div > p {
+            border: none !important;
+        }
+
+        .info-container {
+            grid-template-columns: auto !important;
+        } 
     }
 
+
     @media only screen and (min-width: 81px) and (max-width: 280px) {
+
+        .modal {
+            margin: 35% 10% 15% 10% !important;
+            width: auto !important;
+            height: 65vh !important;
+        }
 
         .info-container {
             grid-template-columns: auto;
@@ -1843,14 +1917,26 @@
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
         }
 
-        .parent-container > p {
-            font-size: 12px !important;
-            font-weight: 500 !important;
+        .trait-container > div:nth-child(2) > p:nth-child(7) {
+            border-bottom: none !important;
+        }
+
+        .trait-container > div:nth-child(2) > p:nth-child(8) {
+            border-bottom: none !important;
+        }
+
+        .trait-container > div:nth-child(1) > p:nth-child(7) {
+            border-bottom: none !important;
+        }
+
+        .trait-container > div:nth-child(1) > p:nth-child(8) {
+            border-bottom: none !important;
         }
 
         .trait-container > div > p {
-            font-size: 12px !important;
+            font-size: 9px !important;
             font-weight: 500 !important;
+            border: none !important;
         }
 
         .rarity-container > div > p {
@@ -1862,6 +1948,7 @@
             font-size: 15px !important;
             font-weight: 700 !important;
         }
+        
     }
 
     .Gooey {
@@ -2010,7 +2097,7 @@
         padding: 0px;
      } 
 
-    .parent-container {
+    /* .parent-container {
         display: grid;
         grid-template-columns: 155px 50px;
         justify-items: center;
@@ -2023,14 +2110,14 @@
         font-size: 14px;
         margin: 0px;
         text-align: center;
-    }
+    } */
 
     .trait-container {
         display: grid; 
         grid-template-columns: auto auto; 
         justify-items: center; 
         /* border-top: 1px solid black; */
-        padding: 10px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
     }
 
     .trait-container > div {
@@ -2049,21 +2136,44 @@
         text-align: center;
         text-shadow: none;
         border-bottom: 1px solid white;
+        /* border-right: 1px solid white; */
     }
 
-    .trait-container > div > p:nth-child(7) {
+    /* .trait-container > div:nth-child(1) > p:nth-child(1) {
+        border-right: none;
+    }
+
+    .trait-container > div:nth-child(1) > p:nth-child(3) {
+        border-right: none;
+    }
+
+    .trait-container > div:nth-child(1) > p:nth-child(5) {
+        border-right: none;
+    }
+
+    .trait-container > div:nth-child(1) > p:nth-child(7) {
+        border-right: none;
+    } */
+
+    /* .trait-container > div:nth-child(2) > p {
+        border-left: none;
+        border-right: none;
+        padding: 5px 5px -5px 0px !important;
+    } */
+
+    .trait-container > div:nth-child(2) > p:nth-child(7) {
         border-bottom: none;
     }
 
-    .trait-container > div > p:nth-child(8) {
+    .trait-container > div:nth-child(2) > p:nth-child(8) {
         border-bottom: none;
     }
 
-    .trait-container > div:nth-child(2) > p:nth-child(5) {
+    .trait-container > div:nth-child(1) > p:nth-child(7) {
         border-bottom: none;
     }
 
-    .trait-container > div:nth-child(2) > p:nth-child(6) {
+    .trait-container > div:nth-child(1) > p:nth-child(8) {
         border-bottom: none;
     }
 
@@ -2147,7 +2257,7 @@
         background-color: #000000;
         margin: 5% 15% 15% 15%;
         width: 90vw;
-        height: 600px;
+        /* height: 600px; */
         border-radius: 25px;
         box-shadow: 1px 1px 15px black;
     }
