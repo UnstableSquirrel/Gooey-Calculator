@@ -25,7 +25,7 @@
     let y
 
 const scrollHandle = () => {
-    if (y > 1500) {
+    if (y > 2000) {
         hidden = false;
     } else {
         hidden = true;

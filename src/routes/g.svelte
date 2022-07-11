@@ -10,7 +10,7 @@ import Footer from "./comps/footer.svelte"
 import { onMount } from "svelte"
 import axios from "axios"
 import qs1 from 'query-string';
-import { gooeyData } from './gdata.js'
+import { gooeyData } from './data.js'
 
 // import { connected, web3, selectedAccount, chainId, chainData } from 'svelte-web3'
 // import { defaultEvmStores } from 'svelte-web3'
@@ -134,7 +134,7 @@ let list = []
 
 // 1522
     const getData = async() => {
-      for (let i = 0; i < 0; i++) {
+      for (let i = 1522; i < 1540; i++) {
       counter = '["'+i+'"]'
 
       const endpoint="https://gooeys.dogira.finance/"+i+""

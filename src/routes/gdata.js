@@ -1,5 +1,588 @@
 
 
+   // let BackgroundTraits = [
+
+    //     {"Sunset Forest 1" : Gooeys.filter(goo => goo.Background === "Sunset Forest").length},
+    //     {"Sunset Forest 2" : (Gooeys.filter(goo => goo.Background === "Sunset Forest").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green Root 1" : Gooeys.filter(goo => goo.Background === "Green Root").length},
+    //     {"Green Root 2" : (Gooeys.filter(goo => goo.Background === "Green Root").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ruby Root 1" : Gooeys.filter(goo => goo.Background === "Ruby Root").length},
+    //     {"Ruby Root 2" : (Gooeys.filter(goo => goo.Background === "Ruby Root").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Starry Night 1" : Gooeys.filter(goo => goo.Background === "Starry Night").length},
+    //     {"Starry Night 2" : (Gooeys.filter(goo => goo.Background === "Starry Night").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dawn Forest 1" : Gooeys.filter(goo => goo.Background === "Dawn Forest").length},
+    //     {"Dawn Forest 2" : (Gooeys.filter(goo => goo.Background === "Dawn Forest").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Radiant Forest 1" : Gooeys.filter(goo => goo.Background === "Radiant Forest").length},
+    //     {"Radiant Forest 2" : (Gooeys.filter(goo => goo.Background === "Radiant Forest").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet Root 1" : Gooeys.filter(goo => goo.Background === "Violet Root").length},
+    //     {"Violet Root 2" : (Gooeys.filter(goo => goo.Background === "Violet Root").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Full Moon 1" : Gooeys.filter(goo => goo.Background === "Full Moon").length},
+    //     {"Full Moon 2" : (Gooeys.filter(goo => goo.Background === "Full Moon").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Emerald Root 1" : Gooeys.filter(goo => goo.Background === "Emerald Root").length},
+    //     {"Emerald Root 2" : (Gooeys.filter(goo => goo.Background === "Emerald Root").length / Gooeys.length * 100).toFixed(2)},
+
+    // ]
+
+    // let BodyTraits = [
+    //     {"2049 1" : Gooeys.filter(goo => goo.Body === "2049").length},
+    //     {"2049 2" : (Gooeys.filter(goo => goo.Body === "2049").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"90s Wave 1" : Gooeys.filter(goo => goo.Body === "90s Wave").length},
+    //     {"90s Wave 2" : (Gooeys.filter(goo => goo.Body === "90s Wave").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ruby Root 1" : Gooeys.filter(goo => goo.Body === "Ruby Root").length},
+    //     {"Ruby Root 2" : (Gooeys.filter(goo => goo.Body === "Ruby Root").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Amethyst Rune 1" : Gooeys.filter(goo => goo.Body === "Amethyst Rune").length},
+    //     {"Amethyst Rune 2" : (Gooeys.filter(goo => goo.Body === "Amethyst Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue 1" : Gooeys.filter(goo => goo.Body === "Blue").length},
+    //     {"Blue 2" : (Gooeys.filter(goo => goo.Body === "Blue").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Patterned 1" : Gooeys.filter(goo => goo.Body === "Blue Patterned").length},
+    //     {"Blue Patterned 2" : (Gooeys.filter(goo => goo.Body === "Blue Patterned").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Cosmos 1" : Gooeys.filter(goo => goo.Body === "Cosmos").length},
+    //     {"Cosmos 2" : (Gooeys.filter(goo => goo.Body === "Cosmos").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dark Marble 1" : Gooeys.filter(goo => goo.Body === "Dark Marble").length},
+    //     {"Dark Marble 2" : (Gooeys.filter(goo => goo.Body === "Dark Marble").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dark Pearl 1" : Gooeys.filter(goo => goo.Body === "Dark Pearl").length},
+    //     {"Dark Pearl 2" : (Gooeys.filter(goo => goo.Body === "Dark Pearl").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dark Pink 1" : Gooeys.filter(goo => goo.Body === "Dark Pink").length},
+    //     {"Dark Pink 2" : (Gooeys.filter(goo => goo.Body === "Dark Pink").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dreamspace 1" : Gooeys.filter(goo => goo.Body === "Dreamspace").length},
+    //     {"Dreamspace 2" : (Gooeys.filter(goo => goo.Body === "Dreamspace").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Emerald Rune 1" : Gooeys.filter(goo => goo.Body === "Emerald Rune").length},
+    //     {"Emerald Rune 2" : (Gooeys.filter(goo => goo.Body === "Emerald Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ghostly 1" : Gooeys.filter(goo => goo.Body === "Ghostly").length},
+    //     {"Ghostly 2" : (Gooeys.filter(goo => goo.Body === "Ghostly").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Golden 1" : Gooeys.filter(goo => goo.Body === "Golden").length},
+    //     {"Golden 2" : (Gooeys.filter(goo => goo.Body === "Golden").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Heart Stone 1" : Gooeys.filter(goo => goo.Body === "Heart Stone").length},
+    //     {"Heart Stone 2" : (Gooeys.filter(goo => goo.Body === "Heart Stone").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Honey 1" : Gooeys.filter(goo => goo.Body === "Honey").length},
+    //     {"Honey 2" : (Gooeys.filter(goo => goo.Body === "Honey").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Lavly Mascot 1" : Gooeys.filter(goo => goo.Body === "Lavly Mascot").length},
+    //     {"Lavly Mascot 2" : (Gooeys.filter(goo => goo.Body === "Lavly Mascot").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Lavly Violet 1" : Gooeys.filter(goo => goo.Body === "Lavly Violet").length},
+    //     {"Lavly Violet 2" : (Gooeys.filter(goo => goo.Body === "Lavly Violet").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Lavly Wave 1" : Gooeys.filter(goo => goo.Body === "Lavly Wave").length},
+    //     {"Lavly Wave 2" : (Gooeys.filter(goo => goo.Body === "Lavly Wave").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Light Green 1" : Gooeys.filter(goo => goo.Body === "Light Green").length},
+    //     {"Light Green 2" : (Gooeys.filter(goo => goo.Body === "Light Green").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Magma Obsidian 1" : Gooeys.filter(goo => goo.Body === "Magma Obsidian").length},
+    //     {"Magma Obsidian 2" : (Gooeys.filter(goo => goo.Body === "Magma Obsidian").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Mechagoo 1" : Gooeys.filter(goo => goo.Body === "Mechagoo").length},
+    //     {"Mechagoo 2" : (Gooeys.filter(goo => goo.Body === "Mechagoo").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Moon Stone 1" : Gooeys.filter(goo => goo.Body === "Moon Stone").length},
+    //     {"Moon Stone 2" : (Gooeys.filter(goo => goo.Body === "Moon Stone").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Neon Obsidian 1" : Gooeys.filter(goo => goo.Body === "Neon Obsidian").length},
+    //     {"Neon Obsidian 2" : (Gooeys.filter(goo => goo.Body === "Neon Obsidian").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ocean 1" : Gooeys.filter(goo => goo.Body === "Ocean").length},
+    //     {"Ocean 2" : (Gooeys.filter(goo => goo.Body === "Ocean").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Outrun 1" : Gooeys.filter(goo => goo.Body === "Outrun").length},
+    //     {"Outrun 2" : (Gooeys.filter(goo => goo.Body === "Outrun").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Radiant Obsidian 1" : Gooeys.filter(goo => goo.Body === "Radiant Obsidian").length},
+    //     {"Radiant Obsidian 2" : (Gooeys.filter(goo => goo.Body === "Radiant Obsidian").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Red Patterned 1" : Gooeys.filter(goo => goo.Body === "Red Patterned").length},
+    //     {"Red Patterned 2" : (Gooeys.filter(goo => goo.Body === "Red Patterned").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ruby Rune 1" : Gooeys.filter(goo => goo.Body === "Ruby Rune").length},
+    //     {"Ruby Rune 2" : (Gooeys.filter(goo => goo.Body === "Ruby Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Sapphire Rune 1" : Gooeys.filter(goo => goo.Body === "Sapphire Rune").length},
+    //     {"Sapphire Rune 2" : (Gooeys.filter(goo => goo.Body === "Sapphire Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Shaman 1" : Gooeys.filter(goo => goo.Body === "Shaman").length},
+    //     {"Shaman 2" : (Gooeys.filter(goo => goo.Body === "Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spellfire Obsidian 1" : Gooeys.filter(goo => goo.Body === "Spellfire Obsidian").length},
+    //     {"Spellfire Obsidian 2" : (Gooeys.filter(goo => goo.Body === "Spellfire Obsidian").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spike Mascot 1" : Gooeys.filter(goo => goo.Body === "Spike Mascot").length},
+    //     {"Spike Mascot 2" : (Gooeys.filter(goo => goo.Body === "Spike Mascot").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spiral Candy 1" : Gooeys.filter(goo => goo.Body === "Spiral Candy").length},
+    //     {"Spiral Candy 2" : (Gooeys.filter(goo => goo.Body === "Spiral Candy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spiral Lapis 1" : Gooeys.filter(goo => goo.Body === "Spiral Lapis").length},
+    //     {"Spiral Lapis 2" : (Gooeys.filter(goo => goo.Body === "Spiral Lapis").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spiral Violet 1" : Gooeys.filter(goo => goo.Body === "Spiral Violet").length},
+    //     {"Spiral Violet 2" : (Gooeys.filter(goo => goo.Body === "Spiral Violet").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spiral Wave 1" : Gooeys.filter(goo => goo.Body === "Spiral Wave").length},
+    //     {"Spiral Wave 2" : (Gooeys.filter(goo => goo.Body === "Spiral Wave").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Starry 1" : Gooeys.filter(goo => goo.Body === "Starry").length},
+    //     {"Starry 2" : (Gooeys.filter(goo => goo.Body === "Starry").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Tea Stone 1" : Gooeys.filter(goo => goo.Body === "Tea Stone").length},
+    //     {"Tea Stone 2" : (Gooeys.filter(goo => goo.Body === "Tea Stone").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet Stone 1" : Gooeys.filter(goo => goo.Body === "Violet Stone").length},
+    //     {"Violet Stone 2" : (Gooeys.filter(goo => goo.Body === "Violet Stone").length / Gooeys.length * 100).toFixed(2)},
+
+    // ]
+
+    // let EarsTraits = [
+
+    //     {"Amethyst Fairy 1" : Gooeys.filter(goo => goo.Ears === "Amethyst Fairy").length},
+    //     {"Amethyst Fairy 2" : (Gooeys.filter(goo => goo.Ears === "Amethyst Fairy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Amethyst Owlear 1" : Gooeys.filter(goo => goo.Ears === "Amethyst Owlear").length},
+    //     {"Amethyst Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Amethyst Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Amethyst Runegram 1" : Gooeys.filter(goo => goo.Ears === "Amethyst Runegram").length},
+    //     {"Amethyst Runegram 2" : (Gooeys.filter(goo => goo.Ears === "Amethyst Runegram").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Bunnyear 1" : Gooeys.filter(goo => goo.Ears === "Blue Bunnyear").length},
+    //     {"Blue Bunnyear 2" : (Gooeys.filter(goo => goo.Ears === "Blue Bunnyear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Fishy 1" : Gooeys.filter(goo => goo.Ears === "Blue Fishy").length},
+    //     {"Blue Fishy 2" : (Gooeys.filter(goo => goo.Ears === "Blue Fishy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Mecha 1" : Gooeys.filter(goo => goo.Ears === "Blue Mecha").length},
+    //     {"Blue Mecha 2" : (Gooeys.filter(goo => goo.Ears === "Blue Mecha").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Owlear 1" : Gooeys.filter(goo => goo.Ears === "Blue Owlear").length},
+    //     {"Blue Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Blue Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blurple Bunnyear 1" : Gooeys.filter(goo => goo.Ears === "Blurple Bunnyear").length},
+    //     {"Blurple Bunnyear 2" : (Gooeys.filter(goo => goo.Ears === "Blurple Bunnyear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Cobalt Owlear 1" : Gooeys.filter(goo => goo.Ears === "Cobalt Owlear").length},
+    //     {"Cobalt Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Cobalt Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Cosmic Runetree 1" : Gooeys.filter(goo => goo.Ears === "Cosmic Runetree").length},
+    //     {"Cosmic Runetree 2" : (Gooeys.filter(goo => goo.Ears === "Cosmic Runetree").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dreamscape Fishy 1" : Gooeys.filter(goo => goo.Ears === "Dreamscape Fishy").length},
+    //     {"Dreamscape Fishy 2" : (Gooeys.filter(goo => goo.Ears === "Dreamscape Fishy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Emerald Fairy 1" : Gooeys.filter(goo => goo.Ears === "Emerald Fairy").length},
+    //     {"Emerald Fairy 2" : (Gooeys.filter(goo => goo.Ears === "Emerald Fairy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Emerald Fishy 1" : Gooeys.filter(goo => goo.Ears === "Emerald Fishy").length},
+    //     {"Emerald Fishy 2" : (Gooeys.filter(goo => goo.Ears === "Emerald Fishy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Emerald Owlear 1" : Gooeys.filter(goo => goo.Ears === "Emerald Owlear").length},
+    //     {"Emerald Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Emerald Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Emerald Runegram 1" : Gooeys.filter(goo => goo.Ears === "Emerald Runegram").length},
+    //     {"Emerald Runegram 2" : (Gooeys.filter(goo => goo.Ears === "Emerald Runegram").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Garnet Fairy 1" : Gooeys.filter(goo => goo.Ears === "Garnet Fairy").length},
+    //     {"Garnet Fairy 2" : (Gooeys.filter(goo => goo.Ears === "Garnet Fairy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Garnet Owlear 1" : Gooeys.filter(goo => goo.Ears === "Garnet Owlear").length},
+    //     {"Garnet Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Garnet Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Golden Owlear 1" : Gooeys.filter(goo => goo.Ears === "Golden Owlear").length},
+    //     {"Golden Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Golden Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green Bunnyear 1" : Gooeys.filter(goo => goo.Ears === "Green Bunnyear").length},
+    //     {"Green Bunnyear 2" : (Gooeys.filter(goo => goo.Ears === "Green Bunnyear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green Fishy 1" : Gooeys.filter(goo => goo.Ears === "Green Fishy").length},
+    //     {"Green Fishy 2" : (Gooeys.filter(goo => goo.Ears === "Green Fishy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green Mecha 1" : Gooeys.filter(goo => goo.Ears === "Green Mecha").length},
+    //     {"Green Mecha 2" : (Gooeys.filter(goo => goo.Ears === "Green Mecha").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Grey Mecha 1" : Gooeys.filter(goo => goo.Ears === "Grey Mecha").length},
+    //     {"Grey Mecha 2" : (Gooeys.filter(goo => goo.Ears === "Grey Mecha").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Horned Fawn 1" : Gooeys.filter(goo => goo.Ears === "Horned Fawn").length},
+    //     {"Horned Fawn 2" : (Gooeys.filter(goo => goo.Ears === "Horned Fawn").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Lime Runetree 1" : Gooeys.filter(goo => goo.Ears === "Lime Runetree").length},
+    //     {"Lime Runetree 2" : (Gooeys.filter(goo => goo.Ears === "Lime Runetree").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Magma Obsidian 1" : Gooeys.filter(goo => goo.Ears === "Magma Obsidian").length},
+    //     {"Magma Obsidian 2" : (Gooeys.filter(goo => goo.Ears === "Magma Obsidian").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Neon Obsidian 1" : Gooeys.filter(goo => goo.Ears === "Neon Obsidian").length},
+    //     {"Neon Obsidian 2" : (Gooeys.filter(goo => goo.Ears === "Neon Obsidian").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Orange Mecha 1" : Gooeys.filter(goo => goo.Ears === "Orange Mecha").length},
+    //     {"Orange Mecha 2" : (Gooeys.filter(goo => goo.Ears === "Orange Mecha").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pink Bunnyear 1" : Gooeys.filter(goo => goo.Ears === "Pink Bunnyear").length},
+    //     {"Pink Bunnyear 2" : (Gooeys.filter(goo => goo.Ears === "Pink Bunnyear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pink Mecha 1" : Gooeys.filter(goo => goo.Ears === "Pink Mecha").length},
+    //     {"Pink Mecha 2" : (Gooeys.filter(goo => goo.Ears === "Pink Mecha").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Purple Owlear 1" : Gooeys.filter(goo => goo.Ears === "Purple Owlear").length},
+    //     {"Purple Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Purple Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Radiant Bunnyear 1" : Gooeys.filter(goo => goo.Ears === "Radiant Bunnyear").length},
+    //     {"Radiant Bunnyear 2" : (Gooeys.filter(goo => goo.Ears === "Radiant Bunnyear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Radiant Obsidian 1" : Gooeys.filter(goo => goo.Ears === "Radiant Obsidian").length},
+    //     {"Radiant Obsidian 2" : (Gooeys.filter(goo => goo.Ears === "Radiant Obsidian").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Radiant Owlear 1" : Gooeys.filter(goo => goo.Ears === "Radiant Owlear").length},
+    //     {"Radiant Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Radiant Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ruby Runegram 1" : Gooeys.filter(goo => goo.Ears === "Ruby Runegram").length},
+    //     {"Ruby Runegram 2" : (Gooeys.filter(goo => goo.Ears === "Ruby Runegram").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Sapphire Bunnyear 1" : Gooeys.filter(goo => goo.Ears === "Sapphire Bunnyear").length},
+    //     {"Sapphire Bunnyear 2" : (Gooeys.filter(goo => goo.Ears === "Sapphire Bunnyear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Sapphire Fairy 1" : Gooeys.filter(goo => goo.Ears === "Sapphire Fairy").length},
+    //     {"Sapphire Fairy 2" : (Gooeys.filter(goo => goo.Ears === "Sapphire Fairy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Sapphire Runegram 1" : Gooeys.filter(goo => goo.Ears === "Sapphire Runegram").length},
+    //     {"Sapphire Runegram 2" : (Gooeys.filter(goo => goo.Ears === "Sapphire Runegram").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Slate Owlear 1" : Gooeys.filter(goo => goo.Ears === "Slate Owlear").length},
+    //     {"Slate Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Slate Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spellfire Fishy 1" : Gooeys.filter(goo => goo.Ears === "Spellfire Fishy").length},
+    //     {"Spellfire Fishy 2" : (Gooeys.filter(goo => goo.Ears === "Spellfire Fishy").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spellfire Obsidian 1" : Gooeys.filter(goo => goo.Ears === "Spellfire Obsidian").length},
+    //     {"Spellfire Obsidian 2" : (Gooeys.filter(goo => goo.Ears === "Spellfire Obsidian").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Spellfire Runetree 1" : Gooeys.filter(goo => goo.Ears === "Spellfire Runetree").length},
+    //     {"Spellfire Runetree 2" : (Gooeys.filter(goo => goo.Ears === "Spellfire Runetree").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet Bunnyear 1" : Gooeys.filter(goo => goo.Ears === "Violet Bunnyear").length},
+    //     {"Violet Bunnyear 2" : (Gooeys.filter(goo => goo.Ears === "Violet Bunnyear").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet Owlear 1" : Gooeys.filter(goo => goo.Ears === "Violet Owlear").length},
+    //     {"Violet Owlear 2" : (Gooeys.filter(goo => goo.Ears === "Violet Owlear").length / Gooeys.length * 100).toFixed(2)},
+
+    // ]
+
+    // let EyesTraits = [
+
+    //     {"Blue 1" : Gooeys.filter(goo => goo.Eyes === "Blue").length},
+    //     {"Blue 2" : (Gooeys.filter(goo => goo.Eyes === "Blue").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue (Evil) 1" : Gooeys.filter(goo => goo.Eyes === "Blue (Evil)").length},
+    //     {"Blue (Evil) 2" : (Gooeys.filter(goo => goo.Eyes === "Blue (Evil)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue (Smiling) 1" : Gooeys.filter(goo => goo.Eyes === "Blue (Smiling)").length},
+    //     {"Blue (Smiling) 2" : (Gooeys.filter(goo => goo.Eyes === "Blue (Smiling)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Bubblegum 1" : Gooeys.filter(goo => goo.Eyes === "Bubblegum").length},
+    //     {"Bubblegum 2" : (Gooeys.filter(goo => goo.Eyes === "Bubblegum").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Cold Green 1" : Gooeys.filter(goo => goo.Eyes === "Cold Green").length},
+    //     {"Cold Green 2" : (Gooeys.filter(goo => goo.Eyes === "Cold Green").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Coral 1" : Gooeys.filter(goo => goo.Eyes === "Coral").length},
+    //     {"Coral 2" : (Gooeys.filter(goo => goo.Eyes === "Coral").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dark Blue 1" : Gooeys.filter(goo => goo.Eyes === "Dark Blue").length},
+    //     {"Dark Blue 2" : (Gooeys.filter(goo => goo.Eyes === "Dark Blue").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Emerald 1" : Gooeys.filter(goo => goo.Eyes === "Emerald").length},
+    //     {"Emerald 2" : (Gooeys.filter(goo => goo.Eyes === "Emerald").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Fresh 1" : Gooeys.filter(goo => goo.Eyes === "Fresh").length},
+    //     {"Fresh 2" : (Gooeys.filter(goo => goo.Eyes === "Fresh").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ghost 1" : Gooeys.filter(goo => goo.Eyes === "Ghost").length},
+    //     {"Ghost 2" : (Gooeys.filter(goo => goo.Eyes === "Ghost").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Gold 1" : Gooeys.filter(goo => goo.Eyes === "Gold").length},
+    //     {"Gold 2" : (Gooeys.filter(goo => goo.Eyes === "Gold").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green 1" : Gooeys.filter(goo => goo.Eyes === "Green").length},
+    //     {"Green 2" : (Gooeys.filter(goo => goo.Eyes === "Green").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green (Smiling) 1" : Gooeys.filter(goo => goo.Eyes === "Green (Smiling)").length},
+    //     {"Green (Smiling) 2" : (Gooeys.filter(goo => goo.Eyes === "Green (Smiling)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Grey 1" : Gooeys.filter(goo => goo.Eyes === "Grey").length},
+    //     {"Grey 2" : (Gooeys.filter(goo => goo.Eyes === "Grey").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Grey (Evil) 1" : Gooeys.filter(goo => goo.Eyes === "Grey (Evil)").length},
+    //     {"Grey (Evil) 2" : (Gooeys.filter(goo => goo.Eyes === "Grey (Evil)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Grey (Grumpy) 1" : Gooeys.filter(goo => goo.Eyes === "Grey (Grumpy)").length},
+    //     {"Grey (Grumpy) 2" : (Gooeys.filter(goo => goo.Eyes === "Grey (Grumpy)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Grey (Smiling) 1" : Gooeys.filter(goo => goo.Eyes === "Grey (Smiling)").length},
+    //     {"Grey (Smiling) 2" : (Gooeys.filter(goo => goo.Eyes === "Grey (Smiling)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Intense Blue 1" : Gooeys.filter(goo => goo.Eyes === "Intense Blue").length},
+    //     {"Intense Blue 2" : (Gooeys.filter(goo => goo.Eyes === "Intense Blue").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Lemon 1" : Gooeys.filter(goo => goo.Eyes === "Lemon").length},
+    //     {"Lemon 2" : (Gooeys.filter(goo => goo.Eyes === "Lemon").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Mint 1" : Gooeys.filter(goo => goo.Eyes === "Mint").length},
+    //     {"Mint 2" : (Gooeys.filter(goo => goo.Eyes === "Mint").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Orange (Evil) 1" : Gooeys.filter(goo => goo.Eyes === "Orange (Evil)").length},
+    //     {"Orange (Evil) 2" : (Gooeys.filter(goo => goo.Eyes === "Orange (Evil)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pink (Evil) 1" : Gooeys.filter(goo => goo.Eyes === "Pink (Evil)").length},
+    //     {"Pink (Evil) 2" : (Gooeys.filter(goo => goo.Eyes === "Pink (Evil)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pink (Smiling) 1" : Gooeys.filter(goo => goo.Eyes === "Pink (Smiling)").length},
+    //     {"Pink (Smiling) 2" : (Gooeys.filter(goo => goo.Eyes === "Pink (Smiling)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Radiant (Evil) 1" : Gooeys.filter(goo => goo.Eyes === "Radiant (Evil)").length},
+    //     {"Radiant (Evil) 2" : (Gooeys.filter(goo => goo.Eyes === "Radiant (Evil)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Red (Evil) 1" : Gooeys.filter(goo => goo.Eyes === "Red (Evil)").length},
+    //     {"Red (Evil) 2" : (Gooeys.filter(goo => goo.Eyes === "Red (Evil)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Red (Grumpy) 1" : Gooeys.filter(goo => goo.Eyes === "Red (Grumpy)").length},
+    //     {"Red (Grumpy) 2" : (Gooeys.filter(goo => goo.Eyes === "Red (Grumpy)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Red (Smiling) 1" : Gooeys.filter(goo => goo.Eyes === "Red (Smiling)").length},
+    //     {"Red (Smiling) 2" : (Gooeys.filter(goo => goo.Eyes === "Red (Smiling)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet 1" : Gooeys.filter(goo => goo.Eyes === "Violet").length},
+    //     {"Violet 2" : (Gooeys.filter(goo => goo.Eyes === "Violet").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet (Evil) 1" : Gooeys.filter(goo => goo.Eyes === "Violet (Evil)").length},
+    //     {"Violet (Evil) 2" : (Gooeys.filter(goo => goo.Eyes === "Violet (Evil)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet (Grumpy) 1" : Gooeys.filter(goo => goo.Eyes === "Violet (Grumpy)").length},
+    //     {"Violet (Grumpy) 2" : (Gooeys.filter(goo => goo.Eyes === "Violet (Grumpy)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet (Smiling) 1" : Gooeys.filter(goo => goo.Eyes === "Violet (Smiling)").length},
+    //     {"Violet (Smiling) 2" : (Gooeys.filter(goo => goo.Eyes === "Violet (Smiling)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Yellow (Grumpy) 1" : Gooeys.filter(goo => goo.Eyes === "Yellow (Grumpy)").length},
+    //     {"Yellow (Grumpy) 2" : (Gooeys.filter(goo => goo.Eyes === "Yellow (Grumpy)").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Yellow (Smiling) 1" : Gooeys.filter(goo => goo.Eyes === "Yellow (Smiling)").length},
+    //     {"Yellow (Smiling) 2" : (Gooeys.filter(goo => goo.Eyes === "Yellow (Smiling)").length / Gooeys.length * 100).toFixed(2)},
+
+    // ]
+
+    // let ForegroundTraits = [
+
+    //     {"Emerald Radiant Field 1" : Gooeys.filter(goo => goo.Foreground === "Emerald Radiant Field").length},
+    //     {"Emerald Radiant Field 2" : (Gooeys.filter(goo => goo.Foreground === "Emerald Radiant Field").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Fireflies 1" : Gooeys.filter(goo => goo.Foreground === "Fireflies").length},
+    //     {"Fireflies 2" : (Gooeys.filter(goo => goo.Foreground === "Fireflies").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green Radiant Field 1" : Gooeys.filter(goo => goo.Foreground === "Green Radiant Field").length},
+    //     {"Green Radiant Field 2" : (Gooeys.filter(goo => goo.Foreground === "Green Radiant Field").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Shimmering Flowers 1" : Gooeys.filter(goo => goo.Foreground === "Shimmering Flowers").length},
+    //     {"Shimmering Flowers 2" : (Gooeys.filter(goo => goo.Foreground === "Shimmering Flowers").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ruby Radiant Field 1" : Gooeys.filter(goo => goo.Foreground === "Ruby Radiant Field").length},
+    //     {"Ruby Radiant Field 2" : (Gooeys.filter(goo => goo.Foreground === "Ruby Radiant Field").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet Radiant Field 1" : Gooeys.filter(goo => goo.Foreground === "Violet Radiant Field").length},
+    //     {"Violet Radiant Field 2" : (Gooeys.filter(goo => goo.Foreground === "Violet Radiant Field").length / Gooeys.length * 100).toFixed(2)},
+
+    // ]
+
+    // let MaskTraits = [
+
+    //     {"Amethyst Rune 1" : Gooeys.filter(goo => goo.Mask === "Amethyst Rune").length},
+    //     {"Amethyst Rune 2" : (Gooeys.filter(goo => goo.Mask === "Amethyst Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Beige 1" : Gooeys.filter(goo => goo.Mask === "Beige").length},
+    //     {"Beige 2" : (Gooeys.filter(goo => goo.Mask === "Beige").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue 1" : Gooeys.filter(goo => goo.Mask === "Blue").length},
+    //     {"Blue 2" : (Gooeys.filter(goo => goo.Mask === "Blue").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Mage 1" : Gooeys.filter(goo => goo.Mask === "Blue Mage").length},
+    //     {"Blue Mage 2" : (Gooeys.filter(goo => goo.Mask === "Blue Mage").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Shaman 1" : Gooeys.filter(goo => goo.Mask === "Blue Shaman").length},
+    //     {"Blue Shaman 2" : (Gooeys.filter(goo => goo.Mask === "Blue Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Cold Green 1" : Gooeys.filter(goo => goo.Mask === "Cold Green").length},
+    //     {"Cold Green 2" : (Gooeys.filter(goo => goo.Mask === "Cold Green").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Cold Violet 1" : Gooeys.filter(goo => goo.Mask === "Cold Violet").length},
+    //     {"Cold Violet 2" : (Gooeys.filter(goo => goo.Mask === "Cold Violet").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Cyber 1" : Gooeys.filter(goo => goo.Mask === "Cyber").length},
+    //     {"Cyber 2" : (Gooeys.filter(goo => goo.Mask === "Cyber").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dark Blue 1" : Gooeys.filter(goo => goo.Mask === "Dark Blue").length},
+    //     {"Dark Blue 2" : (Gooeys.filter(goo => goo.Mask === "Dark Blue").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dark Green 1" : Gooeys.filter(goo => goo.Mask === "Dark Green").length},
+    //     {"Dark Green 2" : (Gooeys.filter(goo => goo.Mask === "Dark Green").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dark Grey 1" : Gooeys.filter(goo => goo.Mask === "Dark Grey").length},
+    //     {"Dark Grey 2" : (Gooeys.filter(goo => goo.Mask === "Dark Grey").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dark Violet 1" : Gooeys.filter(goo => goo.Mask === "Dark Violet").length},
+    //     {"Dark Violet 2" : (Gooeys.filter(goo => goo.Mask === "Dark Violet").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Dream Mage 1" : Gooeys.filter(goo => goo.Mask === "Dream Mage").length},
+    //     {"Dream Mage 2" : (Gooeys.filter(goo => goo.Mask === "Dream Mage").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Emerald Rune 1" : Gooeys.filter(goo => goo.Mask === "Emerald Rune").length},
+    //     {"Emerald Rune 2" : (Gooeys.filter(goo => goo.Mask === "Emerald Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ghostly 1" : Gooeys.filter(goo => goo.Mask === "Ghostly").length},
+    //     {"Ghostly 2" : (Gooeys.filter(goo => goo.Mask === "Ghostly").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Golden 1" : Gooeys.filter(goo => goo.Mask === "Golden").length},
+    //     {"Golden 2" : (Gooeys.filter(goo => goo.Mask === "Golden").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green 1" : Gooeys.filter(goo => goo.Mask === "Green").length},
+    //     {"Green 2" : (Gooeys.filter(goo => goo.Mask === "Green").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green Mage 1" : Gooeys.filter(goo => goo.Mask === "Green Mage").length},
+    //     {"Green Mage 2" : (Gooeys.filter(goo => goo.Mask === "Green Mage").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Green Shaman 1" : Gooeys.filter(goo => goo.Mask === "Green Shaman").length},
+    //     {"Green Shaman 2" : (Gooeys.filter(goo => goo.Mask === "Green Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Grey 1" : Gooeys.filter(goo => goo.Mask === "Grey").length},
+    //     {"Grey 2" : (Gooeys.filter(goo => goo.Mask === "Grey").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Khaki 1" : Gooeys.filter(goo => goo.Mask === "Khaki").length},
+    //     {"Khaki 2" : (Gooeys.filter(goo => goo.Mask === "Khaki").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Khaki Shaman 1" : Gooeys.filter(goo => goo.Mask === "Khaki Shaman").length},
+    //     {"Khaki Shaman 2" : (Gooeys.filter(goo => goo.Mask === "Khaki Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Lemon Mage 1" : Gooeys.filter(goo => goo.Mask === "Lemon Mage").length},
+    //     {"Lemon Mage 2" : (Gooeys.filter(goo => goo.Mask === "Lemon Mage").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Mystic 1" : Gooeys.filter(goo => goo.Mask === "Mystic").length},
+    //     {"Mystic 2" : (Gooeys.filter(goo => goo.Mask === "Mystic").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Peach 1" : Gooeys.filter(goo => goo.Mask === "Peach").length},
+    //     {"Peach 2" : (Gooeys.filter(goo => goo.Mask === "Peach").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pearl 1" : Gooeys.filter(goo => goo.Mask === "Pearl").length},
+    //     {"Pearl 2" : (Gooeys.filter(goo => goo.Mask === "Pearl").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pearl Green 1" : Gooeys.filter(goo => goo.Mask === "Pearl Green").length},
+    //     {"Pearl Green 2" : (Gooeys.filter(goo => goo.Mask === "Pearl Green").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pearl Pink 1" : Gooeys.filter(goo => goo.Mask === "Pearl Pink").length},
+    //     {"Pearl Pink 2" : (Gooeys.filter(goo => goo.Mask === "Pearl Pink").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pink 1" : Gooeys.filter(goo => goo.Mask === "Pink").length},
+    //     {"Pink 2" : (Gooeys.filter(goo => goo.Mask === "Pink").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pink Mage 1" : Gooeys.filter(goo => goo.Mask === "Pink Mage").length},
+    //     {"Pink Mage 2" : (Gooeys.filter(goo => goo.Mask === "Pink Mage").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pink Shaman 1" : Gooeys.filter(goo => goo.Mask === "Pink Shaman").length},
+    //     {"Pink Shaman 2" : (Gooeys.filter(goo => goo.Mask === "Pink Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pomegranate 1" : Gooeys.filter(goo => goo.Mask === "Pomegranate").length},
+    //     {"Pomegranate 2" : (Gooeys.filter(goo => goo.Mask === "Pomegranate").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Red 1" : Gooeys.filter(goo => goo.Mask === "Red").length},
+    //     {"Red 2" : (Gooeys.filter(goo => goo.Mask === "Red").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Ruby Rune 1" : Gooeys.filter(goo => goo.Mask === "Ruby Rune").length},
+    //     {"Ruby Rune 2" : (Gooeys.filter(goo => goo.Mask === "Ruby Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Sand 1" : Gooeys.filter(goo => goo.Mask === "Sand").length},
+    //     {"Sand 2" : (Gooeys.filter(goo => goo.Mask === "Sand").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Sand Shaman 1" : Gooeys.filter(goo => goo.Mask === "Sand Shaman").length},
+    //     {"Sand Shaman 2" : (Gooeys.filter(goo => goo.Mask === "Sand Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Sapphire Rune 1" : Gooeys.filter(goo => goo.Mask === "Sapphire Rune").length},
+    //     {"Sapphire Rune 2" : (Gooeys.filter(goo => goo.Mask === "Sapphire Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Shaman 1" : Gooeys.filter(goo => goo.Mask === "Shaman").length},
+    //     {"Shaman 2" : (Gooeys.filter(goo => goo.Mask === "Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Steel 1" : Gooeys.filter(goo => goo.Mask === "Steel").length},
+    //     {"Steel 2" : (Gooeys.filter(goo => goo.Mask === "Steel").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Steel Shaman 1" : Gooeys.filter(goo => goo.Mask === "Steel Shaman").length},
+    //     {"Steel Shaman 2" : (Gooeys.filter(goo => goo.Mask === "Steel Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Topaz Rune 1" : Gooeys.filter(goo => goo.Mask === "Topaz Rune").length},
+    //     {"Topaz Rune 2" : (Gooeys.filter(goo => goo.Mask === "Topaz Rune").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet 1" : Gooeys.filter(goo => goo.Mask === "Violet").length},
+    //     {"Violet 2" : (Gooeys.filter(goo => goo.Mask === "Violet").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Violet Shaman 1" : Gooeys.filter(goo => goo.Mask === "Violet Shaman").length},
+    //     {"Violet Shaman 2" : (Gooeys.filter(goo => goo.Mask === "Violet Shaman").length / Gooeys.length * 100).toFixed(2)},
+
+    // ]
+
+    // let AccessoryTraits = [
+        
+    //     {"Birdies 1" : Gooeys.filter(goo => goo.Accessory === "Birdies").length},
+    //     {"Birdies 2" : (Gooeys.filter(goo => goo.Accessory === "Birdies").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Birdies 1" : Gooeys.filter(goo => goo.Accessory === "Blue Birdies").length},
+    //     {"Blue Birdies 2" : (Gooeys.filter(goo => goo.Accessory === "Blue Birdies").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Blue Butterflies 1" : Gooeys.filter(goo => goo.Accessory === "Blue Butterflies").length},
+    //     {"Blue Butterflies 2" : (Gooeys.filter(goo => goo.Accessory === "Blue Butterflies").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Clover 1" : Gooeys.filter(goo => goo.Accessory === "Clover").length},
+    //     {"Clover 2" : (Gooeys.filter(goo => goo.Accessory === "Clover").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Halo 1" : Gooeys.filter(goo => goo.Accessory === "Halo").length},
+    //     {"Halo 2" : (Gooeys.filter(goo => goo.Accessory === "Halo").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Leaf 1" : Gooeys.filter(goo => goo.Accessory === "Leaf").length},
+    //     {"Leaf 2" : (Gooeys.filter(goo => goo.Accessory === "Leaf").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"NONE 1" : Gooeys.filter(goo => goo.Accessory === "NONE").length},
+    //     {"NONE 2" : (Gooeys.filter(goo => goo.Accessory === "NONE").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pink Butterflies 1" : Gooeys.filter(goo => goo.Accessory === "Pink Butterflies").length},
+    //     {"Pink Butterflies 2" : (Gooeys.filter(goo => goo.Accessory === "Pink Butterflies").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Pizza 1" : Gooeys.filter(goo => goo.Accessory === "Pizza").length},
+    //     {"Pizza 2" : (Gooeys.filter(goo => goo.Accessory === "Pizza").length / Gooeys.length * 100).toFixed(2)},
+
+    //     {"Star Crown 1" : Gooeys.filter(goo => goo.Accessory === "Star Crown").length},
+    //     {"Star Crown 2" : (Gooeys.filter(goo => goo.Accessory === "Star Crown").length / Gooeys.length * 100).toFixed(2)},
+    // ]
+
+
+    // {"ddd 1" : Gooeys.filter(goo => goo.Background === "ddd").length},
+    // {"ddd 2" : (Gooeys.filter(goo => goo.Background === "ddd").length / Gooeys.length * 100).toFixed(2)},
+
+
 export let gooeyData = [
     {
         "GooeyId": 1,
