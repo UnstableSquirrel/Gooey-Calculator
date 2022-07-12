@@ -1334,11 +1334,11 @@ let x = setInterval(function() {
 
               <h1>Time until the next halving</h1>
 
-              <div style="display:flex; justify-content:center; grid-gap:15px;">
-                <p><span>Days</span><br>{countdownDays}</p>
-                <p><span>Hours</span><br>{countdownHours}</p>
-                <p><span>Minutes</span><br>{countdownMinutes}</p>
-                <p><span>Seconds</span><br>{countdownSeconds}</p>
+              <div style="display: flex; justify-content: center; grid-gap: 15px; font-family: Arial;font-weight: 700;">
+                <p><span style="font-family: Bangers;font-weight: 500 !important;">Days</span><br>{countdownDays}</p>
+                <p><span style="font-family: Bangers;font-weight: 500 !important;">Hours</span><br>{countdownHours}</p>
+                <p><span style="font-family: Bangers;font-weight: 500 !important;">Minutes</span><br>{countdownMinutes}</p>
+                <p><span style="font-family: Bangers;font-weight: 500 !important;">Seconds</span><br>{countdownSeconds}</p>
               </div>
 
             </div>
@@ -1378,9 +1378,7 @@ let x = setInterval(function() {
 
                   <div class="text2">
                     <p>- The tumbling base fee is 300,000 $GOO</p>
-                    <p>- You pay an additional 250,000 $GOO per Gooey tumbled to date by both parent Gooeys</p>
-                    <p>- If both Gooeys combined have tumbled more than 7 times, your total tumbling cost 
-                      increases by 3x</p>
+                    <p>- If both Gooeys combined have tumbled more than 8 times, your total tumbling base fee will be 600,000 $GOO</p>
                   </div>
             </div>
 
@@ -1642,8 +1640,9 @@ h1 {
 }
 
 span {
-    font-weight: 500;
     color: black;
+    font-family: Arial;
+    font-weight: 700 !important;
 }
 
 .container{
@@ -1790,6 +1789,26 @@ td {
   font-weight: 400;
   padding: 5px;
   border-right: 1px solid #364043;
+}
+
+td:nth-child(1) {
+  font-family: Arial;
+  font-weight: 700;
+}
+
+td:nth-child(3) {
+  font-family: Arial;
+  font-weight: 700;
+}
+
+td:nth-child(4) {
+  font-family: Arial;
+  font-weight: 700;
+}
+
+td:nth-child(5) {
+  font-family: Arial;
+  font-weight: 700;
 }
 
 tr > th:nth-child(5) {
@@ -2385,6 +2404,11 @@ tbody tr:hover {
   width: 50px !important;
   font-size: 15px !important;
   padding: 10px !important;
+}
+
+.gooey-table > tbody > tr > td {
+  font-family: Arial;
+  font-weight: 700;
 }
 
 .gooey-table > tbody > tr > td:nth-child(1) {
