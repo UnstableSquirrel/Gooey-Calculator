@@ -132,7 +132,7 @@ let list = []
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// 1583
+// 1594
     const getData = async() => {
       for (let i = 0; i < 0; i++) {
       counter = '["'+i+'"]'
@@ -252,43 +252,43 @@ let list = []
 
 
 
-            // "BackgroundTotal" : (gooeyData.filter(x => x.Background === att[0].attributes[0].value)).length,
-            // "BackgroundPercentage" : ((gooeyData.filter(x => x.Background === att[0].attributes[0].value)).length / gooeyData.length * 100).toFixed(2),
+            "BackgroundTotal" : (gooeyData.filter(x => x.Background === att[0].attributes[0].value)).length,
+            "BackgroundPercentage" : ((gooeyData.filter(x => x.Background === att[0].attributes[0].value)).length / gooeyData.length * 100).toFixed(2),
 
-            // "BodyTotal" : (gooeyData.filter(x => x.Body === att[0].attributes[2].value)).length,
-            // "BodyPercentage" : ((gooeyData.filter(x => x.Body === att[0].attributes[2].value)).length / gooeyData.length * 100).toFixed(2),
+            "BodyTotal" : (gooeyData.filter(x => x.Body === att[0].attributes[2].value)).length,
+            "BodyPercentage" : ((gooeyData.filter(x => x.Body === att[0].attributes[2].value)).length / gooeyData.length * 100).toFixed(2),
 
-            // "MaskTotal" : (gooeyData.filter(x => x.Mask === att[0].attributes[3].value)).length,
-            // "MaskPercentage" : ((gooeyData.filter(x => x.Mask === att[0].attributes[3].value)).length / gooeyData.length * 100).toFixed(2),
+            "MaskTotal" : (gooeyData.filter(x => x.Mask === att[0].attributes[3].value)).length,
+            "MaskPercentage" : ((gooeyData.filter(x => x.Mask === att[0].attributes[3].value)).length / gooeyData.length * 100).toFixed(2),
 
-            // "EyesTotal" : (gooeyData.filter(x => x.Eyes === att[0].attributes[4].value)).length,
-            // "EyesPercentage" : ((gooeyData.filter(x => x.Eyes === att[0].attributes[4].value)).length / gooeyData.length * 100).toFixed(2),
+            "EyesTotal" : (gooeyData.filter(x => x.Eyes === att[0].attributes[4].value)).length,
+            "EyesPercentage" : ((gooeyData.filter(x => x.Eyes === att[0].attributes[4].value)).length / gooeyData.length * 100).toFixed(2),
 
-            // "EarsTotal" : (gooeyData.filter(x => x.Ears === att[0].attributes[1].value)).length,
-            // "EarsPercentage" : ((gooeyData.filter(x => x.Ears === att[0].attributes[1].value)).length / gooeyData.length * 100).toFixed(2),
+            "EarsTotal" : (gooeyData.filter(x => x.Ears === att[0].attributes[1].value)).length,
+            "EarsPercentage" : ((gooeyData.filter(x => x.Ears === att[0].attributes[1].value)).length / gooeyData.length * 100).toFixed(2),
 
-            // "AccessoryTotal" : (gooeyData.filter(x => x.Accessory === att[0].attributes[5].value)).length,
-            // "AccessoryPercentage" : ((gooeyData.filter(x => x.Accessory === att[0].attributes[5].value)).length / gooeyData.length * 100).toFixed(2),
+            "AccessoryTotal" : (gooeyData.filter(x => x.Accessory === att[0].attributes[5].value)).length,
+            "AccessoryPercentage" : ((gooeyData.filter(x => x.Accessory === att[0].attributes[5].value)).length / gooeyData.length * 100).toFixed(2),
 
-            // "ForegroundTotal" : (gooeyData.filter(x => x.Foreground === att[0].attributes[6].value)).length,
-            // "ForegroundPercentage" : ((gooeyData.filter(x => x.Foreground === att[0].attributes[6].value)).length / gooeyData.length * 100).toFixed(2),
+            "ForegroundTotal" : (gooeyData.filter(x => x.Foreground === att[0].attributes[6].value)).length,
+            "ForegroundPercentage" : ((gooeyData.filter(x => x.Foreground === att[0].attributes[6].value)).length / gooeyData.length * 100).toFixed(2),
 
-            // "RarityScore" : ((gooeyData.length / (gooeyData.filter(g => g.Background === att[0].attributes[0].value).length)) + 
-            //                 (gooeyData.length / (gooeyData.filter(g => g.Body === att[0].attributes[2].value).length)) +
-            //                 (gooeyData.length / (gooeyData.filter(g => g.Mask === att[0].attributes[3].value).length)) + 
-            //                 (gooeyData.length / (gooeyData.filter(g => g.Eyes === att[0].attributes[4].value).length)) + 
-            //                 (gooeyData.length / (gooeyData.filter(g => g.Ears === att[0].attributes[1].value).length)) + 
-            //                 (gooeyData.length / (gooeyData.filter(g => g.Accessory === att[0].attributes[5].value).length)) + 
-            //                 (gooeyData.length / (gooeyData.filter(g => g.Foreground === att[0].attributes[6].value).length))).toFixed(0),
+            "RarityScore" : ((gooeyData.length / (gooeyData.filter(g => g.Background === att[0].attributes[0].value).length)) + 
+                            (gooeyData.length / (gooeyData.filter(g => g.Body === att[0].attributes[2].value).length)) +
+                            (gooeyData.length / (gooeyData.filter(g => g.Mask === att[0].attributes[3].value).length)) + 
+                            (gooeyData.length / (gooeyData.filter(g => g.Eyes === att[0].attributes[4].value).length)) + 
+                            (gooeyData.length / (gooeyData.filter(g => g.Ears === att[0].attributes[1].value).length)) + 
+                            (gooeyData.length / (gooeyData.filter(g => g.Accessory === att[0].attributes[5].value).length)) + 
+                            (gooeyData.length / (gooeyData.filter(g => g.Foreground === att[0].attributes[6].value).length))).toFixed(0),
 
-            // "TotalRarityStrength" : parseInt((parseInt(reg2[1]) + parseInt(reg2[2]) + parseInt(reg2[3]) + parseInt(reg2[4]))) + 
-            //                 parseInt(parseInt((gooeyData.length / (gooeyData.filter(g => g.Background === att[0].attributes[0].value).length))) + 
-            //                 parseInt((gooeyData.length / (gooeyData.filter(g => g.Body === att[0].attributes[2].value).length))) +
-            //                 parseInt((gooeyData.length / (gooeyData.filter(g => g.Mask === att[0].attributes[3].value).length))) + 
-            //                 parseInt((gooeyData.length / (gooeyData.filter(g => g.Eyes === att[0].attributes[4].value).length))) + 
-            //                 parseInt((gooeyData.length / (gooeyData.filter(g => g.Ears === att[0].attributes[1].value).length))) + 
-            //                 parseInt((gooeyData.length / (gooeyData.filter(g => g.Accessory === att[0].attributes[5].value).length))) + 
-            //                 parseInt((gooeyData.length / (gooeyData.filter(g => g.Foreground === att[0].attributes[6].value).length)))),
+            "TotalRarityStrength" : parseInt((parseInt(reg2[1]) + parseInt(reg2[2]) + parseInt(reg2[3]) + parseInt(reg2[4]))) + 
+                            parseInt(parseInt((gooeyData.length / (gooeyData.filter(g => g.Background === att[0].attributes[0].value).length))) + 
+                            parseInt((gooeyData.length / (gooeyData.filter(g => g.Body === att[0].attributes[2].value).length))) +
+                            parseInt((gooeyData.length / (gooeyData.filter(g => g.Mask === att[0].attributes[3].value).length))) + 
+                            parseInt((gooeyData.length / (gooeyData.filter(g => g.Eyes === att[0].attributes[4].value).length))) + 
+                            parseInt((gooeyData.length / (gooeyData.filter(g => g.Ears === att[0].attributes[1].value).length))) + 
+                            parseInt((gooeyData.length / (gooeyData.filter(g => g.Accessory === att[0].attributes[5].value).length))) + 
+                            parseInt((gooeyData.length / (gooeyData.filter(g => g.Foreground === att[0].attributes[6].value).length)))),
 
 
 
