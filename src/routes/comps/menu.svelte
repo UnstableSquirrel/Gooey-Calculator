@@ -42,6 +42,8 @@
          <a href="../#Questing-Rewards">Questing Rewards</a>
          <a href="../#Tumbling-Costs">Tumbling Costs</a>
          <a href="../#Stats-Calculator">Stats Calculator</a>
+         <a href="https://fruit-memory.vercel.app/">Fruit Memory</a>
+         <a href="https://cdyc.vercel.app/">Get your Dogira PFP</a>
       </div>
    </div>
 
@@ -62,14 +64,14 @@ main {
     font-size: 0px;
   }
   to {
-    height: 250px;
+    height: 315px;
     font-size: 20px;
   }
 }
 
 @keyframes slide-out {
   from {
-   height: 250px;
+   height: 315px;
    font-size: 20px;
   }
   to {
@@ -106,7 +108,7 @@ a:hover {
 }
 
 .open {
-   height: 250px;
+   height: 315px;
    font-size : 20px;
    animation: slide-in 0.2s linear;
 }

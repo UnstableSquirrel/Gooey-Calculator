@@ -1194,7 +1194,7 @@ let x = setInterval(function() {
         <div class="container">
 
           <div class="main-links-container-2">
-            <a href="https://fruit-memory.vercel.app/" class="main-link-btn-2">Fruit Memory</a>
+            <a href="https://opensea.io/collection/goomer-collection" class="main-link-btn-2">Get your Goomer</a>
           </div>
 
             <div class="c1">
@@ -1742,12 +1742,12 @@ div {
   margin: 0px 0px 50px 0px;
 }
 
-.main-links-container-2 > a {
+/* .main-links-container-2 > a {
   font-size: 1.2rem;
   padding: 0.5rem 2rem;
   color: #000000;
   text-transform: uppercase;
-}
+} */
 
 .main-link-btn-2 {
   text-decoration: none;
