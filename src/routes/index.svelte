@@ -1194,7 +1194,7 @@ let x = setInterval(function() {
         <div class="container">
 
           <div class="main-links-container-2">
-            <a href="fruit-memory.vercel.app" class="main-link-btn-2">Fruit Memory</a>
+            <a href="https://fruit-memory.vercel.app/" class="main-link-btn-2">Fruit Memory</a>
           </div>
 
             <div class="c1">
