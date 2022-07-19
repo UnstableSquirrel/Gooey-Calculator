@@ -1742,12 +1742,14 @@ div {
   margin: 0px 0px 50px 0px;
 }
 
-/* .main-links-container-2 > a {
+.main-links-container-2 > a {
   font-size: 1.2rem;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
   color: #000000;
   text-transform: uppercase;
-} */
+  background-color: #5543cc4d;
+}
 
 .main-link-btn-2 {
   text-decoration: none;
