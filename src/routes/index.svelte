@@ -1170,6 +1170,16 @@ let x = setInterval(function() {
       </p>
     </div>
 
+    <div class="main-links-container">
+      <a href="https://quickswap.exchange/#/swap?outputCurrency=0x6f3cc27e17a0f2e52d8e7693ff0d892cea1854bf" class="main-link-btn">Buy $GOO</a>
+    </div>
+    <div class="main-links-container">
+      <a href="https://playgooeys.com/" class="main-link-btn">Play Gooeys</a>
+    </div>
+    <div class="main-links-container">
+      <a href="https://opensea.io/collection/gooeysp2e" class="main-link-btn">Browse on Opensea</a>
+    </div>
+
     <h1>Gooey Companion</h1>
 
 
@@ -1182,6 +1192,10 @@ let x = setInterval(function() {
 
 
         <div class="container">
+
+          <div class="main-links-container-2">
+            <a href="fruit-memory.vercel.app" class="main-link-btn-2">Fruit Memory</a>
+          </div>
 
             <div class="c1">
 
@@ -1662,6 +1676,111 @@ div {
   color: #666666 !important;
   pointer-events: none;
 }
+
+
+
+
+
+
+
+
+
+
+.main-links-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-links-container > a {
+  font-size: 1.2rem;
+  padding: 0.5rem 2rem;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.main-link-btn {
+  text-decoration: none;
+  border: 2px solid rgb(146, 148, 248);
+  position: relative;
+  overflow: hidden;
+  margin: 0.5rem 0rem;
+}
+
+.main-link-btn:hover {
+  box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+}
+
+.main-link-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(146, 148, 248, 0.4),
+    transparent
+  );
+  transition: all 650ms;
+}
+
+.main-link-btn:hover:before {
+  left: 100%;
+}
+
+
+
+
+
+.main-links-container-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0px 50px 0px;
+}
+
+.main-links-container-2 > a {
+  font-size: 1.2rem;
+  padding: 0.5rem 2rem;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.main-link-btn-2 {
+  text-decoration: none;
+  border: 2px solid rgb(146, 148, 248);
+  position: relative;
+  overflow: hidden;
+  margin: 0.5rem 0rem;
+}
+
+.main-link-btn-2:hover {
+  box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+}
+
+.main-link-btn-2:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(146, 148, 248, 0.4),
+    transparent
+  );
+  transition: all 650ms;
+}
+
+.main-link-btn-2:hover:before {
+  left: 100%;
+}
+
 
 
 
