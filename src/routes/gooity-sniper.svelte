@@ -166,7 +166,7 @@
           var data = {
             'chain': 'polygon',
             'network': 'mainnet',
-            'contract': '0xFAB55Fe6E7483b1ADBAcC377C2544b4ee79010c1',
+            'contract': '0x3154d38f35febe08fd0afdc6c3a1b833a49f69de',
             'abi': gooeyABI,
             'method': 'tokensOfOwner',
             'args': '["'+userAddress+'"]',
@@ -1084,7 +1084,7 @@
                             <h2>Gooey #{currentId}</h2>
 
                             <div class="opensea-container">
-                                <a id="opensea" href="https://opensea.io/assets/matic/0xFAB55Fe6E7483b1ADBAcC377C2544b4ee79010c1/{currentId}" target="_blank"><img src="https://opensea.io/static/images/logos/opensea.svg" alt="Opensea"></a>
+                                <a id="opensea" href="https://opensea.io/assets/matic/0x3154d38f35febe08fd0afdc6c3a1b833a49f69de/{currentId}" target="_blank"><img src="https://opensea.io/static/images/logos/opensea.svg" alt="Opensea"></a>
                             </div>
             
                             <div class="trait-container">
