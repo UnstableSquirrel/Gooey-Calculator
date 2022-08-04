@@ -762,7 +762,7 @@ function calculateTumbleStats() {
   let totalNexus = gooeyANexus + gooeyBNexus
   let totalFoodBonus = gooeyAFoodBonus + gooeyBFoodBonus
   let minimumMutation = 0.97
-  let maximumMutation = 1.05 + (totalNexus / 4000) + totalFoodBonus
+  let maximumMutation = 1.05 + (totalNexus / 20000) + totalFoodBonus
 
   //Multiply all mutations with 100
   minimumMutation = minimumMutation * 100
