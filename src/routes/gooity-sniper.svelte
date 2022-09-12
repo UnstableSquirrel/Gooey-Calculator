@@ -1155,13 +1155,13 @@
                 </div>
                 
                 <div class="stats-container">
-                    <p>HP: <br><span>{goo.HP}</span></p>
-                    <p>ATK: <br><span>{goo.ATK}</span></p>
-                    <p>Gen: <br><span>{goo.Gen}</span></p>
-                    <p>SPD: <br><span>{goo.SPD}</span></p>
+                    <p>HP: <br><span>{goo.HP.toLocaleString('en-US')}</span></p>
+                    <p>ATK: <br><span>{goo.ATK.toLocaleString('en-US')}</span></p>
+                    <p>Gen: <br><span>{goo.Gen.toLocaleString('en-US')}</span></p>
+                    <p>SPD: <br><span>{goo.SPD.toLocaleString('en-US')}</span></p>
 
-                    <p>DEF: <br><span>{goo.DEF}</span></p>
-                    <p>Total: <br><span>{goo.Total}</span></p>
+                    <p>DEF: <br><span>{goo.DEF.toLocaleString('en-US')}</span></p>
+                    <p>Total: <br><span>{goo.Total.toLocaleString('en-US')}</span></p>
                 </div>
 
                 <div class="rarity-container">
@@ -1175,7 +1175,7 @@
                             (Gooeys.length / (Gooeys.filter(g => g.Ears === goo.Ears).length)) + 
                             (Gooeys.length / (Gooeys.filter(g => g.Accessory === goo.Accessory).length)) + 
                             (Gooeys.length / (Gooeys.filter(g => g.Foreground === goo.Foreground).length))).toFixed(0))} -->
-                            {goo.RarityScore}
+                            {goo.RarityScore.toLocaleString('en-US')}
                             </span>
                         </p>
                     </div>

@@ -550,19 +550,19 @@ function addGooey() {
 }
 
 $: validateHDS = function validateInput1() {
-    if(health < 100 || health > 10000) {
+    if(health < 100) {
       health = 100
     }
-    if(defense < 100 || defense > 10000){
+    if(defense < 100){
       defense = 100
     }
-    if(speed < 100 || speed > 10000) {
+    if(speed < 100) {
       speed = 100
     }
    }
 
 $: validateATT = function validateInput2() {
-    if(attack < 100 || attack > 10000) {
+    if(attack < 100) {
       attack = 100
     }
    }
@@ -580,7 +580,7 @@ $: validateTSB = function validateInput4() {
    }
 
 $: validateGEN = function validateInput5() {
-    if(generation < 0 || generation > 6) {
+    if(generation < 0) {
       generation = 0
     }
    }
@@ -707,10 +707,10 @@ function calculateTumbleStats() {
         return a.Gen - b.Gen
   })
 
-  gooeysMinGen = ascGen[0].Gen
+  gooeysMinGen = ascGen[1].Gen
 
-  //Calc Gen bonus of the lowest gen Gooey 
-  gooeysMinGen = ascGen[0].Gen + 1
+  //Calc Gen bonus of the highest gen Gooey 
+  gooeysMinGen = ascGen[1].Gen + 1
 
   let sortAtk = [...arC]
   let sortHp = [...arC]
@@ -1343,7 +1343,7 @@ let x = setInterval(function() {
 
 
 
-
+<!-- 
             <div style="display:grid; justify-content:center; text-align:center; margin-bottom:100px;">
 
               <h1>Time until the next halving</h1>
@@ -1355,7 +1355,7 @@ let x = setInterval(function() {
                 <p><span style="font-family: Bangers;font-weight: 500 !important;">Seconds</span><br>{countdownSeconds}</p>
               </div>
 
-            </div>
+            </div> -->
 
 
 
